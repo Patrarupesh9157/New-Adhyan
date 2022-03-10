@@ -5,7 +5,7 @@ urlpatterns = [
     path('index',views.index,name='index'),
     path('',views .login,name='login'),
     path('register',views.register,name='register'),
-    path('otp',views.otp,name='otp'),
+    path('otp',views.otp),
     path('fpass',views.fpass,name='fpass'),
     # path('newpass',views.newpass,name='newpass'),
 

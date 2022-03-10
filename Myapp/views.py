@@ -138,6 +138,14 @@ def addcourse(request):
 
 def myprofile(request):
     uid=Register.objects.get(email=request.session['email'])
+    if request.method=='POST':
+        uid.name=request.POST['name']
+        uid.mobile=request.POST['mobile']
+        uid.address=request.POST['address']
+        if 'pic' in request.FILES:
+            uid.pic = request.FILES['pic']
+        uid.save()
+        return render(request,'my-profile.html',{'uid':uid,'msg':'Profile is Updated'})
     return render(request,'my-profile.html',{'uid':uid})
 def p404(request):
     return render(request,'404.html')
