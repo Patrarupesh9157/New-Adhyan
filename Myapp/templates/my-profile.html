@@ -14,7 +14,9 @@
                             <li class="name">{{uid.name}}<br><label class="label label-info">Admin</label>
                             </li>
                             <li class="email"><a href="#">{{uid.email}}</a></li>
-                            <li class="activity">Last logged in: Today at 2:18pm</li>
+                            {% if nowtime %}
+                            <li class="activity">Last Update Profile time is : Today at {{nowtime}}</li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -24,9 +26,9 @@
                     {% csrf_token %}    
                         <fieldset class="fieldset">
                             {% if msg %}
-                            <h3 class="fieldset-title">Personal Info</h3>
-                            {% else %}
                             <h3 class="fieldset-title">{{msg}}</h3>
+                            {% else %}
+                            <h3 class="fieldset-title">Personal Info</h3>
                             {% endif%}
                             <div class="form-group avatar">
                                 <figure class="figure col-md-2 col-sm-3 col-xs-12">

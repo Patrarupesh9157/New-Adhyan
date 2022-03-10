@@ -1,3 +1,4 @@
+import datetime
 from tempfile import tempdir
 from venv import create
 from django.shortcuts import redirect, render
@@ -15,11 +16,13 @@ def login(request):
         uid=Register.objects.get(email=request.session['email'])
         return redirect('index')
     except:
+        # global nowtime
         if request.method=='POST':
             try:
                 uid=Register.objects.get(email=request.POST['email'])
                 if uid.password==request.POST['password']:
                     request.session['email']=uid.email
+                    # nowtime=datetime.datetime.now()
                     return redirect('index')
                 return render(request,'login.html',{'msg':'Password is incorrect'})
             except:
@@ -137,6 +140,7 @@ def addcourse(request):
     return render(request,'add-course.html',{'uid':uid})
 
 def myprofile(request):
+    # global nowtime
     uid=Register.objects.get(email=request.session['email'])
     if request.method=='POST':
         uid.name=request.POST['name']
@@ -145,7 +149,7 @@ def myprofile(request):
         if 'pic' in request.FILES:
             uid.pic = request.FILES['pic']
         uid.save()
-        return render(request,'my-profile.html',{'uid':uid,'msg':'Profile is Updated'})
+        return render(request,'my-profile.html',{'uid':uid,'msg':'Profile is Updated','nowtime':datetime.datetime.now()})
     return render(request,'my-profile.html',{'uid':uid})
 def p404(request):
     return render(request,'404.html')
