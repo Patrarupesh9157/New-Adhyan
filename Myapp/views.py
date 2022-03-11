@@ -3,10 +3,10 @@ from tempfile import tempdir
 from venv import create
 from django.shortcuts import redirect, render
 from .models import *
-import random as r
 from django.conf import settings
 from django.core.mail import send_mail
 
+import random as r
 # Create your views here.
 def index(request):
     uid=Register.objects.get(email=request.session['email'])
@@ -22,7 +22,6 @@ def login(request):
                 uid=Register.objects.get(email=request.POST['email'])
                 if uid.password==request.POST['password']:
                     request.session['email']=uid.email
-                    # nowtime=datetime.datetime.now()
                     return redirect('index')
                 return render(request,'login.html',{'msg':'Password is incorrect'})
             except:
@@ -76,7 +75,12 @@ def forgot(request):
     if request.method=='POST':
         uid=Register.objects.get(email=request.POST['email'])
         if uid.email==request.POST['email']:
-            fpass = r.randrange(100000,999999)
+            s1="abcdefghijklmnopqrstuvwxyz"
+            s2="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            s3="0123456789"
+            s4="!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+            s=s1+s2+s3+s4
+            fpass = "".join(r.sample(s,10))
             subject = 'Forgot Password For Adhyan Id'
             message = f'Your new Password is {fpass} .Please Enter This Password for Login'
             email_from = settings.EMAIL_HOST_USER
