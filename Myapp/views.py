@@ -120,13 +120,23 @@ def fpass(request):
             except:
                 return render(request,'register.html',{'msg':'Email is not registered'})
         return render(request,'fpass.html')
-
+def myprofile(request):
+    uid=Register.objects.get(email=request.session['email'])
+    if request.method=='POST':
+        uid.name=request.POST['name']
+        uid.mobile=request.POST['mobile']
+        uid.address=request.POST['address']
+        if 'pic' in request.FILES:
+            uid.pic = request.FILES['pic']
+        uid.save()
+        return render(request,'my-profile.html',{'uid':uid,'msg':'Profile is Updated','nowtime':datetime.datetime.now()})
+    return render(request,'my-profile.html',{'uid':uid})
 def addcourse(request):
     uid=Register.objects.get(email=request.session['email'])
     if request.method=='POST':
         try:
             course=All_Course.objects.get(coname=request.POST['coname'])
-            msg = f'Course is already in list and status is'
+            msg = f'Course is already in list and status is {course.verify}'
             return render(request,'add-course.html',{'uid':uid,'msg':msg})
         except:   
             All_Course.objects.create(
@@ -143,18 +153,15 @@ def addcourse(request):
             return render(request,'add-course.html',{'uid':uid,'msg':msg})
     return render(request,'add-course.html',{'uid':uid})
 
-def myprofile(request):
-    # global nowtime
+def allcourses(request):
     uid=Register.objects.get(email=request.session['email'])
-    if request.method=='POST':
-        uid.name=request.POST['name']
-        uid.mobile=request.POST['mobile']
-        uid.address=request.POST['address']
-        if 'pic' in request.FILES:
-            uid.pic = request.FILES['pic']
-        uid.save()
-        return render(request,'my-profile.html',{'uid':uid,'msg':'Profile is Updated','nowtime':datetime.datetime.now()})
-    return render(request,'my-profile.html',{'uid':uid})
+    courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
+    # app_course = All_Course.objects.filter(covarify = True)
+    return render(request,'all-courses.html',{'uid':uid,'courses':courses})
+def libraryassets(request):
+    uid=Register.objects.get(email=request.session['email'])
+    courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
+    return render(request,'library-assets.html',{'uid':uid,'course':courses})
 def p404(request):
     return render(request,'404.html')
 def p500(request):
@@ -177,8 +184,6 @@ def alerts(request):
     return render(request,'alerts.html')
 
 
-def allcourses(request):
-    return render(request,'all-courses.html')
 def allprofessors(request):
     return render(request,'all-professors.html')
 def allstudents(request):
@@ -230,8 +235,7 @@ def googlemap(request):
     return render(request,'google-map.html')
 def imagescropper(request):
     return render(request,'images-cropper.html')
-def libraryassets(request):
-    return render(request,'library-assets.html')
+
 def linecharts(request):
     return render(request,'line-charts.html')
 def lock(request):

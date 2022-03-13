@@ -52,25 +52,27 @@
                                         <th>Price</th>
                                         <th>Setting</th>
                                     </tr>
+                                    {% for i in course %}
                                     <tr>
-                                        <td>1</td>
-                                        <td><img src="img/product/book-1.jpg" alt="" /></td>
-                                        <td>Web Development Book</td>
+                                        <td>{{i.id}}</td>
+                                        <td><img src="{{i.copic.url}}" alt="" /></td>
+                                        <td>{{i.coname}}</td>
                                         <td>
                                             <button class="pd-setting">Active</button>
                                         </td>
-                                        <td>Html, Css</td>
-                                        <td>CSE</td>
-                                        <td>Book</td>
-                                        <td>$1500</td>
+                                        <td></td>
+                                        <td>{{i.codepartment}}</td>
+                                        <td>{{.coyear}}</td>
+                                        <td>₹{{i.coprice}} /-</td>
                                         <td>
                                             <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                             <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    {% endfor %}
+                                    <!-- <tr>
                                         <td>2</td>
-                                        <td><img src="img/product/book-2.jpg" alt="" /></td>
+                                        <td><img src="{% static 'img/product/book-2.jpg' %}" alt="" /></td>
                                         <td>Quality Bol pen</td>
                                         <td>
                                             <button class="ps-setting">Paused</button>
@@ -86,7 +88,7 @@
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td><img src="img/product/book-3.jpg" alt="" /></td>
+                                        <td><img src="{% static 'img/product/book-3.jpg' %}" alt="" /></td>
                                         <td>Box of pendrive</td>
                                         <td>
                                             <button class="ds-setting">Disabled</button>
@@ -102,7 +104,7 @@
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td><img src="img/product/book-4.jpg" alt="" /></td>
+                                        <td><img src="{% static 'img/product/book-4.jpg' %}" alt="" /></td>
                                         <td>Quality Bol pen</td>
                                         <td>
                                             <button class="pd-setting">Active</button>
@@ -118,7 +120,7 @@
                                     </tr>
                                     <tr>
                                         <td>5</td>
-                                        <td><img src="img/product/book-1.jpg" alt="" /></td>
+                                        <td><img src="{% static 'img/product/book-1.jpg' %}" alt="" /></td>
                                         <td>Web Development Book</td>
                                         <td>
                                             <button class="pd-setting">Active</button>
@@ -134,7 +136,7 @@
                                     </tr>
                                     <tr>
                                         <td>6</td>
-                                        <td><img src="img/product/book-2.jpg" alt="" /></td>
+                                        <td><img src="{% static 'img/product/book-2.jpg' %}" alt="" /></td>
                                         <td>Quality Bol pen</td>
                                         <td>
                                             <button class="ps-setting">Paused</button>
@@ -147,7 +149,7 @@
                                             <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                             <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </table>
                             </div>
                             <div class="custom-pagination">
