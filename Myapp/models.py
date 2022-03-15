@@ -30,7 +30,12 @@ class Department(models.Model):
     email=models.EmailField(unique=True)
     mobile=models.CharField(max_length=13)
     no_of_student=models.IntegerField()
+    dep_date=models.DateField(null=True)
     date=models.DateField(auto_now_add=True)
+    varify=models.BooleanField(default=False)
+    reject=models.BooleanField(default=False)
+    approve_by = models.CharField(max_length=100,null=True,blank=True)
+    
     def __str__(self):
         return self.name
 
