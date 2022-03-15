@@ -162,6 +162,9 @@ def libraryassets(request):
     uid=Register.objects.get(email=request.session['email'])
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
     return render(request,'library-assets.html',{'uid':uid,'course':courses})
+def addstudent(request):
+    uid=Register.objects.get(email=request.session['email'])
+    return render(request,'add-student.html',{'uid':uid})
 def p404(request):
     return render(request,'404.html')
 def p500(request):
@@ -176,8 +179,7 @@ def addlibraryassets(request):
     return render(request,'add-library-assets.html')
 def addprofessor(request):
     return render(request,'add-professor.html')
-def addstudent(request):
-    return render(request,'add-student.html')
+
 def advanceformelement(request):
     return render(request,'advance-form-element.html')
 def alerts(request):
