@@ -152,7 +152,26 @@ def addcourse(request):
             msg = 'Course added and waiting for Approvel'
             return render(request,'add-course.html',{'uid':uid,'msg':msg})
     return render(request,'add-course.html',{'uid':uid})
-
+def adddepartment(request):
+    uid=Register.objects.get(email=request.session['email'])
+    if request.method=='POST':
+        try:
+            dept=Department.objects.get(name=request.POST['name'])
+            msg = f'Department is already in list and status is {dept.verify}'
+            return render(request,'add-department.html',{'uid':uid,'msg':msg})
+        except:
+            Department.objects.create(
+                uid=uid,
+                name=request.POST['name'],
+                headdepartment=request.POST['headofdepartment'],
+                email=request.POST['email'],
+                mobile=request.POST['phone'],
+                no_of_student=request.POST['noofstudent'],
+                dep_date=request.POST['date']
+            )
+            msg = 'Course added and waiting for Approvel'
+            return render(request,'add-department.html',{'uid':uid,'msg':msg})
+    return render(request,'add-department.html',{'uid':uid})
 def allcourses(request):
     uid=Register.objects.get(email=request.session['email'])
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
@@ -172,9 +191,7 @@ def p500(request):
 
 def accordion(request):
     return render(request,'accordion.html')
-def adddepartment(request):
-    uid=Register.objects.get(email=request.session['email'])
-    return render(request,'add-department.html',{'uid':uid})
+
 def addlibraryassets(request):
     return render(request,'add-library-assets.html')
 def addprofessor(request):

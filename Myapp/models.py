@@ -25,6 +25,7 @@ class Register(models.Model):
         return self.name
 
 class Department(models.Model):
+    uid = models.ForeignKey(Register,on_delete=models.CASCADE,null=True)
     name=models.CharField(max_length=30)
     headdepartment=models.CharField(max_length=30)
     email=models.EmailField(unique=True)
