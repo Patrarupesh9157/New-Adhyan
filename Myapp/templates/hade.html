@@ -73,8 +73,8 @@
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a href="{% url 'index' %}"><img class="main-logo" src="{% static 'img/logo/logo.png' %}" alt="" /></a>
-                <strong><a href="{% url 'index' %}"><img src="{% static 'img/logo/logosn.png' %}" alt="" /></a></strong>
+                <a href="{% url 'aindex' %}"><img class="main-logo" src="{% static 'img/logo/logo.png' %}" alt="" /></a>
+                <strong><a href="{% url 'aindex' %}"><img src="{% static 'img/logo/logosn.png' %}" alt="" /></a></strong>
 
 
             </div>
@@ -82,12 +82,12 @@
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
                         <li class="active">
-                            <a class="has-arrow" href="{% url 'index' %}">
+                            <a class="has-arrow" href="{% url 'aindex' %}">
 								   <span class="educate-icon educate-home icon-wrap"></span>
 								   <span class="mini-click-non">Education</span>
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Dashboard v.1" href="{% url 'index' %}"><span class="mini-sub-pro">Dashboard</span></a></li>
+                                <li><a title="Dashboard v.1" href="{% url 'aindex' %}"><span class="mini-sub-pro">Dashboard</span></a></li>
                                 <li><a title="Analytics" href="{% url 'analytics' %}"><span class="mini-sub-pro">Analytics</span></a></li>
                                 <li><a title="Widgets" href="{% url 'widgets' %}"><span class="mini-sub-pro">Widgets</span></a></li>
                             </ul>
@@ -195,8 +195,8 @@
                         <li id="removable">
                             <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-pages icon-wrap"></span> <span class="mini-click-non">Pages</span></a>
                             <ul class="submenu-angle page-mini-nb-dp" aria-expanded="false">
-                                <li><a title="Login" href="{% url 'login' %}"><span class="mini-sub-pro">Login</span></a></li>
-                                <li><a title="Register" href="{% url 'register' %}"><span class="mini-sub-pro">Register</span></a></li>
+                                <li><a title="signin" href="{% url 'signin' %}"><span class="mini-sub-pro">signin</span></a></li>
+                                <li><a title="signup" href="{% url 'signup' %}"><span class="mini-sub-pro">signup</span></a></li>
                                 <li><a title="Lock" href="{% url 'lock' %}"><span class="mini-sub-pro">Lock</span></a></li>
                                 <li><a title="Password Recovery" href="{% url 'passwordrecovery' %}"><span class="mini-sub-pro">Password Recovery</span></a></li>
                                 <li><a title="404 Page" href="{% url 'p404' %}"><span class="mini-sub-pro">404 Page</span></a></li>
@@ -214,7 +214,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="{% url 'index' %}"><img class="main-logo" src="{% static 'img/logo/logo.png' %}" alt="" /></a>
+                        <a href="{% url 'aindex' %}"><img class="main-logo" src="{% static 'img/logo/logo.png' %}" alt="" /></a>
                     </div>
                 </div>
             </div>
@@ -395,7 +395,7 @@
                                                         </li>
                                                         <li><a href="#"><span class="edu-icon edu-settings author-log-ic"></span>Settings</a>
                                                         </li>
-                                                        <li><a href="{% url 'logout' %}"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                        <li><a href="{% url 'alogout' %}"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -854,7 +854,7 @@
                                     <ul class="mobile-menu-nav">
                                         <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                             <ul class="collapse dropdown-header-top">
-                                                <li><a href="{% url 'index' %}">Dashboard v.1</a></li>
+                                                <li><a href="{% url 'aindex' %}">Dashboard v.1</a></li>
                                                 <li><a href="{% url 'analytics' %}">Analytics</a></li>
                                                 <li><a href="{% url 'widgets' %}">Widgets</a></li>
                                             </ul>
@@ -963,7 +963,7 @@
                                         </li>
                                         <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                             <ul id="formsmob" class="collapse dropdown-header-top">
-                                                <li><a href="basic-form-element{% url 'index' %}">Basic Form Elements</a>
+                                                <li><a href="basic-form-element{% url 'aindex' %}">Basic Form Elements</a>
                                                 </li>
                                                 <li><a href="{% url 'advanceformelement' %}">Advanced Form Elements</a>
                                                 </li>
@@ -995,9 +995,9 @@
                                         </li>
                                         <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                             <ul id="Pagemob" class="collapse dropdown-header-top">
-                                                <li><a href="{% url 'login' %}">Login</a>
+                                                <li><a href="{% url 'signin' %}">signin</a>
                                                 </li>
-                                                <li><a href="{% url 'register' %}">Register</a>
+                                                <li><a href="{% url 'signup' %}">signup</a>
                                                 </li>
                                                 <li><a href="{% url 'lock' %}">Lock</a>
                                                 </li>

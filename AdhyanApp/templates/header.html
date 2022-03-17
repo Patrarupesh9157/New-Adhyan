@@ -1,0 +1,397 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>Education Master Template</title>
+    <!-- META TAGS -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Education master is one of the best educational html template, it's suitable for all education websites like university,college,school,online education,tution center,distance education,computer education">
+    <meta name="keyword" content="education html template, university template, college template, school template, online education template, tution center template">
+    <!-- FAV ICON(BROWSER TAB ICON) -->
+    <link rel="shortcut icon" href="{% static 'images/fav.ico'%}" type="image/x-icon">
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700" rel="stylesheet">
+    <!-- FONTAWESOME ICONS -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+    <!-- ALL CSS FILES -->
+    <link href="{% static 'css/materialize.css'%}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet" />
+    <link href="{% static 'css/style.css'%}" rel="stylesheet" />
+    <!-- RESPONSIVE.css ONLY FOR MOBILE AND TABLET VIEWS -->
+    <link href="{% static 'css/style-mob.css'%}" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="{% static 'js/html5shiv.js'%}"></script>
+	<script src="{% static 'js/respond.min.js'%}"></script>
+	<![endif]-->
+</head>
+
+<body>
+
+    <!-- MOBILE MENU -->
+    <section>
+        <div class="ed-mob-menu">
+            <div class="ed-mob-menu-con">
+                <div class="ed-mm-left">
+                    <div class="wed-logo">
+                        <a href="{% url 'index' %}"><img src="{% static 'images/logo.png'%}" alt="" />
+						</a>
+                    </div>
+                </div>
+                <div class="ed-mm-right">
+                    <div class="ed-mm-menu">
+                        <a href="#!" class="ed-micon"><i class="fa fa-bars"></i></a>
+                        <div class="ed-mm-inn">
+                            <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
+                            <h4>All Courses</h4>
+                            <ul>
+                                <li><a href="{% url 'course-details' %}">Accounting/Finance</a></li>
+                                <li><a href="{% url 'course-details' %}">civil engineering</a></li>
+                                <li><a href="{% url 'course-details' %}">Art/Design</a></li>
+                                <li><a href="{% url 'course-details' %}">Marine Engineering</a></li>
+                                <li><a href="{% url 'course-details' %}">Business Management</a></li>
+                                <li><a href="{% url 'course-details' %}">Journalism/Writing</a></li>
+                                <li><a href="{% url 'course-details' %}">Physical Education</a></li>
+                                <li><a href="{% url 'course-details' %}">Political Science</a></li>
+                                <li><a href="{% url 'course-details' %}">Sciences</a></li>
+                                <li><a href="{% url 'course-details' %}">Statistics</a></li>
+                                <li><a href="{% url 'course-details' %}">Web Design/Development</a></li>
+                                <li><a href="{% url 'course-details' %}">SEO</a></li>
+                                <li><a href="{% url 'course-details' %}">Google Business</a></li>
+                                <li><a href="{% url 'course-details' %}">Graphics Design</a></li>
+                                <li><a href="{% url 'course-details' %}">Networking Courses</a></li>
+                                <li><a href="{% url 'course-details' %}">Information technology</a></li>
+                            </ul>
+                            <h4>User Account</h4>
+                            <ul>
+                                <li><a href="#!" data-toggle="modal" data-target="#modal1">Sign In</a></li>
+                                <li><a href="#!" data-toggle="modal" data-target="#modal2">Register</a></li>
+                            </ul>
+                            <h4>All Pages</h4>
+                            <ul>
+                                <li><a href="{% url 'index' %}">Home</a></li>
+                                <li><a href="{% url 'about' %}">About us</a></li>
+                                <li><a href="{% url 'admission' %}">Admission</a></li>
+                                <li><a href="{% url 'all-courses' %}">All courses</a></li>
+                                <li><a href="{% url 'course-details' %}">Course details</a></li>
+                                <li><a href="{% url 'awards' %}">Awards</a></li>
+                                <li><a href="{% url 'seminar' %}">Seminar</a></li>
+                                <li><a href="{% url 'events' %}">Events</a></li>
+                                <li><a href="{% url 'event-details' %}">Event details</a></li>
+                                <li><a href="{% url 'event-register' %}">Event register</a></li>
+                                <li><a href="{% url 'contact-us' %}">Contact us</a></li>
+                            </ul>
+                            <h4>User Profile</h4>
+                            <ul>
+                                <li><a href="{% url 'dashboard' %}">User profile</a></li>
+                                <li><a href="{% url 'db-courses' %}">Courses</a></li>
+                                <li><a href="{% url 'db-exams' %}">Exams</a></li>
+                                <li><a href="{% url 'db-profile' %}">Prfile</a></li>
+                                <li><a href="{% url 'db-time-line' %}">Time line</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--HEADER SECTION-->
+    <section>
+        
+        <!-- LOGO AND MENU SECTION -->
+        <div class="top-logo" data-spy="affix" data-offset-top="250">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" style="width:110%; float:left; display: flex;">
+                        <div class="wed-logo" >
+                            <a href="{% url 'index' %}"><img src="{% static 'images/Adhyan-Logo.png'%}" alt="" style="width:180px; height:60px; padding: 7px 0px;"/>
+                            </a>
+                        </div>
+                        <div class="main-menu" style="width:60%;">
+                            <ul>
+                                <li><a href="{% url 'index' %}">Home</a>
+                                </li>
+                                <li class="about-menu">
+                                    <a href="{% url 'about' %}" class="mm-arr">About us</a>
+                                    <!-- MEGA MENU 1 -->
+                                    <div class="mm-pos">
+                                        <div class="about-mm m-menu">
+                                            <div class="m-menu-inn">
+                                                <div class="mm1-com mm1-s1">
+                                                    <div class="ed-course-in">
+                                                        <a class="course-overlay menu-about" href="{% url 'admission' %}">
+                                                            <img src="{% static 'images/h-about.jpg'%}" alt="">
+                                                            <span>Academics</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="mm1-com mm1-s2">
+                                                    <p>Want to change the world? At Berkeley we’re doing just that. When you join the Golden Bear community, you’re part of an institution that shifts the global conversation every single day.</p>
+                                                    <a href="{% url 'about' %}" class="mm-r-m-btn">Read more</a>
+                                                </div>
+                                                <div class="mm1-com mm1-s3">
+                                                    <ul>
+                                                        <li><a href="{% url 'all-courses' %}">All Courses</a></li>
+                                                        <li><a href="{% url 'course-details' %}">Course details</a></li>
+                                                        <li><a href="{% url 'about' %}">About</a></li>
+                                                        <li><a href="{% url 'admission' %}">Admission</a></li>
+                                                        <li><a href="{% url 'awards' %}">Awards</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="mm1-com mm1-s4">
+                                                    <ul>
+                                                        <li><a href="{% url 'dashboard' %}">Student profile</a></li>
+                                                        <li><a href="{% url 'db-courses' %}">Dashboard courses</a></li>
+                                                        <li><a href="{% url 'db-exams' %}">Dashboard exams</a></li>
+                                                        <li><a href="{% url 'db-profile' %}">Dashboard profile</a></li>
+                                                        <li><a href="{% url 'db-time-line' %}">Dashboard timeline</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="admi-menu">
+                                    <a href="{% url 'admission'%}" class="mm-arr">Admission</a>
+                                    <!-- MEGA MENU 1 -->
+                                    <div class="mm-pos">
+                                        <div class="admi-mm m-menu">
+                                            <div class="m-menu-inn">
+                                                <div class="mm2-com mm1-com mm1-s1">
+                                                    <div class="ed-course-in">
+                                                        <a class="course-overlay" href="{% url 'about' %}">
+                                                            <img src="{% static 'images/h-about1.jpg'%}" alt="">
+                                                            <span>Academics</span>
+                                                        </a>
+                                                    </div>
+                                                    <p>Donec lacus libero, rutrum ac sollicitudin sed, mattis non eros. Vestibulum congue nec eros quis lacinia. Mauris non tincidunt lectus. Nulla mollis, orci vitae accumsan rhoncus.</p>
+                                                    <a href="{% url 'about' %}" class="mm-r-m-btn">Read more</a>
+                                                </div>
+                                                <div class="mm2-com mm1-com mm1-s1">
+                                                    <div class="ed-course-in">
+                                                        <a class="course-overlay" href="{% url 'admission' %}">
+                                                            <img src="{% static 'images/h-adm1.jpg'%}" alt="">
+                                                            <span>Admission</span>
+                                                        </a>
+                                                    </div>
+                                                    <p>Donec lacus libero, rutrum ac sollicitudin sed, mattis non eros. Vestibulum congue nec eros quis lacinia. Mauris non tincidunt lectus. Nulla mollis, orci vitae accumsan rhoncus.</p>
+                                                    <a href="{% url 'admission' %}" class="mm-r-m-btn">Read more</a>
+                                                </div>
+                                                <div class="mm2-com mm1-com mm1-s1">
+                                                    <div class="ed-course-in">
+                                                        <a class="course-overlay" href="{% url 'awards' %}">
+                                                            <img src="{% static 'images/h-cam1.jpg'%}" alt="">
+                                                            <span>History & awards</span>
+                                                        </a>
+                                                    </div>
+                                                    <p>Donec lacus libero, rutrum ac sollicitudin sed, mattis non eros. Vestibulum congue nec eros quis lacinia. Mauris non tincidunt lectus. Nulla mollis, orci vitae accumsan rhoncus.</p>
+                                                    <a href="{% url 'awards' %}" class="mm-r-m-btn">Read more</a>
+                                                </div>
+                                                <div class="mm2-com mm1-com mm1-s4">
+                                                    <div class="ed-course-in">
+                                                        <a class="course-overlay" href="{% url 'seminar' %}">
+                                                            <img src="{% static 'images/h-res1.jpg'%}" alt="">
+                                                            <span>Seminar 2018</span>
+                                                        </a>
+                                                    </div>
+                                                    <p>Donec lacus libero, rutrum ac sollicitudin sed, mattis non eros. Vestibulum congue nec eros quis lacinia. Mauris non tincidunt lectus. Nulla mollis, orci vitae accumsan rhoncus.</p>
+                                                    <a href="{% url 'seminar' %}" class="mm-r-m-btn">Read more</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li><a href="{% url 'all-courses' %}">All Courses</a></li>
+                                <!--<li><a class='dropdown-button ed-sub-menu' href='#' data-activates='dropdown1'>Courses</a></li>-->
+                                
+                                <li><a href="{% url 'events' %}">Events</a>
+                                </li>
+                                <li><a href="{% url 'dashboard' %}">Student</a>
+                                </li>
+                                <li><a href="{% url 'contact-us' %}">Contact us</a>
+                                </li>
+                            </ul>
+                        </div>
+                        {% if request.session.email %}
+                        <!--== MY ACCCOUNT ==-->
+                        <div class="col-md-2 col-sm-3 col-xs-6" style="padding:5px 0px 10px 10px;" >
+                            <!-- Dropdown Trigger -->
+                            <a class='waves-effect dropdown-button top-user-pro' href='#' data-activates='top-menu' style="color:black;"><img src="{{uid.pic.url}}" alt="" />{{uid.name}} <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </a>
+                            <!-- Dropdown Structure -->
+                            <ul id='top-menu' class='dropdown-content top-menu-sty'>
+                                <li><a href="admin-panel-setting.html" class="waves-effect"><i class="fa fa-cogs" aria-hidden="true"></i>Profile</a>
+                                </li>
+                                <li><a href="admin-panel-setting.html" class="waves-effect"><i class="fa fa-lock" aria-hidden="true"></i>Change Password</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="{% url 'logout' %}" class="ho-dr-con-last waves-effect"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {% else %}
+                        <div class="ed-com-t1-right">
+                            <ul style="padding-left:20px;">
+                                <li><a href="{% url 'login' %}" data-toggle="" data-target="">Sign In</a>
+                                </li>
+                                <li><a href="{% url 'register' %}" data-toggle="" data-target="#">Sign Up</a>
+                                </li>
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="all-drop-down-menu">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="search-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="search-form">
+                            <form>
+                                <div class="sf-type">
+                                    <div class="sf-input">
+                                        <input type="text" id="sf-box" placeholder="Search course and discount courses">
+                                    </div>
+                                    <div class="sf-list">
+                                        <ul>
+                                            <li><a href="{% url 'course-details' %}">Accounting/Finance</a></li>
+                                            <li><a href="{% url 'course-details' %}">civil engineering</a></li>
+                                            <li><a href="{% url 'course-details' %}">Art/Design</a></li>
+                                            <li><a href="{% url 'course-details' %}">Marine Engineering</a></li>
+                                            <li><a href="{% url 'course-details' %}">Business Management</a></li>
+                                            <li><a href="{% url 'course-details' %}">Journalism/Writing</a></li>
+                                            <li><a href="{% url 'course-details' %}">Physical Education</a></li>
+                                            <li><a href="{% url 'course-details' %}">Political Science</a></li>
+                                            <li><a href="{% url 'course-details' %}">Sciences</a></li>
+                                            <li><a href="{% url 'course-details' %}">Statistics</a></li>
+                                            <li><a href="{% url 'course-details' %}">Web Design/Development</a></li>
+                                            <li><a href="{% url 'course-details' %}">SEO</a></li>
+                                            <li><a href="{% url 'course-details' %}">Google Business</a></li>
+                                            <li><a href="{% url 'course-details' %}">Graphics Design</a></li>
+                                            <li><a href="{% url 'course-details' %}">Networking Courses</a></li>
+                                            <li><a href="{% url 'course-details' %}">Information technology</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="sf-submit">
+                                    <input type="submit" value="Search Course">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--END HEADER SECTION-->
+
+    {% block content %}
+    
+
+
+
+
+
+
+    
+    {% endblock  %}
+
+    <!-- FOOTER -->
+    <section class="wed-hom-footer">
+        <div class="container">
+            <div class="row wed-foot-link">
+                <div class="col-md-4 foot-tc-mar-t-o">
+                    <h4>Top Courses</h4>
+                    <ul>
+                        <li><a href="{% url 'course-details' %}">Accounting/Finance</a></li>
+                        <li><a href="{% url 'course-details' %}">civil engineering</a></li>
+                        <li><a href="{% url 'course-details' %}">Art/Design</a></li>
+                        <li><a href="{% url 'course-details' %}">Marine Engineering</a></li>
+                        <li><a href="{% url 'course-details' %}">Business Management</a></li>
+                        <li><a href="{% url 'course-details' %}">Journalism/Writing</a></li>
+                        <li><a href="{% url 'course-details' %}">Physical Education</a></li>
+                        <li><a href="{% url 'course-details' %}">Political Science</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>New Courses</h4>
+                    <ul>
+                        <li><a href="{% url 'course-details' %}">Sciences</a></li>
+                        <li><a href="{% url 'course-details' %}">Statistics</a></li>
+                        <li><a href="{% url 'course-details' %}">Web Design/Development</a></li>
+                        <li><a href="{% url 'course-details' %}">SEO</a></li>
+                        <li><a href="{% url 'course-details' %}">Google Business</a></li>
+                        <li><a href="{% url 'course-details' %}">Graphics Design</a></li>
+                        <li><a href="{% url 'course-details' %}">Networking Courses</a></li>
+                        <li><a href="{% url 'course-details' %}">Information technology</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>HELP & SUPPORT</h4>
+                    <ul>
+                        <li><a href="#">24x7 Live help</a>
+                        </li>
+                        <li><a href="#">Contact us</a>
+                        </li>
+                        <li><a href="#">Feedback</a>
+                        </li>
+                        <li><a href="#">FAQs</a>
+                        </li>
+                        <li><a href="#">Safety Tips</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row wed-foot-link-1">
+                <div class="col-md-4 foot-tc-mar-t-o">
+                    <h4>Get In Touch</h4>
+                    <p>Address: 28800 Orchard Lake Road, Suite 180 Farmington Hills, U.S.A.</p>
+                    <p>Phone: <a href="#!">+101-1231-4321</a></p>
+                    <p>Email: <a href="#!">info@edu.com</a></p>
+                </div>
+                
+                <div class="col-md-4">
+                    <h4>SOCIAL MEDIA</h4>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    
+    
+
+    <!--Import jQuery before materialize.js-->
+    <script src="{% static 'js/main.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/materialize.min.js'%}"></script>
+    <script src="{% static 'js/custom.js'%}"></script>
+</body>
+
+</html>

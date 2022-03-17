@@ -2,15 +2,15 @@ from django import views
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('index/',views.index,name='index'),
-    path('',views .login,name='login'),
-    path('register/',views.register,name='register'),
-    path('otp/',views.otp),
+    path('aindex/',views.aindex,name='aindex'),
+    path('',views .signin,name='signin'),
+    path('signup/',views.signup,name='signup'),
+    path('uotp/',views.uotp),
     path('fpass/',views.fpass,name='fpass'),
     # path('newpass',views.newpass,name='newpass'),
 
-    path('logout/', views.logout,name='logout'),
-    path('forgot/', views.forgot,name='forgot'),
+    path('alogout/', views.alogout,name='alogout'),
+    path('aforgot/', views.aforgot,name='aforgot'),
     path('p404/',views.p404,name='p404'),
     path('p500/',views.p500,name='p500'),
     path('addcourse/',views.addcourse,name='addcourse'),

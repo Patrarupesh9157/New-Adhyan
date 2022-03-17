@@ -8,30 +8,30 @@ from django.core.mail import send_mail
 
 import random as r
 # Create your views here.
-def index(request):
-    uid=Register.objects.get(email=request.session['email'])
-    return render(request,'index.html',{'uid':uid})
-def login(request):
+def aindex(request):
+    uid=Register.objects.get(email=request.session['adminemail'])
+    return render(request,'aindex.html',{'uid':uid})
+def signin(request):
     try:
-        uid=Register.objects.get(email=request.session['email'])
-        return redirect('index')
+        uid=Register.objects.get(email=request.session['adminemail'])
+        return redirect('aindex')
     except:
         # global nowtime
         if request.method=='POST':
             try:
                 uid=Register.objects.get(email=request.POST['email'])
                 if uid.password==request.POST['password']:
-                    request.session['email']=uid.email
-                    return redirect('index')
-                return render(request,'login.html',{'msg':'Password is incorrect'})
+                    request.session['adminemail']=uid.email
+                    return redirect('aindex')
+                return render(request,'signin.html',{'msg':'Password is incorrect'})
             except:
-                return render(request,'register.html',{'msg':'Email is not registered'})
-        return render(request,'login.html')
-def register(request):
+                return render(request,'signup.html',{'msg':'Email is not registered'})
+        return render(request,'signin.html')
+def signup(request):
     if request.method=='POST':
         try:
             Register.objects.get(email=request.POST['email'])
-            return render(request,'register.html',{'msg':'Email is alrady register.'})
+            return render(request,'signup.html',{'msg':'Email is alrady register.'})
         except:
             if request.POST['password']==request.POST['cpassword']:
                 global temp
@@ -49,10 +49,10 @@ def register(request):
                 email_from = settings.EMAIL_HOST_USER
                 recipient_list = [request.POST['email'], ]
                 send_mail( subject, message, email_from, recipient_list )
-                return render(request,'otp.html',{'otp':otp})
-            return render(request,'register.html',{'msg':'Both passwords are not matched'})
-    return render(request,'register.html')
-def otp(request):
+                return render(request,'uotp.html',{'otp':otp})
+            return render(request,'signup.html',{'msg':'Both passwords are not matched'})
+    return render(request,'signup.html')
+def uotp(request):
     if request.method=='POST':
         if request.POST['uotp'] == request.POST['otp']:
             global temp
@@ -65,13 +65,13 @@ def otp(request):
                 password=temp['password']
             )
             msg='Account is Created'
-            return render(request,'login.html',{'msg': msg})
+            return render(request,'signin.html',{'msg': msg})
         return render(request,'otp.html',{'otp':request.POST['otp'],'msg':'incorrect OTP'})
-def logout(request):
-    del request.session['email']
-    return redirect('login')
+def alogout(request):
+    del request.session['adminemail']
+    return redirect('signin')
 
-def forgot(request):
+def aforgot(request):
     if request.method=='POST':
         uid=Register.objects.get(email=request.POST['email'])
         if uid.email==request.POST['email']:
@@ -82,7 +82,7 @@ def forgot(request):
             s=s1+s2+s3+s4
             fpass = "".join(r.sample(s,10))
             subject = 'Forgot Password For Adhyan Id'
-            message = f'Your new Password is {fpass} .Please Enter This Password for Login'
+            message = f'Your new Password is {fpass} .Please Enter This Password for signin'
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [request.POST['email'], ]
             send_mail( subject, message, email_from, recipient_list )
@@ -92,21 +92,21 @@ def forgot(request):
 
 
 def passwordrecovery(request):
-    uid=Register.objects.get(email=request.session['email'])
+    uid=Register.objects.get(email=request.session['adminemail'])
     if request.method=='POST':
         if uid.password == request.POST['opassword']:
             if request.POST['npassword'] == request.POST['cpassword']:
                 uid.password = request.POST['npassword']
                 uid.save()
-                return redirect('index')
+                return redirect('aindex')
             return render(request,'password-recovery.html',{'msg':'Both Password Are not Matched '})
         return render(request,'password-recovery.html',{'msg':'Old Password is not Matched '})
     return render(request,'password-recovery.html')
 
 def fpass(request):
     try:
-        uid=Register.objects.get(email=request.session['email'])
-        return redirect('index')
+        uid=Register.objects.get(email=request.session['adminemail'])
+        return redirect('aindex')
     except:
         if request.method=='POST':
             try:
@@ -114,14 +114,14 @@ def fpass(request):
                 if request.POST['password']==request.POST['fpass']:
                     uid.password=request.POST['fpass']
                     uid.save()
-                    request.session['email']=uid.email
-                    return redirect('index')
+                    request.session['adminemail']=uid.email
+                    return redirect('aindex')
                 return render(request,'fpass.html',{'msg':'Password is incorrect'})
             except:
-                return render(request,'register.html',{'msg':'Email is not registered'})
+                return render(request,'signup.html',{'msg':'Email is not registered'})
         return render(request,'fpass.html')
 def myprofile(request):
-    uid=Register.objects.get(email=request.session['email'])
+    uid=Register.objects.get(email=request.session['adminemail'])
     if request.method=='POST':
         uid.name=request.POST['name']
         uid.mobile=request.POST['mobile']
@@ -132,7 +132,7 @@ def myprofile(request):
         return render(request,'my-profile.html',{'uid':uid,'msg':'Profile is Updated','nowtime':datetime.datetime.now()})
     return render(request,'my-profile.html',{'uid':uid})
 def addcourse(request):
-    uid=Register.objects.get(email=request.session['email'])
+    uid=Register.objects.get(email=request.session['adminemail'])
     if request.method=='POST':
         try:
             course=All_Course.objects.get(coname=request.POST['coname'])
@@ -153,7 +153,7 @@ def addcourse(request):
             return render(request,'add-course.html',{'uid':uid,'msg':msg})
     return render(request,'add-course.html',{'uid':uid})
 def adddepartment(request):
-    uid=Register.objects.get(email=request.session['email'])
+    uid=Register.objects.get(email=request.session['adminemail'])
     if request.method=='POST':
         try:
             dept=Department.objects.get(name=request.POST['name'])
@@ -173,16 +173,16 @@ def adddepartment(request):
             return render(request,'add-department.html',{'uid':uid,'msg':msg})
     return render(request,'add-department.html',{'uid':uid})
 def allcourses(request):
-    uid=Register.objects.get(email=request.session['email'])
+    uid=Register.objects.get(email=request.session['adminemail'])
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
     # app_course = All_Course.objects.filter(covarify = True)
     return render(request,'all-courses.html',{'uid':uid,'courses':courses})
 def libraryassets(request):
-    uid=Register.objects.get(email=request.session['email'])
+    uid=Register.objects.get(email=request.session['adminemail'])
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
     return render(request,'library-assets.html',{'uid':uid,'course':courses})
 def addstudent(request):
-    uid=Register.objects.get(email=request.session['email'])
+    uid=Register.objects.get(email=request.session['adminemail'])
     return render(request,'add-student.html',{'uid':uid})
 def p404(request):
     return render(request,'404.html')

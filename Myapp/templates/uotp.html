@@ -43,7 +43,7 @@
                   <p class="mb-0">{{msg}}</p> 
                 </div>
                 <div class="card-body">
-                  <form role="form" method="POST" action="{% url 'otp' %}">
+                  <form role="form" method="POST" action="{% url 'uotp' %}">
                     {% csrf_token %}
                     <label>OTP</label>
                     <div class="mb-3">
