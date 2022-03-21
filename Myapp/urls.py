@@ -5,7 +5,7 @@ urlpatterns = [
     path('aindex/',views.aindex,name='aindex'),
     path('',views.signin,name='signin'),
     path('signup/',views.signup,name='signup'),
-    path('uotp/',views.uotp),
+    path('aotp/',views.aotp,name='aotp'),
     path('fpass/',views.fpass,name='fpass'),
     # path('newpass',views.newpass,name='newpass'),
 

@@ -33,19 +33,21 @@
         <div class="contacts-area mg-b-15">
             <div class="container-fluid">
                 <div class="row">
+                    {% for i in user %}
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="student-inner-std res-mg-b-30">
                             <div class="student-img">
-                                <img src="{% static 'img/student/1.jpg' %}" style="height: auto; max-width: 100%;" alt="" />
+                                <img src="{{i.pic.url}}" style="height: auto; max-width: 100%;" alt="" />
                             </div>
                             <div class="student-dtl">
-                                <h2>Alexam Angles</h2>
-                                <p class="dp">Computer Science</p>
-                                <p class="dp-ag"><b>Age:</b> 20 Years</p>
+                                <h2>{{i.name}}</h2>
+                                <p class="dp">{{i.email}}</p>
+                                <p class="dp-ag"><b>Mobile No:</b> {{i.mobile}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    {% endfor %}
+                    <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="student-inner-std res-mg-b-30">
                             <div class="student-img">
                                 <img src="{% static 'img/student/2.jpg' %}" alt="" />
@@ -80,10 +82,10 @@
                                 <p class="dp-ag"><b>Age:</b> 20 Years</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="student-inner-std mg-t-30">
                             <div class="student-img">
                                 <img src="{% static 'img/student/1.jpg' %}" alt=""  />
@@ -130,7 +132,7 @@
                                 <p class="dp-ag"><b>Age:</b> 20 Years</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

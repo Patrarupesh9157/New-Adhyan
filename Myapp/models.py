@@ -1,16 +1,9 @@
-from atexit import register
-from datetime import date
-import email
-from email.policy import default
-import profile
-from statistics import mode
-from unicodedata import name
 from django.db import models
 import random as r
 
-from django.forms import EmailField
-pic=['logo1.jpg','logo2.png','logo3.jpg','logo4.png','logo5.png','logo6.png','logo7.png','logo8.png','logo9.png','logo10.png','logo11.png','logo12.png','logo13.png','logo14.png','logo15.png','logo16.png']
-logo=r.choice(pic)
+pics=['logo1.jpg','logo2.png','logo3.jpg','logo4.png','logo5.png','logo6.png','logo7.png','logo8.png','logo9.png','logo10.png','logo11.png','logo12.png','logo13.png','logo14.png','logo15.png','logo16.png']
+logo=r.choice(pics)
+
 # Create your models here.
 class Register(models.Model):
     name=models.CharField(max_length=20)
@@ -58,7 +51,6 @@ class All_Course(models.Model):
 
 # class Student(models.Model):
 #     choices = (('male','male'),('female','female'),('other','other'))
-
 #     fname=models.CharField(max_length=30)
 #     username=models.CharField(unique=True)
 #     email=models.EmailField(unique=True)
@@ -88,8 +80,3 @@ class All_Course(models.Model):
 #     frontpic=models.ImageField(upload_to='Book pic',default='python.png')
 #     def __str__(self):
 #         return self.subject
-
-
-
-
-
