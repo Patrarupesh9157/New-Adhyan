@@ -65,7 +65,9 @@
                                                                 <div class="form-group">
                                                                     <!-- <input name="codepartment" type="text" class="form-control" placeholder="Department"> -->
                                                                     <select name="codepartment" class="form-control">
-                                                                        <option>{{co.dept.name}}</option>
+                                                                        {% for i in co %}
+                                                                        <option>{{i.dept.name}}</option>
+                                                                        {% endfor %}
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group">

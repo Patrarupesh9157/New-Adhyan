@@ -91,13 +91,5 @@ class All_Course(models.Model):
 
 
 
-# class Enquiry(models.Model):
-#     name=models.CharField(max_length=30)
-#     email=models.EmailField(unique=True)
-#     subject=models.CharField(max_length=30)
-#     mobile=models.CharField(max_length=13)
-#     des=models.TextField(max_length=200)
-#     enq_time = models.DateTimeField(auto_now_add=True)
-#     def __str__(self):
-#         return self.name
+
 

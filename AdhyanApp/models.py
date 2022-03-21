@@ -11,3 +11,14 @@ class User(models.Model):
     
     def __str__(self):
         return self.email
+
+class Enquiry(models.Model):
+    name=models.CharField(max_length=30)
+    email=models.EmailField()
+    mobile=models.CharField(max_length=13)
+    city=models.CharField(max_length=20,blank=True)
+    des=models.TextField(max_length=200)
+    enq_time = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.name

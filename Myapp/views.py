@@ -3,6 +3,7 @@ from tempfile import tempdir
 from venv import create
 from django.shortcuts import redirect, render
 from .models import *
+from AdhyanApp import models as m
 from django.conf import settings
 from django.core.mail import send_mail
 
@@ -132,7 +133,7 @@ def myprofile(request):
         return render(request,'my-profile.html',{'uid':uid,'msg':'Profile is Updated','nowtime':datetime.datetime.now()})
     return render(request,'my-profile.html',{'uid':uid})
 def addcourse(request):
-    dept=Department.objects.get()
+    dept=Department.objects.all()
     uid=Register.objects.get(email=request.session['adminemail'])
     if request.method=='POST':
         try:
@@ -140,7 +141,7 @@ def addcourse(request):
             msg = f'Course is already in list and status is {course.verify}'
             return render(request,'add-course.html',{'uid':uid,'msg':msg})
         except:   
-            All_Course.objects.create(
+            co=All_Course.objects.create(
                 uid = uid,
                 coname=request.POST['coname'],
                 coduration=request.POST['coduration'],
@@ -151,7 +152,7 @@ def addcourse(request):
                 coyear=request.POST['coyear'],
             )
             msg = 'Course added and waiting for Approvel'
-            return render(request,'add-course.html',{'uid':uid,'msg':msg,'dept':dept})
+            return render(request,'add-course.html',{'uid':uid,'msg':msg,'co':co})
     return render(request,'add-course.html',{'uid':uid})
 def adddepartment(request):
     uid=Register.objects.get(email=request.session['adminemail'])
@@ -173,15 +174,18 @@ def adddepartment(request):
             msg = 'Course added and waiting for Approvel'
             return render(request,'add-department.html',{'uid':uid,'msg':msg})
     return render(request,'add-department.html',{'uid':uid})
-def departments(request):
+
+def department(request):
     uid=Register.objects.get(email=request.session['adminemail'])
-    dept = Department.objects.filter(varify=False,reject=False)[::-1]
-    return render(request,'departments.html',{'uid':uid,'dept':dept})
+    depts = Department.objects.filter(varify=False)[::-1]
+    return render(request,'department.html',{'uid':uid,'depts':depts})
+
 def allcourses(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
     # app_course = All_Course.objects.filter(covarify = True)
     return render(request,'allcourses.html',{'uid':uid,'courses':courses})
+
 def libraryassets(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
@@ -193,6 +197,11 @@ def allstudents(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     
     return render(request,'all-students.html',{'uid':uid})
+
+def Enquiry(request):
+    uid=Register.objects.get(email=request.session['adminemail'])
+    enq=m.Enquiry.objects.all()
+    return render(request,'Enquiry.html',{'uid':uid,'enq':enq})
 def p404(request):
     return render(request,'404.html')
 def p500(request):

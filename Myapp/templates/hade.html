@@ -125,7 +125,7 @@
                         <li>
                             <a class="has-arrow" href="{% url 'allcourses' %}" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Departments</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="Departments List" href="{% url 'departments' %}"><span class="mini-sub-pro">Departments List</span></a></li>
+                                <li><a title="Departments List" href="{% url 'department' %}"><span class="mini-sub-pro">Departments List</span></a></li>
                                 <li><a title="Add Departments" href="{% url 'adddepartment' %}"><span class="mini-sub-pro">Add Departments</span></a></li>
                                 <li><a title="Edit Departments" href="{% url 'editdepartment' %}"><span class="mini-sub-pro">Edit Departments</span></a></li>
                             </ul>
@@ -897,7 +897,7 @@
                                         </li>
                                         <li><a data-toggle="collapse" data-target="#demodepart" href="#">Departments <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                             <ul id="demodepart" class="collapse dropdown-header-top">
-                                                <li><a href="{% url 'departments' %}">Departments List</a>
+                                                <li><a href="{% url 'department' %}">Departments List</a>
                                                 </li>
                                                 <li><a href="'{% url 'adddepartment' %}">Add Departments</a>
                                                 </li>

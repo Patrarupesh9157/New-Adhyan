@@ -38,7 +38,7 @@ urlpatterns = [
 
     path('datamaps/',views.datamaps,name='datamaps'),
     path('datatable/',views.datatable,name='datatable'),
-    path('departments/',views.departments,name='departments'),
+    path('department/',views.department,name='department'),
     path('duallistbox/',views.duallistbox,name='duallistbox'),
 
     path('editcourse/',views.editcourse,name='editcourse'),
@@ -55,6 +55,7 @@ urlpatterns = [
     path('lock/',views.lock,name='lock'),
     path('mailbox/',views.mailbox,name='mailbox'),
     path('myprofile/',views.myprofile,name='myprofile'),
+    path('Enquiry/',views.Enquiry,name='Enquiry'),
 
     path('mailboxcompose/',views.mailboxcompose,name='mailboxcompose'),
     path('mailboxview/',views.mailboxview,name='mailboxview'),

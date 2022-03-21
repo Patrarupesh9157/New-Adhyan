@@ -93,15 +93,25 @@ def all_courses(request):
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
     return render(request,'all-courses.html',{'courses':courses})
 
+def contact_us(request):
+    if request.method == 'POST':
+        Enquiry.objects.create(
+            name=request.POST['name'],
+            mobile=request.POST['mobile'],
+            email=request.POST['email'],
+            city=request.POST['city'],
+            des=request.POST['des'],
+        )
+        msg='Complant is Added'
+        return render(request,'contact-us.html',{'msg':msg})
+    return render(request,'contact-us.html')
+
 def admission(request):
 
     return render(request,'admission.html')
 
 def awards(request):
     return render(request,'awards.html')
-
-def contact_us(request):
-    return render(request,'contact-us.html')
 
 def course_details(request):
     return render(request,'course-details.html')
