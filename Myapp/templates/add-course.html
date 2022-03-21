@@ -63,7 +63,10 @@
                                                                     <input name="coprice" type="number" min="10000" value="10000" class="form-control" placeholder="Course Price">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="codepartment" type="text" class="form-control" placeholder="Department">
+                                                                    <!-- <input name="codepartment" type="text" class="form-control" placeholder="Department"> -->
+                                                                    <select name="codepartment" class="form-control">
+                                                                        <option>{{co.dept.name}}</option>
+                                                                    </select>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input name="copic" type="file"  class="form-control">

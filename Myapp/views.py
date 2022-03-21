@@ -132,6 +132,7 @@ def myprofile(request):
         return render(request,'my-profile.html',{'uid':uid,'msg':'Profile is Updated','nowtime':datetime.datetime.now()})
     return render(request,'my-profile.html',{'uid':uid})
 def addcourse(request):
+    dept=Department.objects.get()
     uid=Register.objects.get(email=request.session['adminemail'])
     if request.method=='POST':
         try:
@@ -144,13 +145,13 @@ def addcourse(request):
                 coname=request.POST['coname'],
                 coduration=request.POST['coduration'],
                 coprice=request.POST['coprice'],
-                codepartment=request.POST['codepartment'],
+                codepartment=dept,
                 copic=request.FILES['copic'],
                 codiscription=request.POST['codiscription'],
                 coyear=request.POST['coyear'],
             )
             msg = 'Course added and waiting for Approvel'
-            return render(request,'add-course.html',{'uid':uid,'msg':msg})
+            return render(request,'add-course.html',{'uid':uid,'msg':msg,'dept':dept})
     return render(request,'add-course.html',{'uid':uid})
 def adddepartment(request):
     uid=Register.objects.get(email=request.session['adminemail'])
@@ -172,11 +173,15 @@ def adddepartment(request):
             msg = 'Course added and waiting for Approvel'
             return render(request,'add-department.html',{'uid':uid,'msg':msg})
     return render(request,'add-department.html',{'uid':uid})
+def departments(request):
+    uid=Register.objects.get(email=request.session['adminemail'])
+    dept = Department.objects.filter(varify=False,reject=False)[::-1]
+    return render(request,'departments.html',{'uid':uid,'dept':dept})
 def allcourses(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
     # app_course = All_Course.objects.filter(covarify = True)
-    return render(request,'all-courses.html',{'uid':uid,'courses':courses})
+    return render(request,'allcourses.html',{'uid':uid,'courses':courses})
 def libraryassets(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
@@ -184,6 +189,10 @@ def libraryassets(request):
 def addstudent(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     return render(request,'add-student.html',{'uid':uid})
+def allstudents(request):
+    uid=Register.objects.get(email=request.session['adminemail'])
+    
+    return render(request,'all-students.html',{'uid':uid})
 def p404(request):
     return render(request,'404.html')
 def p500(request):
@@ -205,8 +214,7 @@ def alerts(request):
 
 def allprofessors(request):
     return render(request,'all-professors.html')
-def allstudents(request):
-    return render(request,'all-students.html')
+
 def analytics(request):
     return render(request,'analytics.html')
 def areacharts(request):
@@ -232,8 +240,7 @@ def datamaps(request):
     return render(request,'data-maps.html')
 def datatable(request):
     return render(request,'data-table.html')
-def departments(request):
-    return render(request,'departments.html')
+
 def duallistbox(request):
     return render(request,'dual-list-box.html')
 def editcourse(request):

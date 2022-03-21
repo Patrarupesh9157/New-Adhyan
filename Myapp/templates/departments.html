@@ -51,22 +51,24 @@
                                         <th>No. of Students</th>
                                         <th>Setting</th>
                                     </tr>
+                                    {% for i in dept %}
                                     <tr>
-                                        <td>1</td>
-                                        <td>Computer</td>
+                                        <td>{{i.id}}</td>
+                                        <td>{{i.name}}</td>
                                         <td>
                                             <button class="pd-setting">Active</button>
                                         </td>
-                                        <td>John Alva</td>
-                                        <td>admin@gmail.com</td>
-                                        <td>01962067309</td>
-                                        <td>1500</td>
+                                        <td>{{i.headdepartment}}</td>
+                                        <td>{{i.email}}</td>
+                                        <td>{{i.mobile}}</td>
+                                        <td>{{i.no_of_student}}</td>
                                         <td>
                                             <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                             <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    {% endfor %}
+                                    <!-- <tr>
                                         <td>2</td>
                                         <td>Mechanical</td>
                                         <td>
@@ -140,7 +142,7 @@
                                             <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                             <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </table>
                             </div>
                             <div class="custom-pagination">

@@ -15,16 +15,17 @@
             <div class="col-md-6">
                 <div>
                     <!--POPULAR COURSES-->
+                    {% for i in courses %}
                     <div class="home-top-cour">
                         <!--POPULAR COURSES IMAGE-->
-                        <div class="col-md-3"> <img src="images/course/sm-1.jpg" alt=""> </div>
+                        <div class="col-md-3"> <img src="{{i.copic.url}}" alt=""> </div>
                         <!--POPULAR COURSES: CONTENT-->
                         <div class="col-md-9 home-top-cour-desc">
                             <a href="course-details.html">
-                                <h3>Aerospace Engineering</h3>
+                                <h3>{{i.coname}}</h3>
                             </a>
-                            <h4>Technology / Space / Aerospace</h4>
-                            <p>Classes started from coming friday(21 jun 2017),total seats 72 and available seats 10</p> <span class="home-top-cour-rat">4.2</span>
+                            <h4>Technology / {{i.codepartment}} / {{i.coname}}</h4>
+                            <p>{{i.codiscription}}</p> <span class="home-top-cour-rat">4.2</span>
                             <div class="hom-list-share">
                                 <ul>
                                     <li><a href="course-details.html"><i class="fa fa-bar-chart" aria-hidden="true"></i> Book Now</a> </li>
@@ -34,11 +35,10 @@
                             </div>
                         </div>
                     </div>
-                    <!--POPULAR COURSES-->
-                    <div class="home-top-cour">
-                        <!--POPULAR COURSES IMAGE-->
+                    {% endfor %}
+                    
+                    <!-- <div class="home-top-cour">
                         <div class="col-md-3"> <img src="images/course/sm-2.jpg" alt=""> </div>
-                        <!--POPULAR COURSES: CONTENT-->
                         <div class="col-md-9 home-top-cour-desc">
                             <a href="course-details.html">
                                 <h3>Agriculture Courses</h3>
@@ -54,11 +54,8 @@
                             </div>
                         </div>
                     </div>
-                    <!--POPULAR COURSES-->
                     <div class="home-top-cour">
-                        <!--POPULAR COURSES IMAGE-->
                         <div class="col-md-3"> <img src="images/course/sm-3.jpg" alt=""> </div>
-                        <!--POPULAR COURSES: CONTENT-->
                         <div class="col-md-9 home-top-cour-desc">
                             <a href="course-details.html">
                                 <h3>Marine Engineering</h3>
@@ -74,11 +71,8 @@
                             </div>
                         </div>
                     </div>
-                    <!--POPULAR COURSES-->
                     <div class="home-top-cour">
-                        <!--POPULAR COURSES IMAGE-->
                         <div class="col-md-3"> <img src="images/course/sm-4.jpg" alt=""> </div>
-                        <!--POPULAR COURSES: CONTENT-->
                         <div class="col-md-9 home-top-cour-desc">
                             <a href="course-details.html">
                                 <h3>Building, Construction Management</h3>
@@ -98,11 +92,8 @@
             </div>
             <div class="col-md-6">
                 <div>
-                    <!--POPULAR COURSES-->
                     <div class="home-top-cour">
-                        <!--POPULAR COURSES IMAGE-->
                         <div class="col-md-3"> <img src="images/course/sm-5.jpg" alt=""> </div>
-                        <!--POPULAR COURSES: CONTENT-->
                         <div class="col-md-9 home-top-cour-desc">
                             <a href="course-details.html">
                                 <h3>Fashion Technology</h3>
@@ -118,11 +109,8 @@
                             </div>
                         </div>
                     </div>
-                    <!--POPULAR COURSES-->
                     <div class="home-top-cour">
-                        <!--POPULAR COURSES IMAGE-->
                         <div class="col-md-3"> <img src="images/course/sm-6.jpg" alt=""> </div>
-                        <!--POPULAR COURSES: CONTENT-->
                         <div class="col-md-9 home-top-cour-desc">
                             <a href="course-details.html">
                                 <h3>Agriculture Courses</h3>
@@ -138,11 +126,8 @@
                             </div>
                         </div>
                     </div>
-                    <!--POPULAR COURSES-->
                     <div class="home-top-cour">
-                        <!--POPULAR COURSES IMAGE-->
                         <div class="col-md-3"> <img src="images/course/sm-7.jpg" alt=""> </div>
-                        <!--POPULAR COURSES: CONTENT-->
                         <div class="col-md-9 home-top-cour-desc">
                             <a href="course-details.html">
                                 <h3>Marine Engineering</h3>
@@ -158,11 +143,8 @@
                             </div>
                         </div>
                     </div>
-                    <!--POPULAR COURSES-->
                     <div class="home-top-cour">
-                        <!--POPULAR COURSES IMAGE-->
                         <div class="col-md-3"> <img src="images/course/sm-8.jpg" alt=""> </div>
-                        <!--POPULAR COURSES: CONTENT-->
                         <div class="col-md-9 home-top-cour-desc">
                             <a href="course-details.html">
                                 <h3>Building, Construction Management</h3>
@@ -177,7 +159,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

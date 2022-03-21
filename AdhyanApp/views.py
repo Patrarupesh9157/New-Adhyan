@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from .models import *
+from Myapp.models import *
 from django.conf import settings
 from django.core.mail import send_mail
 from random import randrange
@@ -88,11 +89,13 @@ def about(request):
     except:
         return render(request,'about.html')
 
-def admission(request):
-    return render(request,'admission.html')
-
 def all_courses(request):
-    return render(request,'all-courses.html')
+    courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
+    return render(request,'all-courses.html',{'courses':courses})
+
+def admission(request):
+
+    return render(request,'admission.html')
 
 def awards(request):
     return render(request,'awards.html')
@@ -104,7 +107,12 @@ def course_details(request):
     return render(request,'course-details.html')
 
 def dashboard(request):
-    return render(request,'dashboard.html')
+    try:
+        uid = User.objects.get(email=request.session['email'])
+        return render(request,'dashboard.html',{'uid':uid})
+    except:
+        return redirect('login')
+
 
 def db_courses(request):
     return render(request,'db-courses.html')
