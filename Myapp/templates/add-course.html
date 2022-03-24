@@ -66,7 +66,7 @@
                                                                     <!-- <input name="codepartment" type="text" class="form-control" placeholder="Department"> -->
                                                                     <select name="codepartment" class="form-control">
                                                                         {% for i in co %}
-                                                                        <option>{{i.dept.name}}</option>
+                                                                        <option value="{{i}}">{{i}}</option>
                                                                         {% endfor %}
                                                                     </select>
                                                                 </div>

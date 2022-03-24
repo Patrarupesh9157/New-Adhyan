@@ -132,6 +132,8 @@ def myprofile(request):
         uid.save()
         return render(request,'my-profile.html',{'uid':uid,'msg':'Profile is Updated','nowtime':datetime.datetime.now()})
     return render(request,'my-profile.html',{'uid':uid})
+
+
 def addcourse(request):
     dept=Department.objects.all()
     uid=Register.objects.get(email=request.session['adminemail'])
@@ -141,7 +143,7 @@ def addcourse(request):
             msg = f'Course is already in list and status is {course.verify}'
             return render(request,'add-course.html',{'uid':uid,'msg':msg})
         except:   
-            co=All_Course.objects.create(
+            All_Course.objects.create(
                 uid = uid,
                 coname=request.POST['coname'],
                 coduration=request.POST['coduration'],
@@ -152,8 +154,8 @@ def addcourse(request):
                 coyear=request.POST['coyear'],
             )
             msg = 'Course added and waiting for Approvel'
-            return render(request,'add-course.html',{'uid':uid,'msg':msg,'co':co})
-    return render(request,'add-course.html',{'uid':uid})
+            return render(request,'add-course.html',{'uid':uid,'msg':msg,'co':dept})
+    return render(request,'add-course.html',{'uid':uid,'co':dept})
 def adddepartment(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     if request.method=='POST':
