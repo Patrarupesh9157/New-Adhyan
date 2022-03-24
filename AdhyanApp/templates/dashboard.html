@@ -1,45 +1,7 @@
-{% extends 'header.html' %}
 {% load static %}
-{% block content %}
+{% include 'header2.html' %}
 
 
-    <!--SECTION START-->
-    <section>
-        <div class="pro-cover">
-        </div>
-        <div class="pro-menu">
-            <div class="container">
-                <div class="col-md-9 col-md-offset-3">
-                    <ul>
-                        <li><a href="{% url 'dashboard' %}" class="pro-act">My Dashboard</a></li>
-                        <li><a href="{% url 'db-profile' %}">Profile</a></li>
-                        <li><a href="{% url 'db-courses' %}">Courses</a></li>
-                        <li><a href="{% url 'db-exams' %}">Exams</a></li>
-                        <li><a href="{% url 'db-time-line' %}">Time Line</a></li>
-                        <li><a href="#">Entry</a></li>
-                        <li><a href="#">Notifications</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="stu-db">
-            <div class="container pg-inn">
-                <div class="col-md-3">
-                    <div class="pro-user">
-                        <img src="{% static 'images/user.jpg'%}" alt="user">
-                    </div>
-                    <div class="pro-user-bio">
-                        <ul>
-                            <li>
-                                <h4>Emily Jessica</h4>
-                            </li>
-                            <li>Student Id: ST17241</li>
-                            <li><a href="#!"><i class="fa fa-facebook"></i> Facebook: my sample</a></li>
-                            <li><a href="#!"><i class="fa fa-google-plus"></i> Google: my sample</a></li>
-                            <li><a href="#!"><i class="fa fa-twitter"></i> Twitter: my sample</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="col-md-9">
                     <div class="udb">
 
@@ -312,7 +274,4 @@
         </div>
     </section>
     <!--SECTION END-->
-
-
-
-{% endblock  %}
+{% include 'footer.html' %}

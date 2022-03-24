@@ -152,7 +152,7 @@ def addcourse(request):
                 coyear=request.POST['coyear'],
             )
             msg = 'Course added and waiting for Approvel'
-            return render(request,'add-course.html',{'uid':uid,'msg':msg,'co':co})
+            return render(request,'add-course.html',{'uid':uid,'msg':msg,'co':course})
     return render(request,'add-course.html',{'uid':uid})
 def adddepartment(request):
     uid=Register.objects.get(email=request.session['adminemail'])

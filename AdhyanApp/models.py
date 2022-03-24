@@ -2,7 +2,10 @@ from django.db import models
 
 # Create your models here.
 class User(models.Model):
+    choices = (('Male','Male'),('Female','Female'),('Other','Other'))
     name = models.CharField(max_length=30)
+    gender = models.CharField(max_length=15,choices=choices)
+    dob = models.DateField()
     mobile = models.CharField(max_length=12)
     email = models.EmailField(unique=True)
     address = models.TextField(max_length=150 )
