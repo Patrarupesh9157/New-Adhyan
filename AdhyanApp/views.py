@@ -23,6 +23,8 @@ def register(request):
                 global temp
                 temp={
                     'name' : request.POST['name'],
+                    'gender' : request.POST['gender'],
+                    'dob' : request.POST['dob'],
                     'mobile' : request.POST['mobile'],
                     'email' : request.POST['email'],
                     'address' : request.POST['address'],
@@ -61,6 +63,8 @@ def otp(request):
             
             User.objects.create(
                 name = temp['name'],
+                gender = temp['gender'],
+                dob = temp['dob'],
                 email = temp['email'],
                 mobile = temp['mobile'],
                 address = temp['address'],
@@ -90,10 +94,12 @@ def about(request):
         return render(request,'about.html')
 
 def all_courses(request):
+    uid = User.objects.get(email=request.session['email'])
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
-    return render(request,'all-courses.html',{'courses':courses})
+    return render(request,'all-courses.html',{'courses':courses,'uid':uid})
 
 def contact_us(request):
+    uid = User.objects.get(email=request.session['email'])
     if request.method == 'POST':
         Enquiry.objects.create(
             name=request.POST['name'],
@@ -104,7 +110,7 @@ def contact_us(request):
         )
         msg='Complant is Added'
         return render(request,'contact-us.html',{'msg':msg})
-    return render(request,'contact-us.html')
+    return render(request,'contact-us.html',{'uid':uid,})
 
 def admission(request):
 
@@ -125,16 +131,31 @@ def dashboard(request):
 
 
 def db_courses(request):
-    return render(request,'db-courses.html')
+    uid = User.objects.get(email=request.session['email'])
+    return render(request,'db-courses.html',{'uid':uid})
 
 def db_exams(request):
-    return render(request,'db-exams.html')
+    uid = User.objects.get(email=request.session['email'])
+    return render(request,'db-exams.html',{'uid':uid})
 
 def db_profile(request):
-    return render(request,'db-profile.html')
+    uid = User.objects.get(email=request.session['email'])
+    if request.method == 'POST':
+        uid.name = request.POST['name']
+        uid.gender = request.POST['gender']
+        uid.mobile = request.POST['mobile']
+        uid.email = request.POST['email']
+        uid.address = request.POST['address']
+        uid.password = request.POST['password']
+        if 'pic' in request.FILES:
+            uid.pic = request.FILES['pic']
+        uid.save()
+        return render(request,'db-profile.html',{'uid':uid,'msg':'Profile Updated'})
+    return render(request,'db-profile.html',{'uid':uid})
 
 def db_time_line(request):
-    return render(request,'db-time-line.html')
+    uid = User.objects.get(email=request.session['email'])
+    return render(request,'db-time-line.html',{'uid':uid})
 
 def departments(request):
     return render(request,'departments.html')

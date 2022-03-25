@@ -1,6 +1,6 @@
-{% extends 'header.html' %}
+{% include 'header.html' %}
 {% load static %}
-{% block content %}
+
 
 
     <!--SECTION START-->
@@ -26,21 +26,18 @@
             <div class="container pg-inn">
                 <div class="col-md-3">
                     <div class="pro-user">
-                        <img src="{% static 'images/user.jpg'%}" alt="user">
+                        <img src="{{uid.pic.url}}" alt="user">
                     </div>
                     <div class="pro-user-bio">
                         <ul>
                             <li>
-                                <h4>Emily Jessica</h4>
+                                <h4>{{uid.name}}</h4>
                             </li>
-                            <li>Student Id: ST17241</li>
+                            <li>Student Id: {{uid.id}}</li>
                             <li><a href="#!"><i class="fa fa-facebook"></i> Facebook: my sample</a></li>
                             <li><a href="#!"><i class="fa fa-google-plus"></i> Google: my sample</a></li>
                             <li><a href="#!"><i class="fa fa-twitter"></i> Twitter: my sample</a></li>
                         </ul>
                     </div>
                 </div>
-                {% block content %}
                 
-                
-                {% endblock  %}
