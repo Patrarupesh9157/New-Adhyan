@@ -9,9 +9,11 @@ from random import randrange
 def index(request):
     try:
         uid = User.objects.get(email=request.session['email'])
-        return render(request,'index.html',{'uid':uid})
+        courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
+        return render(request,'index.html',{'uid':uid,'courses':courses})
     except:
-        return render(request,'index.html')
+        courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
+        return render(request,'index.html',{'courses':courses})
 
 def register(request):
     if request.method == 'POST':
@@ -94,9 +96,9 @@ def about(request):
         return render(request,'about.html')
 
 def all_courses(request):
-    uid = User.objects.get(email=request.session['email'])
+    # uid = User.objects.get(email=request.session['email'])
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
-    return render(request,'all-courses.html',{'courses':courses,'uid':uid})
+    return render(request,'all-courses.html',{'courses':courses})
 
 def contact_us(request):
     uid = User.objects.get(email=request.session['email'])
