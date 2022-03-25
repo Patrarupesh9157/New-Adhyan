@@ -135,14 +135,15 @@ def myprofile(request):
 
 
 def addcourse(request):
-    dept=Department.objects.all()
+    co=Department.objects.all()
     uid=Register.objects.get(email=request.session['adminemail'])
     if request.method=='POST':
         try:
             course=All_Course.objects.get(coname=request.POST['coname'])
             msg = f'Course is already in list and status is {course.verify}'
             return render(request,'add-course.html',{'uid':uid,'msg':msg})
-        except:   
+        except:  
+            dept=Department.objects.get(name=request.POST['codepartment'])
             All_Course.objects.create(
                 uid = uid,
                 coname=request.POST['coname'],
@@ -154,8 +155,8 @@ def addcourse(request):
                 coyear=request.POST['coyear'],
             )
             msg = 'Course added and waiting for Approvel'
-            return render(request,'add-course.html',{'uid':uid,'msg':msg,'co':dept})
-    return render(request,'add-course.html',{'uid':uid,'co':dept})
+            return render(request,'add-course.html',{'uid':uid,'msg':msg,'co':co})
+    return render(request,'add-course.html',{'uid':uid,'co':co})
 def adddepartment(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     if request.method=='POST':
