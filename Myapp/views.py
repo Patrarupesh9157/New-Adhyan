@@ -200,11 +200,20 @@ def allstudents(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     user=m.User.objects.all()
     return render(request,'all-students.html',{'uid':uid,'user':user})
-
+def student_delete(request,pk):
+    user=m.User.objects.get(id=pk)
+    user.delete()
+    return redirect('allstudents')
 def Enquiry(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     enq=m.Enquiry.objects.all()
     return render(request,'Enquiry.html',{'uid':uid,'enq':enq})
+
+def studentprofile(request,pk):
+    uid=Register.objects.get(email=request.session['adminemail'])
+    user=m.User.objects.get(id=pk)
+    return render(request,'student-profile.html',{'uid':uid,'user':user})
+
 def p404(request):
     return render(request,'404.html')
 def p500(request):
@@ -304,8 +313,6 @@ def sparkline(request):
     return render(request,'sparkline.html')
 def statictable(request):
     return render(request,'static-table.html')
-def studentprofile(request):
-    return render(request,'student-profile.html')
 def tabs(request):
     return render(request,'tabs.html')
 def tinymc(request):

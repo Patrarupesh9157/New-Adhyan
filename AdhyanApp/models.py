@@ -10,10 +10,11 @@ class User(models.Model):
     email = models.EmailField(unique=True)
     address = models.TextField(max_length=150 )
     password = models.CharField(max_length=15)
+    # zipcode=models.IntegerField(max_length=6,null=True)
     pic = models.FileField(upload_to='Profile Pic', default='avtar.png')
     
     def __str__(self):
-        return self.email
+        return self.name
 
 class Enquiry(models.Model):
     name=models.CharField(max_length=30)
