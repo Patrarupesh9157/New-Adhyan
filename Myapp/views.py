@@ -11,7 +11,8 @@ import random as r
 # Create your views here.
 def aindex(request):
     uid=Register.objects.get(email=request.session['adminemail'])
-    return render(request,'aindex.html',{'uid':uid})
+    enq=m.Enquiry.objects.all()
+    return render(request,'aindex.html',{'uid':uid,'enq':enq})
 def signin(request):
     try:
         uid=Register.objects.get(email=request.session['adminemail'])
@@ -79,9 +80,9 @@ def aforgot(request):
             s1="abcdefghijklmnopqrstuvwxyz"
             s2="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             s3="0123456789"
-            s4="!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+            s4=".@"
             s=s1+s2+s3+s4
-            fpass = "".join(r.sample(s,10))
+            fpass = "".join(r.sample(s,8))
             subject = 'Forgot Password For Adhyan Id'
             message = f'Your new Password is {fpass} .Please Enter This Password for signin'
             email_from = settings.EMAIL_HOST_USER
@@ -154,7 +155,7 @@ def addcourse(request):
                 codiscription=request.POST['codiscription'],
                 coyear=request.POST['coyear'],
             )
-            msg = 'Course added and waiting for Approvel'
+            msg = 'Course id added'
             return render(request,'add-course.html',{'uid':uid,'msg':msg,'co':co})
     return render(request,'add-course.html',{'uid':uid,'co':co})
 def adddepartment(request):
@@ -174,7 +175,7 @@ def adddepartment(request):
                 no_of_student=request.POST['noofstudent'],
                 dep_date=request.POST['date']
             )
-            msg = 'Course added and waiting for Approvel'
+            msg = 'Department is added'
             return render(request,'add-department.html',{'uid':uid,'msg':msg})
     return render(request,'add-department.html',{'uid':uid})
 

@@ -101,18 +101,31 @@ def all_courses(request):
     return render(request,'all-courses.html',{'courses':courses})
 
 def contact_us(request):
-    uid = User.objects.get(email=request.session['email'])
-    if request.method == 'POST':
-        Enquiry.objects.create(
-            name=request.POST['name'],
-            mobile=request.POST['mobile'],
-            email=request.POST['email'],
-            city=request.POST['city'],
-            des=request.POST['des'],
-        )
-        msg='Complant is Added'
-        return render(request,'contact-us.html',{'msg':msg})
-    return render(request,'contact-us.html',{'uid':uid,})
+    try:
+        uid = User.objects.get(email=request.session['email'])
+        if request.method == 'POST':
+            Enquiry.objects.create(
+                name=request.POST['name'],
+                mobile=request.POST['mobile'],
+                email=request.POST['email'],
+                city=request.POST['city'],
+                des=request.POST['des']
+            )
+            msg='Complant is Added'
+            return render(request,'contact-us.html',{'msg':msg})
+        return render(request,'contact-us.html',{'uid':uid})
+    except:
+        if request.method == 'POST':
+            Enquiry.objects.create(
+                name=request.POST['name'],
+                mobile=request.POST['mobile'],
+                email=request.POST['email'],
+                city=request.POST['city'],
+                des=request.POST['des']
+            )
+            msg='Complant is Added'
+            return render(request,'contact-us.html',{'msg':msg})
+        return render(request,'contact-us.html')
 
 def admission(request):
 
