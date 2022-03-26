@@ -203,6 +203,8 @@ def allstudents(request):
     return render(request,'all-students.html',{'uid':uid,'user':user})
 def student_delete(request,pk):
     user=m.User.objects.get(id=pk)
+    # request.session['email'] = user.email
+    # del request.session['email']
     user.delete()
     return redirect('allstudents')
 def Enquiry(request):
