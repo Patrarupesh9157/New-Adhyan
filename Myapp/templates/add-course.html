@@ -2,6 +2,8 @@
 {% load static %}
 {% block head %}
 
+{% comment %} <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/css/bootstrap.min.css'/> {% endcomment %}
+
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="row">
@@ -96,33 +98,34 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!--Add Course index-->
                                 <div class="product-tab-list tab-pane fade" id="reviews">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="review-content-section">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="devit-card-custom">
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control" placeholder="Email">
+                                    <form action="{% url 'addcourse' %}" method="POST" id="add_form">
+                                        <div id="show_item">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="review-content-section">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="devit-card-custom">
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control" name="title_name[]" placeholder="Enter Topic Name" required>
+                                                                    </div>
+                                                                    <div class="form-group" style="display:inline-block;width:90%;">
+                                                                        <input type="file" class="form-control" name="material[]" required>
+                                                                    </div>
+                                                                    <button class="btn btn-success add_item_btn"><i class="fa fa-plus"></i>Add Field</button>                                                                                                                                        
+                                                                </div>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <input type="number" class="form-control" placeholder="Phone">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <input type="password" class="form-control" placeholder="Password">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <input type="password" class="form-control" placeholder="Confirm Password">
-                                                            </div>
-                                                            <a href="#" class="btn btn-primary waves-effect waves-light">Submit</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        <input type="submit" class="btn btn-primary w-25" id="add_btn" value="Submit Now"/>
+                                    </form>
                                 </div>
+
                                 <div class="product-tab-list tab-pane fade" id="INFORMATION">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -156,4 +159,45 @@
                 </div>
             </div>
         </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".add_item_btn").click(function(e){
+                    e.preventDefault();
+                    $("#show_item").prepend(`<div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="devit-card-custom">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="title_name[]" placeholder="Enter Topic Name" required>
+                                </div>
+                                <div class="form-group" style="display:inline-block;width:90%;">
+                                    <input type="file" class="form-control" name="material[]" required>
+                                </div>
+                                <button class="btn btn-danger remove_item_btn"><i class="fa fa-minus"></i>Remove</button>                                                                                                                                        
+                            </div>
+                        </div>
+                    </div>`);
+                });
+                $(document).on('click','.remove_item_btn', function(e){
+                    e.preventDefault();
+                    let row_item = $(this).parent().parent();
+                    $(row_item).remove();
+                });
+                //ajax request to insert all form data
+                $("#add_form").submit(function(e){
+                    e.preventDefault();
+                    $("#add_btn").val('Adding...');
+                    $.ajax({
+                        url : '',
+                        method : 'post',
+                        data : $(this).serialize(),
+                        success:function(response){
+                            console.log(response);
+                        }
+                    })
+                });
+            });
+        </script>
         {% endblock %}
