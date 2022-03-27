@@ -217,6 +217,26 @@ def studentprofile(request,pk):
     user=m.User.objects.get(id=pk)
     return render(request,'student-profile.html',{'uid':uid,'user':user})
 
+def addindex(request,pk):
+    uid=Register.objects.get(email=request.session['adminemail'])
+    cos=All_Course.objects.get(id=pk)
+    if request.method=='POST':
+        try:
+            add=Add_Index.objects.get(topic=request.POST['title_name'])
+            msg = 'Index is already in list please verify'
+            return render(request,'add-department.html',{'uid':uid,'msg':msg})
+        except:
+            Add_Index.objects.create(
+                uid=uid,
+                cos=cos,
+                title=request.POST['title_name'],
+                material=request.POST['material'],
+            )
+            msg = 'Index is added'
+            return render(request,'add-course.html',{'uid':uid,'msg':msg})
+    return render(request,'add-course.html',{'uid':uid,'cos':cos})
+
+
 def p404(request):
     return render(request,'404.html')
 def p500(request):

@@ -11,3 +11,7 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(models.All_Course)
 class UserAdmin(admin.ModelAdmin):
     list_display = ['coname','coduration','coprice','codepartment','codiscription','coyear']
+
+@admin.register(models.Add_Index)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['topic','material']

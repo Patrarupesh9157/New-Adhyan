@@ -14,6 +14,7 @@ urlpatterns = [
     path('p404/',views.p404,name='p404'),
     path('p500/',views.p500,name='p500'),
     path('addcourse/',views.addcourse,name='addcourse'),
+    path('addindex/<int:pk>',views.addindex,name='addindex'),
     
     path('accordion/',views.accordion,name='accordion'),
     path('adddepartment/',views.adddepartment,name='adddepartment'),

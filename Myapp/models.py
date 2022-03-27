@@ -1,3 +1,4 @@
+from decimal import Clamped
 from django.db import models
 import random as r
 
@@ -48,6 +49,17 @@ class All_Course(models.Model):
     
     def __str__(self):
         return self.coname
+
+class Add_Index(models.Model):
+    uid = models.ForeignKey(Register,on_delete=models.CASCADE)
+    course = models.ForeignKey(All_Course,on_delete=models.CASCADE)
+    topic=models.CharField(max_length=50)
+    material=models.FileField()
+    
+    def __str__(self):
+        return self.topic
+
+    
 
 # class Student(models.Model):
 #     choices = (('male','male'),('female','female'),('other','other'))

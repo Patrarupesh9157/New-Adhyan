@@ -34,7 +34,7 @@
             <div class="container-fluid">
                 <div class="row">
                     {% for i in courses %}
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="margin-top: 20px;">
                         <div class="courses-inner res-mg-b-30">
                             <div class="courses-title">
                                 <a href="#"><img src="{{i.copic.url}}" alt=""></a>
@@ -50,7 +50,8 @@
                                 <p><span><i class="fa fa-clock"></i></span> <b>Department:</b> {{i.codepartment}}</p>
                             </div>
                             <div class="product-buttons">
-                                <button type="button" class="button-default cart-btn">Read More</button>
+                                <a href="{% url 'addindex' i.id %}"><button type="button" class="button-default cart-btn"><i class="fa fa-plus"></i>Add Index</button></a>
+                                <a href="{% url 'editcourse' %}"><button type="button" class="button-default cart-btn"><i class="fa fa-edit"></i> Edit index</button></a>
                             </div>
                         </div>
                     </div>
