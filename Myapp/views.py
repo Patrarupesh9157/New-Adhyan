@@ -221,21 +221,22 @@ def addindex(request,pk):
     co=Department.objects.all()
     uid=Register.objects.get(email=request.session['adminemail'])
     cos=All_Course.objects.get(id=pk)
+    cose=All_Course.objects.all()
     if request.method=='POST':
         try:
             add=Add_Index.objects.get(topic=request.POST['title_name'])
             msg = 'Index is already in list please verify'
-            return render(request,'add-department.html',{'uid':uid,'msg':msg})
+            return render(request,'addindex.html',{'uid':uid,'msg':msg})
         except:
             Add_Index.objects.create(
                 uid=uid,
-                cos=cos,
+                cose=cose,
                 title=request.POST['title_name'],
                 material=request.POST['material'],
             )
             msg = 'Index is added'
-            return render(request,'add-course.html',{'uid':uid,'msg':msg})
-    return render(request,'add-course.html',{'uid':uid,'cos':cos,'co':co})
+            return render(request,'addindex.html',{'uid':uid,'msg':msg})
+    return render(request,'addindex.html',{'uid':uid,'cos':cos,'co':co})
 
 
 def p404(request):

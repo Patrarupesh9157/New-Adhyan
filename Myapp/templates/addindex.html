@@ -2,7 +2,8 @@
 {% load static %}
 {% block head %}
 
-{% comment %} <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/css/bootstrap.min.css'/> {% endcomment %}
+{% comment %} 
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/css/bootstrap.min.css'/> {% endcomment %}
 
             <div class="breadcome-area">
                 <div class="container-fluid">
@@ -41,13 +42,38 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-payment-inner-st">
                             <ul id="myTabedu1" class="tab-review-design">
-                                <li class="active"><a href="#description">Courses Details</a></li>
-                                <!-- <li><a href="#reviews">Add Index</a></li> -->
+                                <li><a href="#description">Add Index</a></li>
+                                <!-- <li class="active"><a href="#reviews"></a></li> -->
                                 <!-- <li><a href="#INFORMATION">Social Information</a></li> -->
                             </ul>
                             <div id="myTabContent" class="tab-content custom-product-edit">
                                 <div class="product-tab-list tab-pane fade active in" id="description">
-                                    <div class="row">
+                                    <form action="{% url 'addindex' cos.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <div id="show_item">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="review-content-section">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <div class="devit-card-custom">
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control" id="title_name" name="title_name" placeholder="Enter Topic Name" required>
+                                                                    </div>
+                                                                    <div class="form-group" style="display:inline-block;width:90%;">
+                                                                        <input type="file" class="form-control" id="material" name="material" required>
+                                                                    </div>
+                                                                    <button class="btn btn-success add_item_btn" ><i class="fa fa-plus"></i>Add Field</button>                                                                                                                                        
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="submit" class="btn btn-primary w-25" id="add_btn" value="Submit Now"/>
+                                    </form>
+                                    <!-- <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad addcoursepro">
@@ -65,7 +91,6 @@
                                                                     <input name="coprice" type="number" min="10000" value="10000" class="form-control" placeholder="Course Price">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <!-- <input name="codepartment" type="text" class="form-control" placeholder="Department"> -->
                                                                     <select name="codepartment" class="form-control">
                                                                         {% for i in co %}
                                                                         <option value="{{i}}">{{i}}</option>
@@ -96,35 +121,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!--Add Course index-->
                                 <div class="product-tab-list tab-pane fade" id="reviews">
-                                    <form id="add_form">
-                                        {% csrf_token %}
-                                        <div id="show_item">
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="review-content-section">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                <div class="devit-card-custom">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control" id="title_name" name="title_name" placeholder="Enter Topic Name" required>
-                                                                    </div>
-                                                                    <div class="form-group" style="display:inline-block;width:90%;">
-                                                                        <input type="file" class="form-control" id="material" name="material" required>
-                                                                    </div>
-                                                                    <button class="btn btn-success add_item_btn"><i class="fa fa-plus"></i>Add Field</button>                                                                                                                                        
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <input type="submit" class="btn btn-primary w-25" id="add_btn" value="Submit Now"/>
-                                    </form>
+                                    
                                 </div>
 
                                 <div class="product-tab-list tab-pane fade" id="INFORMATION">
@@ -187,23 +188,23 @@
                     $(row_item).remove();
                 });
                 //ajax request to insert all form data
-                $("#add_btn").submit(function(e){
-                    let data = {
-                        title_name : $('#title_name').val(),
-                        material : $('#material').val(),
-                        csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val()
-                        }
-                    $.ajax({
-                        url : "",
-                        method : 'POST',
-                        data : data,
-                        success:function(response){
-                            // console.log(response);
-                            alert(response.msg)
-                            $('#add_form').reset()
-                        }
-                    })
-                });
+                // $("#add_btn").submit(function(e){
+                //     let data = {
+                //         title_name : $('#title_name').val(),
+                //         material : $('#material').val(),
+                //         csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val()
+                //         }
+                //     $.ajax({
+                //         url : "",
+                //         method : 'POST',
+                //         data : data,
+                //         success:function(response){
+                //             // console.log(response);
+                //             alert(response.msg)
+                //             $('#add_form').reset()
+                //         }
+                //     })
+                // });
             });
         </script>
         {% endblock %}
