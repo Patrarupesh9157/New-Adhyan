@@ -218,6 +218,7 @@ def studentprofile(request,pk):
     return render(request,'student-profile.html',{'uid':uid,'user':user})
 
 def addindex(request,pk):
+    co=Department.objects.all()
     uid=Register.objects.get(email=request.session['adminemail'])
     cos=All_Course.objects.get(id=pk)
     if request.method=='POST':
@@ -234,7 +235,7 @@ def addindex(request,pk):
             )
             msg = 'Index is added'
             return render(request,'add-course.html',{'uid':uid,'msg':msg})
-    return render(request,'add-course.html',{'uid':uid,'cos':cos})
+    return render(request,'add-course.html',{'uid':uid,'cos':cos,'co':co})
 
 
 def p404(request):
