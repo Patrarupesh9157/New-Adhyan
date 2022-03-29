@@ -155,9 +155,31 @@ def addcourse(request):
                 codiscription=request.POST['codiscription'],
                 coyear=request.POST['coyear'],
             )
-            msg = 'Course id added'
+            msg = 'Course is added'
             return render(request,'add-course.html',{'uid':uid,'msg':msg,'co':co})
     return render(request,'add-course.html',{'uid':uid,'co':co})
+
+def editcourse(request,pk):
+    dept = Department.objects.all()
+    uid=Register.objects.get(email=request.session['adminemail'])
+    co=All_Course.objects.get(id=pk)
+    if request.method=='POST':
+        depts=Department.objects.get(name=request.POST['codepartment'])
+        co.coname=request.POST['coname']
+        co.coduration=request.POST['coduration']
+        co.coprice=request.POST['coprice']
+        co.codepartment=depts
+        co.codiscription=request.POST['codiscription']
+        co.coyear=request.POST['coyear']
+        if 'copic' in request.FILES:
+            co.copic=request.FILES['copic']
+        co.save()
+        msg='Course is Edited'
+        return render(request,'edit-course.html',{'dept':dept,'uid':uid,'co':co,'msg':msg})
+    return render(request,'edit-course.html',{'dept':dept,'uid':uid,'co':co})
+def courseinfo(request,pk):
+    co=All_Course.objects.get(id=pk)
+    return render(request,'course-info.html',{'co':co})
 def adddepartment(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     if request.method=='POST':
@@ -178,7 +200,6 @@ def adddepartment(request):
             msg = 'Department is added'
             return render(request,'add-department.html',{'uid':uid,'msg':msg})
     return render(request,'add-department.html',{'uid':uid})
-
 def department(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     depts = Department.objects.filter(varify=False)[::-1]
@@ -270,8 +291,7 @@ def c3(request):
     return render(request,'c3.html')
 def codeeditor(request):
     return render(request,'code-editor.html')
-def courseinfo(request):
-    return render(request,'course-info.html')
+
 def coursepayment(request):
     return render(request,'course-payment.html')
 
@@ -283,8 +303,6 @@ def datatable(request):
 
 def duallistbox(request):
     return render(request,'dual-list-box.html')
-def editcourse(request):
-    return render(request,'edit-course.html')
 def editdepartment(request):
     return render(request,'edit-department.html')
 def editlibraryassets(request):

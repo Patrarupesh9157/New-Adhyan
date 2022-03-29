@@ -15,6 +15,7 @@ urlpatterns = [
     path('p500/',views.p500,name='p500'),
     path('addcourse/',views.addcourse,name='addcourse'),
     path('addindex/<int:pk>',views.addindex,name='addindex'),
+    path('editcourse/<int:pk>',views.editcourse,name='editcourse'),
     
     path('accordion/',views.accordion,name='accordion'),
     path('adddepartment/',views.adddepartment,name='adddepartment'),
@@ -36,7 +37,7 @@ urlpatterns = [
     path('buttons/',views.buttons,name='buttons'),
     path('c3/',views.c3,name='c3'),
     path('codeeditor/',views.codeeditor,name='codeeditor'),
-    path('courseinfo/',views.courseinfo,name='courseinfo'),
+    path('courseinfo/<int:pk>',views.courseinfo,name='courseinfo'),
     path('coursepayment/',views.coursepayment,name='coursepayment'),
 
     path('datamaps/',views.datamaps,name='datamaps'),
@@ -44,7 +45,6 @@ urlpatterns = [
     path('department/',views.department,name='department'),
     path('duallistbox/',views.duallistbox,name='duallistbox'),
 
-    path('editcourse/',views.editcourse,name='editcourse'),
     path('editdepartment/',views.editdepartment,name='editdepartment'),
     path('editlibraryassets/',views.editlibraryassets,name='editlibraryassets'),
     path('editprofessor/',views.editprofessor,name='editprofessor'),
