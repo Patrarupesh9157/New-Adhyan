@@ -220,8 +220,7 @@ def studentprofile(request,pk):
 def addindex(request,pk):
     co=Department.objects.all()
     uid=Register.objects.get(email=request.session['adminemail'])
-    cos=All_Course.objects.get(id=pk)
-    cose=All_Course.objects.all()
+    course=All_Course.objects.get(id=pk)
     if request.method=='POST':
         try:
             add=Add_Index.objects.get(topic=request.POST['title_name'])
@@ -230,34 +229,29 @@ def addindex(request,pk):
         except:
             Add_Index.objects.create(
                 uid=uid,
-                cose=cose,
-                title=request.POST['title_name'],
-                material=request.POST['material'],
+                course=course,
+                topic=request.POST['title_name'],
+                material=request.FILES['material'],
             )
             msg = 'Index is added'
             return render(request,'addindex.html',{'uid':uid,'msg':msg})
-    return render(request,'addindex.html',{'uid':uid,'cos':cos,'co':co})
+    return render(request,'addindex.html',{'uid':uid,'course':course,'co':co})
 
 
 def p404(request):
     return render(request,'404.html')
 def p500(request):
     return render(request,'500.html')
-
 def accordion(request):
     return render(request,'accordion.html')
-
 def addlibraryassets(request):
     return render(request,'add-library-assets.html')
 def addprofessor(request):
     return render(request,'add-professor.html')
-
 def advanceformelement(request):
     return render(request,'advance-form-element.html')
 def alerts(request):
     return render(request,'alerts.html')
-
-
 def allprofessors(request):
     return render(request,'all-professors.html')
 
