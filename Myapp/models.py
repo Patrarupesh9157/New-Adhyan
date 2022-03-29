@@ -2,6 +2,8 @@ from decimal import Clamped
 from django.db import models
 import random as r
 
+from AdhyanApp.models import User
+
 pics=['logo1.jpg','logo2.png','logo3.jpg','logo4.png','logo5.png','logo6.png','logo7.png','logo8.png','logo9.png','logo10.png','logo11.png','logo12.png','logo13.png','logo14.png','logo15.png','logo16.png']
 logo=r.choice(pics)
 
@@ -46,6 +48,7 @@ class All_Course(models.Model):
     covarify=models.BooleanField(default=False)
     coreject=models.BooleanField(default=False)
     approve_by = models.CharField(max_length=100,null=True,blank=True)
+    views = models.ManyToManyField(User,related_name='views', blank=True)
     
     def __str__(self):
         return self.coname

@@ -50,22 +50,9 @@
                             <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
                             <h4>All Courses</h4>
                             <ul>
-                                <li><a href="{% url 'course-details' %}">Accounting/Finance</a></li>
-                                <li><a href="{% url 'course-details' %}">civil engineering</a></li>
-                                <li><a href="{% url 'course-details' %}">Art/Design</a></li>
-                                <li><a href="{% url 'course-details' %}">Marine Engineering</a></li>
-                                <li><a href="{% url 'course-details' %}">Business Management</a></li>
-                                <li><a href="{% url 'course-details' %}">Journalism/Writing</a></li>
-                                <li><a href="{% url 'course-details' %}">Physical Education</a></li>
-                                <li><a href="{% url 'course-details' %}">Political Science</a></li>
-                                <li><a href="{% url 'course-details' %}">Sciences</a></li>
-                                <li><a href="{% url 'course-details' %}">Statistics</a></li>
-                                <li><a href="{% url 'course-details' %}">Web Design/Development</a></li>
-                                <li><a href="{% url 'course-details' %}">SEO</a></li>
-                                <li><a href="{% url 'course-details' %}">Google Business</a></li>
-                                <li><a href="{% url 'course-details' %}">Graphics Design</a></li>
-                                <li><a href="{% url 'course-details' %}">Networking Courses</a></li>
-                                <li><a href="{% url 'course-details' %}">Information technology</a></li>
+                                {% for i in courses %}    
+                                    <li><a href="{% url 'course-details' i.id %}">{{i.coname}}</a></li>
+                                {% endfor %}
                             </ul>
                             <h4>User Account</h4>
                             <ul>
@@ -78,7 +65,6 @@
                                 <li><a href="{% url 'about' %}">About us</a></li>
                                 <li><a href="{% url 'admission' %}">Admission</a></li>
                                 <li><a href="{% url 'all-courses' %}">All courses</a></li>
-                                <li><a href="{% url 'course-details' %}">Course details</a></li>
                                 <li><a href="{% url 'awards' %}">Awards</a></li>
                                 <li><a href="{% url 'seminar' %}">Seminar</a></li>
                                 <li><a href="{% url 'events' %}">Events</a></li>
@@ -172,29 +158,17 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="search-form">
-                            <form>
+                            <form action="{% url 'all-courses' %}" method="POST">
+                                {% csrf_token %}
                                 <div class="sf-type">
                                     <div class="sf-input">
-                                        <input type="text" id="sf-box" placeholder="Search course and discount courses">
+                                        <input type="text" name="scourse" id="sf-box" placeholder="Search course and discount courses">
                                     </div>
                                     <div class="sf-list">
-                                        <ul>
-                                            <li><a href="{% url 'course-details' %}">Accounting/Finance</a></li>
-                                            <li><a href="{% url 'course-details' %}">civil engineering</a></li>
-                                            <li><a href="{% url 'course-details' %}">Art/Design</a></li>
-                                            <li><a href="{% url 'course-details' %}">Marine Engineering</a></li>
-                                            <li><a href="{% url 'course-details' %}">Business Management</a></li>
-                                            <li><a href="{% url 'course-details' %}">Journalism/Writing</a></li>
-                                            <li><a href="{% url 'course-details' %}">Physical Education</a></li>
-                                            <li><a href="{% url 'course-details' %}">Political Science</a></li>
-                                            <li><a href="{% url 'course-details' %}">Sciences</a></li>
-                                            <li><a href="{% url 'course-details' %}">Statistics</a></li>
-                                            <li><a href="{% url 'course-details' %}">Web Design/Development</a></li>
-                                            <li><a href="{% url 'course-details' %}">SEO</a></li>
-                                            <li><a href="{% url 'course-details' %}">Google Business</a></li>
-                                            <li><a href="{% url 'course-details' %}">Graphics Design</a></li>
-                                            <li><a href="{% url 'course-details' %}">Networking Courses</a></li>
-                                            <li><a href="{% url 'course-details' %}">Information technology</a></li>
+                                        <ul>  
+                                        {% for i in courses %}    
+                                            <li><a href="{% url 'course-details' i.id %}">{{i.coname}}</a></li>
+                                        {% endfor %}
                                         </ul>
                                     </div>
                                 </div>

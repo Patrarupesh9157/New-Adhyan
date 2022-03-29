@@ -96,9 +96,11 @@ def about(request):
         return render(request,'about.html')
 
 def all_courses(request):
-    # uid = User.objects.get(email=request.session['email'])
+    uid = User.objects.get(email=request.session['email'])
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
-    return render(request,'all-courses.html',{'courses':courses})
+    if request.POST:
+        courses = All_Course.objects.filter(coname__contains =request.POST['scourse'])
+    return render(request,'all-courses.html',{'courses':courses,'uid':uid})
 
 def contact_us(request):
     try:
@@ -134,8 +136,14 @@ def admission(request):
 def awards(request):
     return render(request,'awards.html')
 
-def course_details(request):
-    return render(request,'course-details.html')
+def course_details(request,pk):
+    try:
+        uid = User.objects.get(email=request.session['email'])
+        course = All_Course.objects.get(id=pk)
+        course.views.add(uid)
+        return render(request,'course-details.html',{'uid':uid,'course':course})
+    except:
+        return render(request,'course-details.html')
 
 def dashboard(request):
     try:
@@ -146,8 +154,12 @@ def dashboard(request):
 
 
 def db_courses(request):
-    uid = User.objects.get(email=request.session['email'])
-    return render(request,'db-courses.html',{'uid':uid})
+    try:
+        uid = User.objects.get(email=request.session['email'])
+        return render(request,'db-courses.html',{'uid':uid})
+    except:
+        return render(request,'db-courses.html')
+
 
 def db_exams(request):
     uid = User.objects.get(email=request.session['email'])

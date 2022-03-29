@@ -12,7 +12,7 @@ urlpatterns = [
     path('about/',views.about,name='about'),
     path('admission/',views.admission,name='admission'),
     path('all-courses/',views.all_courses,name='all-courses'),
-    path('course-details/',views.course_details,name='course-details'),
+    path('course-details/<int:pk>',views.course_details,name='course-details'),
 
     path('awards/',views.awards,name='awards'),
     path('contact-us/',views.contact_us,name='contact-us'),

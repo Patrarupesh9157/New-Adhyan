@@ -28,8 +28,8 @@
                             <p>{{i.codiscription}}</p> <span class="home-top-cour-rat">4.2</span>
                             <div class="hom-list-share">
                                 <ul>
-                                    <li><a href="course-details.html"><i class="fa fa-bar-chart" aria-hidden="true"></i> Book Now</a> </li>
-                                    <li><a href="course-details.html"><i class="fa fa-eye" aria-hidden="true"></i>10 Aavailable</a> </li>
+                                    <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> Book Now</a> </li>
+                                    <li><a href="{% url 'course-details' i.id %}"><i class="fa fa-eye" aria-hidden="true"></i>{{i.views.all.count}} Aavailable</a> </li>
                                     <li><a href="course-details.html"><i class="fa fa-share-alt" aria-hidden="true"></i> 570</a> </li>
                                 </ul>
                             </div>
