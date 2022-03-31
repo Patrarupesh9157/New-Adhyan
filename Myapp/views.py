@@ -235,7 +235,7 @@ def Enquiry(request):
 
 def studentprofile(request,pk):
     uid=Register.objects.get(email=request.session['adminemail'])
-    user=m.User.objects.get(id=pk)
+    user =m.User.objects.get(id=pk)
     return render(request,'student-profile.html',{'uid':uid,'user':user})
 
 def addindex(request,pk):
@@ -243,17 +243,25 @@ def addindex(request,pk):
     uid=Register.objects.get(email=request.session['adminemail'])
     course=All_Course.objects.get(id=pk)
     if request.method=='POST':
+        
+        post = list(dict(request.POST).keys())
+        post.pop(0)
+        # print(post)
+
+        file = list(dict(request.FILES).keys())
+        d = dict(zip(post,file))
         try:
             add=Add_Index.objects.get(topic=request.POST['title_name'])
             msg = 'Index is already in list please verify'
             return render(request,'addindex.html',{'uid':uid,'msg':msg})
         except:
-            Add_Index.objects.create(
-                uid=uid,
-                course=course,
-                topic=request.POST['title_name'],
-                material=request.FILES['material'],
-            )
+            for p,f in d.items():
+                Add_Index.objects.create(
+                    uid=uid,
+                    course=course,
+                    topic=request.POST[p],
+                    material = request.FILES[f]
+                )
             msg = 'Index is added'
             return render(request,'addindex.html',{'uid':uid,'msg':msg})
     return render(request,'addindex.html',{'uid':uid,'course':course,'co':co})

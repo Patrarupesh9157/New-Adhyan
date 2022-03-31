@@ -96,11 +96,15 @@ def about(request):
         return render(request,'about.html')
 
 def all_courses(request):
-    uid = User.objects.get(email=request.session['email'])
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
     if request.POST:
-        courses = All_Course.objects.filter(coname__contains =request.POST['scourse'])
-    return render(request,'all-courses.html',{'courses':courses,'uid':uid})
+            courses = All_Course.objects.filter(coname__contains =request.POST['scourse'])
+    try:
+        uid = User.objects.get(email=request.session['email'])
+        return render(request,'all-courses.html',{'courses':courses,'uid':uid})
+    except:
+        return render(request,'all-courses.html',{'courses':courses})
+
 
 def contact_us(request):
     try:
