@@ -13,6 +13,7 @@ urlpatterns = [
     path('admission/',views.admission,name='admission'),
     path('all-courses/',views.all_courses,name='all-courses'),
     path('course-details/<int:pk>',views.course_details,name='course-details'),
+    path('payment/<int:pk>',views.payment,name='payment'),
 
     path('awards/',views.awards,name='awards'),
     path('contact-us/',views.contact_us,name='contact-us'),
@@ -29,4 +30,6 @@ urlpatterns = [
     path('gallery-photo/',views.gallery_photo,name='gallery-photo'),
     path('research/',views.research,name='research'),
     path('seminar/',views.seminar,name='seminar'),
+    path('payment/paymenthandler/<int:pk>', views.paymenthandler, name='paymenthandler'),
+    
 ]

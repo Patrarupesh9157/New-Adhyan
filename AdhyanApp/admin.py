@@ -10,3 +10,4 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     list_display = ['name','mobile','email','address']
+    

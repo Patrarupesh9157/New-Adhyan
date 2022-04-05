@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 class User(models.Model):
     choices = (('Male','Male'),('Female','Female'),('Other','Other'))
@@ -26,3 +25,4 @@ class Enquiry(models.Model):
     
     def __str__(self):
         return self.name
+

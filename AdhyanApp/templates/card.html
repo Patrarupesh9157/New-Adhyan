@@ -90,7 +90,7 @@ button:hover{
  <p>{{i.codiscription}}</p>
  <h4>Price : <i class="fa fa-rupee"></i> {{i.coprice}}/-</h4>
 
- <a href="#"><button class="btn btn-info" style="width:120px;margin-bottom:30px;text-align:center;"><i class="fa fa-bar-chart"></i> BOOK NOW</button></a>
+ <a href="{% url 'payment' i.id %}"><button class="btn btn-info" style="width:120px;margin-bottom:30px;text-align:center;"><i class="fa fa-bar-chart"></i> BOOK NOW</button></a>
  {% comment %} <a href="{% url 'course-details' i.id %}"><i class="fa fa-eye" aria-hidden="true"></i>{{i.views.all.count}} View Course</a> {% endcomment %}
  <a href="{% url 'course-details' i.id %}"><button class="btn" style="width:120px;margin-bottom:30px;text-align:center;"><i class="fa fa-eye"></i> {{i.views.all.count}} View</button></a>
 </div>

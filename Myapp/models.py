@@ -1,7 +1,5 @@
-from decimal import Clamped
 from django.db import models
 import random as r
-
 from AdhyanApp.models import User
 
 pics=['logo1.jpg','logo2.png','logo3.jpg','logo4.png','logo5.png','logo6.png','logo7.png','logo8.png','logo9.png','logo10.png','logo11.png','logo12.png','logo13.png','logo14.png','logo15.png','logo16.png']
@@ -61,7 +59,17 @@ class Add_Index(models.Model):
     
     def __str__(self):
         return self.topic
+    
+class Booking(models.Model):
+    student=models.ForeignKey(User,on_delete=models.CASCADE)
+    course=models.ForeignKey(All_Course,on_delete=models.CASCADE)
+    book_time = models.DateTimeField(auto_now_add=True)
+    pay_type = models.CharField(max_length=50,default='online')
+    pay_verify = models.BooleanField(default=False)
+    pay_id = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.course.coname 
     
 
 # class Student(models.Model):
