@@ -37,14 +37,13 @@
                         <div class="product-status-wrap drp-lst">
                             <h4>Departments List</h4>
                             <div class="add-product">
-                                <a href="add-department.html">Add Departments</a>
+                                <a href="{% url 'adddepartment' %}">Add Departments</a>
                             </div>
                             <div class="asset-inner">
                                 <table>
                                     <tr>
                                         <th>No</th>
                                         <th>Name of Dept.</th>
-                                        <th>Status</th>
                                         <th>Head</th>
                                         <th>Email</th>
                                         <th>Phone</th>
@@ -55,16 +54,13 @@
                                     <tr>
                                         <td>{{i.id}}</td>
                                         <td>{{i.name}}</td>
-                                        <td>
-                                            <button class="pd-setting">Active</button>
-                                        </td>
                                         <td>{{i.headdepartment}}</td>
                                         <td>{{i.email}}</td>
                                         <td>{{i.mobile}}</td>
                                         <td>{{i.no_of_student}}</td>
                                         <td>
-                                            <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                            <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                            <a href="{% url 'editdepartment' i.id %}"><button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                                            <a href="{% url 'deletedepartment' i.id %}"><button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a>
                                         </td>
                                     </tr>
                                     {% endfor %}

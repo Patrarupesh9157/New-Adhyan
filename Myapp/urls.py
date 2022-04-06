@@ -24,7 +24,8 @@ urlpatterns = [
     path('addstudent/',views.addstudent,name='addstudent'),
     path('advanceformelement/',views.advanceformelement,name='advanceformelement'),
     path('alerts/',views.alerts,name='alerts'),
-
+    path('editdepartment/<int:pk>',views.editdepartment,name='editdepartment'),
+    path('deletedepartment/<int:pk>',views.deletedepartment,name='deletedepartment'),
     path('allcourses/',views.allcourses,name='allcourses'),
     path('allprofessors/',views.allprofessors,name='allprofessors'),
     path('allstudents/',views.allstudents,name='allstudents'),
@@ -45,7 +46,6 @@ urlpatterns = [
     path('department/',views.department,name='department'),
     path('duallistbox/',views.duallistbox,name='duallistbox'),
 
-    path('editdepartment/',views.editdepartment,name='editdepartment'),
     path('editlibraryassets/',views.editlibraryassets,name='editlibraryassets'),
     path('editprofessor/',views.editprofessor,name='editprofessor'),
     path('editstudent/',views.editstudent,name='editstudent'),

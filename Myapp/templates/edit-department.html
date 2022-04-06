@@ -38,49 +38,48 @@
                         <div class="product-payment-inner-st">
                             <ul id="myTabedu1" class="tab-review-design">
                                 <li class="active"><a href="#description">Edit Department</a></li>
-                                <li><a href="#reviews"> Account Information</a></li>
-                                <li><a href="#INFORMATION">Social Information</a></li>
+                                <!-- <li><a href="#reviews"> Account Information</a></li> -->
+                                <!-- <li><a href="#INFORMATION">Social Information</a></li> -->
                             </ul>
                             <div id="myTabContent" class="tab-content custom-product-edit">
                                 <div class="product-tab-list tab-pane fade active in" id="description">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-														<div class="devit-card-custom">
-															<div class="form-group">
-																<input name="number" type="text" class="form-control" placeholder="Name" value="CSE">
-															</div>
-															<div class="form-group">
-																<input type="text" class="form-control" placeholder="Head" value="John Alva">
-															</div>
-															<div class="form-group">
-																<input type="text" class="form-control" placeholder="Email" value="john@gmail.com">
-															</div>
-														</div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-														<div class="devit-card-custom">
-															<div class="form-group">
-																<input type="number" class="form-control" placeholder="Phone" value="01962067309">
-															</div>
-															<div class="form-group">
-																<input type="text" class="form-control" placeholder="No. of Students" value="1500">
-															</div>
-															<div class="form-group">
-																<input type="text" class="form-control" placeholder="Status" value="Active">
-															</div>
-														</div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="payment-adress">
-                                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                <form id="add-department" action="" class="add-department" method="POST">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                <input name="name" type="text" class="form-control" placeholder="Name" value="{{dept.name}}" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input name="headofdepartment" type="text" class="form-control" placeholder="Head of Department" value="{{dept.headdepartment}}" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input name="email" type="email" class="form-control" placeholder="Email" value="{{dept.email}}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="form-group">
+                                                                <input name="phone" type="number" class="form-control" placeholder="Phone" value="{{dept.mobile}}" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input name="noofstudent" type="number" class="form-control" placeholder="No. of Students" value="{{dept.no_of_student}}" >
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input name="date" type="date" class="form-control" placeholder="Date of Department Start">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="payment-adress">
+                                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

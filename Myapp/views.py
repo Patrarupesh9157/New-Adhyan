@@ -177,6 +177,26 @@ def editcourse(request,pk):
         msg='Course is Edited'
         return render(request,'edit-course.html',{'dept':dept,'uid':uid,'co':co,'msg':msg})
     return render(request,'edit-course.html',{'dept':dept,'uid':uid,'co':co})
+
+
+def editdepartment(request,pk):
+    dept = Department.objects.get(id=pk)
+    uid=Register.objects.get(email=request.session['adminemail'])
+    if request.method=='POST':
+        dept.name=request.POST['name']
+        dept.headdepartment=request.POST['headdepartment']
+        dept.email=request.POST['email']
+        dept.mobile=request.POST['phone']
+        dept.no_of_student=request.POST['noofstudent']
+        if 'date' in request.POST:
+            dept.dep_date=request.POST['date']
+        dept.save()
+    return render(request,'edit-department.html',{'uid':uid,'dept':dept})
+def deletedepartment(request,pk):
+    dept = Department.objects.get(id=pk)
+    dept.delete()
+    return redirect(department)
+
 def courseinfo(request,pk):
     co=All_Course.objects.get(id=pk)
     return render(request,'course-info.html',{'co':co})
@@ -311,8 +331,6 @@ def datatable(request):
 
 def duallistbox(request):
     return render(request,'dual-list-box.html')
-def editdepartment(request):
-    return render(request,'edit-department.html')
 def editlibraryassets(request):
     return render(request,'edit-library-assets.html')
 def editprofessor(request):
