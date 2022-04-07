@@ -15,6 +15,8 @@ urlpatterns = [
     path('p500/',views.p500,name='p500'),
     path('addcourse/',views.addcourse,name='addcourse'),
     path('addindex/<int:pk>',views.addindex,name='addindex'),
+    path('deleteindex/<int:pk>',views.deleteindex,name='deleteindex'),
+    path('editindex/<int:pk>',views.editindex,name='editindex'),
     path('editcourse/<int:pk>',views.editcourse,name='editcourse'),
     
     path('accordion/',views.accordion,name='accordion'),
@@ -27,6 +29,7 @@ urlpatterns = [
     path('editdepartment/<int:pk>',views.editdepartment,name='editdepartment'),
     path('deletedepartment/<int:pk>',views.deletedepartment,name='deletedepartment'),
     path('allcourses/',views.allcourses,name='allcourses'),
+    path('allindex/',views.allindex,name='allindex'),
     path('allprofessors/',views.allprofessors,name='allprofessors'),
     path('allstudents/',views.allstudents,name='allstudents'),
     path('student-delete/<int:pk>',views.student_delete,name='student-delete'),

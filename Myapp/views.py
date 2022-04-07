@@ -192,6 +192,18 @@ def editdepartment(request,pk):
             dept.dep_date=request.POST['date']
         dept.save()
     return render(request,'edit-department.html',{'uid':uid,'dept':dept})
+
+def editindex(request,pk):
+    index = Add_Index.objects.get(id=pk)
+    uid=Register.objects.get(email=request.session['adminemail'])
+    course=All_Course.objects.all()
+    if request.method=='POST':
+        index.topic=request.POST['topic']
+        if 'material' in request.FILES:
+            course.material=request.FILES['material']
+    msg='Index Is Edited'
+    return render(request,'edit-index.html',{'uid':uid,'index':index,'msg':msg})
+
 def deletedepartment(request,pk):
     dept = Department.objects.get(id=pk)
     dept.delete()
@@ -285,7 +297,16 @@ def addindex(request,pk):
             msg = 'Index is added'
             return render(request,'addindex.html',{'uid':uid,'msg':msg})
     return render(request,'addindex.html',{'uid':uid,'course':course,'co':co})
+def allindex(request):
+    uid=Register.objects.get(email=request.session['adminemail'])
+    index=Add_Index.objects.all()
+    return render(request,'all-index.html',{'uid':uid,'index':index})
 
+
+def deleteindex(request,pk):
+    index=Add_Index.objects.get(id=pk)
+    index.delete()
+    return redirect('allindex')
 
 def p404(request):
     return render(request,'404.html')

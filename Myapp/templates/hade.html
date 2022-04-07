@@ -88,12 +88,12 @@
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
                                 <li><a title="Dashboard v.1" href="{% url 'aindex' %}"><span class="mini-sub-pro">Dashboard</span></a></li>
-                                <li><a title="Analytics" href="{% url 'analytics' %}"><span class="mini-sub-pro">Analytics</span></a></li>
-                                <li><a title="Widgets" href="{% url 'widgets' %}"><span class="mini-sub-pro">Widgets</span></a></li>
+                                <!-- <li><a title="Analytics" href="{% url 'analytics' %}"><span class="mini-sub-pro">Analytics</span></a></li> -->
+                                <!-- <li><a title="Widgets" href="{% url 'widgets' %}"><span class="mini-sub-pro">Widgets</span></a></li> -->
                             </ul>
                         </li>
                         <li>
-                            <a title="Landing Page" href="{% url 'events' %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
+                            <!-- <a title="Landing Page" href="{% url 'events' %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a> -->
                         </li>
                         <li>
                             <a class="has-arrow" href="{% url 'allstudents' %}" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Students</span></a>
@@ -107,16 +107,27 @@
                                 <li><a title="All Courses" href="{% url 'allcourses' %}"><span class="mini-sub-pro">All Courses</span></a></li>
                                 <li><a title="Add Courses" href="{% url 'addcourse' %}"><span class="mini-sub-pro">Add Course</span></a></li>
                                 <li><a title="Product Payment" href="{% url 'coursepayment' %}"><span class="mini-sub-pro">Courses Payment</span></a></li>
+                                <li><a title="All Courses" href="{% url 'allindex' %}"><span class="mini-sub-pro">All Index</span></a></li>
                             </ul>
                         </li>
                         <li>
+                            <a class="has-arrow" href="{% url 'mailbox' %}" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">All Index</span></a>
+
+                            <ul class="submenu-angle" aria-expanded="false">
+                                    <!-- <li><a title="All Courses" href="{% url 'allcourses' %}"><span class="mini-sub-pro">All Courses</span></a></li>
+                                    <li><a title="Add Courses" href="{% url 'addcourse' %}"><span class="mini-sub-pro">Add Course</span></a></li>
+                                    <li><a title="Product Payment" href="{% url 'coursepayment' %}"><span class="mini-sub-pro">Courses Payment</span></a></li> -->
+                                <li><a title="All Courses" href="{% url 'allindex' %}"><span class="mini-sub-pro">Indexs</span></a></li>
+                            </ul>
+                        </li>
+                        <!-- <li>
                             <a class="has-arrow" href="{% url 'allcourses' %}" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Library</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="All Library" href="{% url 'libraryassets' %}"><span class="mini-sub-pro">Library Assets</span></a></li>
                                 <li><a title="Add Library" href="{% url 'addlibraryassets' %}"><span class="mini-sub-pro">Add Library Asset</span></a></li>
                                 <li><a title="Edit Library" href="{% url 'editlibraryassets' %}"><span class="mini-sub-pro">Edit Library Asset</span></a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li>
                             <a class="has-arrow" href="{% url 'allcourses' %}" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Departments</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -124,15 +135,15 @@
                                 <li><a title="Add Departments" href="{% url 'adddepartment' %}"><span class="mini-sub-pro">Add Departments</span></a></li>
                             </ul>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a class="has-arrow" href="{% url 'mailbox' %}" aria-expanded="false"><span class="educate-icon educate-message icon-wrap"></span> <span class="mini-click-non">Mailbox</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Inbox" href="{% url 'mailbox' %}"><span class="mini-sub-pro">Inbox</span></a></li>
                                 <li><a title="View Mail" href="{% url 'mailboxview' %}"><span class="mini-sub-pro">View Mail</span></a></li>
                                 <li><a title="Compose Mail" href="{% url 'mailboxcompose' %}"><span class="mini-sub-pro">Compose Mail</span></a></li>
                             </ul>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <a class="has-arrow" href="{% url 'mailbox' %}" aria-expanded="false"><span class="educate-icon educate-interface icon-wrap"></span> <span class="mini-click-non">Interface</span></a>
                             <ul class="submenu-angle interface-mini-nb-dp" aria-expanded="false">
                                 <li><a title="Google Map" href="{% url 'googlemap' %}"><span class="mini-sub-pro">Google Map</span></a></li>
@@ -144,8 +155,8 @@
                                 <li><a title="Preloader" href="{% url 'preloader' %}"><span class="mini-sub-pro">Preloader</span></a></li>
                                 <li><a title="Images Cropper" href="{% url 'imagescropper' %}"><span class="mini-sub-pro">Images Cropper</span></a></li>
                             </ul>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <a class="has-arrow" href="{% url 'mailbox' %}" aria-expanded="false"><span class="educate-icon educate-charts icon-wrap"></span> <span class="mini-click-non">Charts</span></a>
                             <ul class="submenu-angle chart-mini-nb-dp" aria-expanded="false">
                                 <li><a title="Bar Charts" href="{% url 'barcharts' %}"><span class="mini-sub-pro">Bar Charts</span></a></li>
@@ -163,8 +174,8 @@
                                 <li><a title="Peity Charts" href="{% url 'statictable' %}"><span class="mini-sub-pro">Static Table</span></a></li>
                                 <li><a title="Data Table" href="{% url 'datatable' %}"><span class="mini-sub-pro">Data Table</span></a></li>
                             </ul>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <a class="has-arrow" href="{% url 'mailbox' %}" aria-expanded="false"><span class="educate-icon educate-form icon-wrap"></span> <span class="mini-click-non">Forms Elements</span></a>
                             <ul class="submenu-angle form-mini-nb-dp" aria-expanded="false">
                                 <li><a title="Basic Form Elements" href="{% url 'basicformelement' %}"><span class="mini-sub-pro">Bc Form Elements</span></a></li>
@@ -174,8 +185,8 @@
                                 <li><a title="Text Editor" href="{% url 'tinymc' %}"><span class="mini-sub-pro">Text Editor</span></a></li>
                                 <li><a title="Dual List Box" href="dual-list-box{% url 'mailbox' %}"><span class="mini-sub-pro">Dual List Box</span></a></li>
                             </ul>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <a class="has-arrow" href="{% url 'mailbox' %}" aria-expanded="false"><span class="educate-icon educate-apps icon-wrap"></span> <span class="mini-click-non">App views</span></a>
                             <ul class="submenu-angle app-mini-nb-dp" aria-expanded="false">
                                 <li><a title="Notifications" href="{% url 'notifications' %}"><span class="mini-sub-pro">Notifications</span></a></li>
@@ -185,7 +196,7 @@
                                 <li><a title="Tabs" href="{% url 'tabs' %}"><span class="mini-sub-pro">Tabs</span></a></li>
                                 <li><a title="Accordion" href="{% url 'accordion' %}"><span class="mini-sub-pro">Accordion</span></a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li id="removable">
                             <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-pages icon-wrap"></span> <span class="mini-click-non">Pages</span></a>
                             <ul class="submenu-angle page-mini-nb-dp" aria-expanded="false">
