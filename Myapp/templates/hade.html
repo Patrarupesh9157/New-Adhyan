@@ -43,6 +43,16 @@
     <!-- morrisjs CSS
 		============================================ -->
     <link rel="stylesheet" href="{% static 'css/morrisjs/morris.css' %}">
+    <!-- x-editor CSS
+		============================================ -->
+        <link rel="stylesheet" href="{% static 'css/editor/select2.css' %}">
+        <link rel="stylesheet" href="{% static 'css/editor/datetimepicker.css' %}">
+        <link rel="stylesheet" href="{% static 'css/editor/bootstrap-editable.css' %}">
+        <link rel="stylesheet" href="{% static 'css/editor/x-editor-style.css' %}">
+        <!-- normalize CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{% static 'css/data-table/bootstrap-table.css' %}">
+        <link rel="stylesheet" href="{% static 'css/data-table/bootstrap-editable.css' %}">
     <!-- mCustomScrollbar CSS
 		============================================ -->
     <link rel="stylesheet" href="{% static 'css/scrollbar/jquery.mCustomScrollbar.min.css' %}">
@@ -107,7 +117,7 @@
                                 <li><a title="All Courses" href="{% url 'allcourses' %}"><span class="mini-sub-pro">All Courses</span></a></li>
                                 <li><a title="Add Courses" href="{% url 'addcourse' %}"><span class="mini-sub-pro">Add Course</span></a></li>
                                 <li><a title="Product Payment" href="{% url 'coursepayment' %}"><span class="mini-sub-pro">Courses Payment</span></a></li>
-                                <li><a title="All Courses" href="{% url 'allindex' %}"><span class="mini-sub-pro">All Index</span></a></li>
+                                <!-- <li><a title="All Courses" href="{% url 'allindex' %}"><span class="mini-sub-pro">All Index</span></a></li> -->
                             </ul>
                         </li>
                         <li>
@@ -1059,6 +1069,32 @@
     ============================================ -->
 <script src="{% static 'js/metisMenu/metisMenu.min.js' %}"></script>
 <script src="{% static 'js/metisMenu/metisMenu-active.js' %}"></script>
+<!-- data table JS
+		============================================ -->
+        <script src="{% static 'js/data-table/bootstrap-table.js' %}"></script>
+        <script src="{% static 'js/data-table/tableExport.js' %}"></script>
+        <script src="{% static 'js/data-table/data-table-active.js' %}"></script>
+        <script src="{% static 'js/data-table/bootstrap-table-editable.js' %}"></script>
+        <script src="{% static 'js/data-table/bootstrap-editable.js' %}"></script>
+        <script src="{% static 'js/data-table/bootstrap-table-resizable.js' %}"></script>
+        <script src="{% static 'js/data-table/colResizable-1.5.source.js' %}"></script>
+        <script src="{% static 'js/data-table/bootstrap-table-export.js' %}"></script>
+        <!--  editable JS
+            ============================================ -->
+        <script src="{% static 'js/editable/jquery.mockjax.js' %}"></script>
+        <script src="{% static 'js/editable/mock-active.js' %}"></script>
+        <script src="{% static 'js/editable/select2.js' %}"></script>
+        <script src="{% static 'js/editable/moment.min.js' %}"></script>
+        <script src="{% static 'js/editable/bootstrap-datetimepicker.js' %}"></script>
+        <script src="{% static 'js/editable/bootstrap-editable.js' %}"></script>
+        <script src="{% static 'js/editable/xediable-active.js' %}"></script>
+        <!-- Chart JS
+            ============================================ -->
+        <script src="{% static 'js/chart/jquery.peity.min.js' %}"></script>
+        <script src="{% static 'js/peity/peity-active.js' %}"></script>
+        <!-- tab JS
+            ============================================ -->
+        <script src="{% static 'js/tab.js' %}"></script>
 <!-- morrisjs JS
     ============================================ -->
 <script src="{% static 'js/morrisjs/raphael-min.js' %}"></script>

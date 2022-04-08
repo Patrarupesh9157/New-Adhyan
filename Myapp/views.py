@@ -302,12 +302,19 @@ def allindex(request):
     index=Add_Index.objects.all()
     return render(request,'all-index.html',{'uid':uid,'index':index})
 
+def coursepayment(request):
+    uid=Register.objects.get(email=request.session['adminemail'])
+    book=Booking.objects.all()
+    return render(request,'course-payment.html',{'uid':uid,'book':book})
 
 def deleteindex(request,pk):
     index=Add_Index.objects.get(id=pk)
     index.delete()
     return redirect('allindex')
-
+def deletepayment(request,pk):
+    book=Booking.objects.get(id=pk)
+    book.delete()
+    return redirect('coursepayment')
 def p404(request):
     return render(request,'404.html')
 def p500(request):
@@ -340,11 +347,6 @@ def c3(request):
     return render(request,'c3.html')
 def codeeditor(request):
     return render(request,'code-editor.html')
-
-def coursepayment(request):
-    return render(request,'course-payment.html')
-
-
 def datamaps(request):
     return render(request,'data-maps.html')
 def datatable(request):

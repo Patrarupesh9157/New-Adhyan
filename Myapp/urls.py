@@ -18,7 +18,7 @@ urlpatterns = [
     path('deleteindex/<int:pk>',views.deleteindex,name='deleteindex'),
     path('editindex/<int:pk>',views.editindex,name='editindex'),
     path('editcourse/<int:pk>',views.editcourse,name='editcourse'),
-    
+    path('deletepayment/<int:pk>',views.deletepayment,name='deletepayment'),
     path('accordion/',views.accordion,name='accordion'),
     path('adddepartment/',views.adddepartment,name='adddepartment'),
     path('addlibraryassets/',views.addlibraryassets,name='addlibraryassets'),
