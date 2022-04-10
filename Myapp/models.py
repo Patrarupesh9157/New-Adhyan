@@ -13,7 +13,7 @@ class Register(models.Model):
     email=models.EmailField(unique=True)
     address=models.TextField(max_length=60)
     password=models.CharField(max_length=20)
-    pic=models.ImageField(upload_to='Profile Pic',default=logo)
+    pic=models.ImageField(upload_to='Profile Pic',default='logo.png')
 
     def __str__(self):
         return self.name
@@ -40,7 +40,7 @@ class All_Course(models.Model):
     coduration=models.CharField(max_length=30)
     coprice=models.IntegerField()
     codepartment=models.ForeignKey(Department,on_delete=models.CASCADE)
-    codiscription=models.TextField(max_length=100)
+    codiscription=models.TextField(max_length=1000)
     coyear=models.IntegerField()
     copic=models.ImageField(upload_to='course pic',default='python.png')
     covarify=models.BooleanField(default=False)
@@ -72,34 +72,20 @@ class Booking(models.Model):
         return self.course.coname 
     
 
-# class Student(models.Model):
-#     choices = (('male','male'),('female','female'),('other','other'))
-#     fname=models.CharField(max_length=30)
-#     username=models.CharField(unique=True)
-#     email=models.EmailField(unique=True)
-#     Adhaar=models.IntegerField(max_length=12,unique=True)
-#     address=models.TextField()
-#     mobile=models.CharField(max_length=13)
-#     dob=models.DateField()
-#     stupic=models.ImageField(upload_to='Student Pic',default=logo)
-#     postcode=models.CharField(max_length=30)
-#     department=models.ForeignKey(Registe,on_delete=models.CASCADE)
-#     dis=models.TextField(max_length=100)
-#     gender=models.CharField(max_length=20,choices=choices)
-#     country=models.CharField(max_length=30)
-#     state=models.CharField(max_length=30)
-#     city=models.CharField(max_length=30)
-#     date_of_join=models.DateField(auto_now_add=True)
-#     
-#     def __str__(self):
-#         return self.username
-
-# class Library(models.Model):
-#     subject=models.CharField(max_length=30)
-#     department=models.ForeignKey(Registe,on_delete=models.CASCADE)
-#     Author=models.CharField(max_length=30)
-#     price=models.IntegerField()
-#     puyear=models.IntegerField()
-#     frontpic=models.ImageField(upload_to='Book pic',default='python.png')
-#     def __str__(self):
-#         return self.subject
+class Cart(models.Model):
+    student=models.ForeignKey(User,on_delete=models.CASCADE)
+    cart=models.ManyToManyField(All_Course,related_name='Cart')
+    
+    def __str__(self):
+        return self.student.name 
+    
+class Review(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    msg = models.CharField(max_length=500)
+    date = models.DateTimeField(auto_now_add=True)
+    pic = models.ImageField(upload_to='Profile Pic',default='logo.png')
+    
+    def __str__(self):
+        return self.name
+    

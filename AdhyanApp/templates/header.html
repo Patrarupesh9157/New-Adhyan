@@ -76,9 +76,9 @@
                             <ul>
                                 <li><a href="{% url 'dashboard' %}">User profile</a></li>
                                 <li><a href="{% url 'db-courses' %}">Courses</a></li>
-                                <li><a href="{% url 'db-exams' %}">Exams</a></li>
+                                <li><a href="{% url 'wish-list' %}">Wish-List</a></li>
                                 <li><a href="{% url 'db-profile' %}">Prfile</a></li>
-                                <li><a href="{% url 'db-time-line' %}">Time line</a></li>
+                                <li><a href="{% url 'review' %}">Review</a></li>
                             </ul>
                         </div>
                     </div>
@@ -127,7 +127,7 @@
                             <ul id='top-menu' class='dropdown-content top-menu-sty'>
                                 <li><a href="{% url 'dashboard' %}" class="waves-effect"><i class="fa fa-cogs" aria-hidden="true"></i>Profile</a>
                                 </li>
-                                <li><a href="admin-panel-setting.html" class="waves-effect"><i class="fa fa-lock" aria-hidden="true"></i>Change Password</a>
+                                <li><a href="{% url 'change-password' %}" class="waves-effect"><i class="fa fa-lock" aria-hidden="true"></i>Change Password</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li><a href="{% url 'logout' %}" class="ho-dr-con-last waves-effect"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a>

@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.http import HttpResponseBadRequest
+from django.http import HttpResponseBadRequest,JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import razorpay
 from .models import *
@@ -85,8 +85,17 @@ def logout(request):
     return redirect('index')
 
 def change_password(request):
-    del request.session['email']
-    return redirect('index')
+    uid = User.objects.get(email=request.session['email'])
+    if request.method == 'POST':
+        if uid.password == request.POST['opassword']:
+            if request.POST['npassword'] == request.POST['ncpassword']:
+                uid.password = request.POST['npassword']
+                uid.save()
+                return render(request,'index.html',{'uid':uid,'msg':'Password Updated'})
+            return render(request,'change-password.html',{'uid':uid,'msg':'Both new are not same'})
+        return render(request,'change-password.html',{'uid':uid,'msg':'Old Password is wrong'})
+    return render(request,'change-password.html',{'uid':uid,'msg':'Please feel the currect data'})
+    
 
 def forgot(request):
     return render(request,'forgot.html')
@@ -147,15 +156,19 @@ def course_details(request,pk):
     try:
         uid = User.objects.get(email=request.session['email'])
         course = All_Course.objects.get(id=pk)
+        index = Add_Index.objects.filter(course=course)[::-1]
+        print(index)
         course.views.add(uid)
-        return render(request,'course-details.html',{'uid':uid,'course':course})
+        return render(request,'course-details.html',{'uid':uid,'course':course,'index':index})
     except:
-        return render(request,'course-details.html')
+        course = All_Course.objects.get(id=pk)
+        index = Add_Index.objects.filter(course=course)
+        return render(request,'course-details.html',{'course':course,'index':index})
 
 def dashboard(request):
     try:
         uid = User.objects.get(email=request.session['email'])
-        book = Booking.objects.filter(pay_verify=True)
+        book = Booking.objects.filter(student=uid,pay_verify=True)
         return render(request,'dashboard.html',{'uid':uid,'book':book})
     except:
         return redirect('login')
@@ -164,15 +177,20 @@ def dashboard(request):
 def db_courses(request):
     try:
         uid = User.objects.get(email=request.session['email'])
-        book = Booking.objects.filter(pay_verify=True)
+        book = Booking.objects.filter(student=uid,pay_verify=True)
         return render(request,'db-courses.html',{'uid':uid,'book':book})
     except:
         return render(request,'login.html')
 
 
-def db_exams(request):
-    uid = User.objects.get(email=request.session['email'])
-    return render(request,'db-exams.html',{'uid':uid})
+def wish_list(request):
+    try:
+        uid = User.objects.get(email=request.session['email'])
+        cart = Cart.objects.get(student=uid)
+        cart_count = cart.cart.all().count()
+        return render(request,'db-exams.html',{'uid':uid,'cart':cart,'cc':cart_count})
+    except:     
+        return render(request,'db-exams.html')
 
 def db_profile(request):
     uid = User.objects.get(email=request.session['email'])
@@ -189,9 +207,9 @@ def db_profile(request):
         return render(request,'db-profile.html',{'uid':uid,'msg':'Profile Updated'})
     return render(request,'db-profile.html',{'uid':uid})
 
-def db_time_line(request):
-    uid = User.objects.get(email=request.session['email'])
-    return render(request,'db-time-line.html',{'uid':uid})
+# def db_time_line(request):
+#     uid = User.objects.get(email=request.session['email'])
+#     return render(request,'db-time-line.html',{'uid':uid})
 
 def departments(request):
     return render(request,'departments.html')
@@ -309,3 +327,38 @@ def paymenthandler(request,pk):
        # if other than POST request is made.
         return HttpResponseBadRequest()
 
+
+def cart(request):
+    try:
+        uid = User.objects.get(email=request.session['email'])
+        course = All_Course.objects.get(id=request.GET['id'])
+        try:
+            cart = Cart.objects.get(student=uid)
+        except:
+            cart = Cart.objects.create(student=uid)
+        print(cart)
+        cart.cart.add(course)
+        return JsonResponse({'msg':'Added To Cart'})
+    except:
+        return JsonResponse({'msg':'Please Login and Try Again'})
+    
+def review(request):
+    try:
+        uid = User.objects.get(email=request.session['email'])
+        if request.method == 'POST':
+            course = All_Course.objects.get()        
+            view=Review.objects.create(
+                name = request.POST['name'],
+                email = request.POST['email'],
+                msg = request.POST['msg'],
+            )
+            return render(request,'review.html',{'uid':uid,'course':course,'view':view,'msg':'Your Review is Added'})
+        return render(request,'review.html',{'uid':uid})
+    except:
+        return redirect('login')
+    
+def view_course(request,pk):
+    uid = User.objects.get(email=request.session['email'])
+    course = All_Course.objects.get(id=pk)
+    index = Add_Index.objects.filter(course=course)[::-1]
+    return render(request,'view-course.html',{'uid':uid,'course':course,'index':index})

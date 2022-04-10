@@ -1,0 +1,61 @@
+{% load static %}
+{% include 'header2.html' %}
+
+
+<div class="col-md-9">
+    <div class="udb">
+        <div class="udb-sec udb-time">
+            {% comment %} <h4><img src="{% static 'images/icon/db5.png'%}" alt="" /> Added Course Card : {{cc}}</h4>
+            <p>{{card.student}}</p>
+            <div class="tour_head1 udb-time-line days">
+                <ul>                                    
+                    {% for one in cart.cart.all %}
+                    <li class="l-info-pack-plac"> <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <h4><span>Course : </span>{{one.coname  }} </h4>
+                        <p>{{one.codiscription}}</p>
+                    </li>
+                    {% endfor %}
+                </ul> {% endcomment %}
+
+                <div class="cor-p6">
+                    <h3>Write Reviews</h3>
+                    <div class="cor-p7-revi">
+                        <form class="col s12" action="{% url 'review' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input type="text" class="validate" name="name">
+                                    <label>Name</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input type="text" class="validate" name="email">
+                                    <label>Email id</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea class="materialize-textarea" name="msg"></textarea>
+                                    <label>Message</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="submit" value="Submit" class="waves-effect waves-light btn-book">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+
+{% include 'footer.html' %}

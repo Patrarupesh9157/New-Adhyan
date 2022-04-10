@@ -19,3 +19,11 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(models.Booking)
 class UserAdmin(admin.ModelAdmin):
     list_display = ['book_time','pay_type','pay_verify','pay_id']
+
+@admin.register(models.Cart)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['student']
+    
+@admin.register(models.Review)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['name','email','date','msg']

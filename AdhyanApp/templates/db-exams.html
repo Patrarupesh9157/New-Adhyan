@@ -1,146 +1,106 @@
 {% load static %}
 {% include 'header2.html' %}
 
+<style type="text/css">
 
+
+    *{
+     margin: 0px;
+     padding: 0px;
+    }
+    body{
+     font-family: arial;
+    }
+    .main{
+    
+     margin: 0%;
+    }
+    
+    .card{
+         width: 40%;
+         height: 400px;
+         display: inline-block;
+         box-shadow: 2px 2px 20px black;
+         border-radius: 5px; 
+         margin: 2%;
+         position:relative;
+         float: right;
+        }
+    
+    .image img{
+      width: 100%;
+      height: 140px;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+     }
+    
+    .title{
+     
+      text-align: center;
+      padding: 10px;
+      
+     }
+    
+    h1{
+      font-size: 20px;
+     }
+    
+    .des{
+      padding: 0px;
+      text-align: center;
+     
+      padding-top: 1px;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    button{
+      margin-bottom: 10px;
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 5px;
+      padding:10px;
+    }
+    button:hover{
+      background-color: black;
+      color: white;
+      transition: .5s;
+      cursor: pointer;
+    }
+    
+    </style>
 
                 <div class="col-md-9">
                     <div class="udb">
                         <div class="udb-sec udb-time">
-                            <h4><img src="{% static 'images/icon/db5.png'%}" alt="" /> Exam Details</h4>
-                            <p>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                            <h4><img src="{% static 'images/icon/db5.png'%}" alt="" /> Student Wish-List : {{cc}}</h4>
+                            <p>{{card.student}}</p>
                             <div class="tour_head1 udb-time-line days">
-                                <ul>
-                                    <li class="l-info-pack-plac"> <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                        <div class="sdb-cl-tim">
-                                            <div class="sdb-cl-day">
-                                                <h5>Exam 01</h5>
-                                                <span>Start date: 10Sep 2018</span>
-                                            </div>
-                                            <div class="sdb-cl-class">
-                                                <ul>
-                                                    <li>
-                                                        <div class="sdb-cl-class-tim tooltipped" data-position="top" data-delay="50" data-tooltip="Exam timing">
-                                                            <span>10:00 am</span>
-                                                            <span>01:15 pm</span>
-                                                        </div>
-                                                        <div class="sdb-cl-class-name tooltipped" data-position="top" data-delay="50" data-tooltip="Exam name and status">
-                                                            <h5>Software Testing <span>John Smith</span></h5>
-                                                            <span class="sdn-hall-na">Apj Hall 112</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="sdb-cl-class-tim tooltipped" data-position="top" data-delay="50" data-tooltip="Exam timing">
-                                                            <span>10:15 am</span>
-                                                            <span>11:00 am</span>
-                                                        </div>
-                                                        <div class="sdb-cl-class-name tooltipped" data-position="top" data-delay="50" data-tooltip="Exam name and status">
-                                                            <h5>Mechanical Design Classes <span>Stephanie</span></h5>
-                                                            <span class="sdn-hall-na">Apj Hall 112</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="sdb-cl-class-tim">
-                                                            <span>11:00 am</span>
-                                                            <span>11:45 am</span>
-                                                        </div>
-                                                        <div class="sdb-cl-class-name sdb-cl-class-name-lev">
-                                                            <h5>Board Exam Training Classes <span>Matthew</span></h5>
-                                                            <span class="sdn-hall-na">Apj Hall 112</span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="l-info-pack-plac"> <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                        <div class="sdb-cl-tim">
-                                            <div class="sdb-cl-day">
-                                                <h5>Exam 02</h5>
-                                                <span>Start date: 24Nov 2018</span>
-                                            </div>
-                                            <div class="sdb-cl-class">
-                                                <ul>
-                                                    <li>
-                                                        <div class="sdb-cl-class-tim tooltipped" data-position="top" data-delay="50" data-tooltip="Exam timing">
-                                                            <span>9:30 am</span>
-                                                            <span>10:15 am</span>
-                                                        </div>
-                                                        <div class="sdb-cl-class-name tooltipped" data-position="top" data-delay="50" data-tooltip="Exam name and status">
-                                                            <h5>Agriculture <span>John Smith</span></h5>
-                                                            <span class="sdn-hall-na">Apj Hall 112</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="sdb-cl-class-tim">
-                                                            <span>10:15 am</span>
-                                                            <span>11:00 am</span>
-                                                        </div>
-                                                        <div class="sdb-cl-class-name">
-                                                            <h5>Google Product Training <span>Stephanie</span></h5>
-                                                            <span class="sdn-hall-na">Apj Hall 112</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="sdb-cl-class-tim">
-                                                            <span>11:00 am</span>
-                                                            <span>11:45 am</span>
-                                                        </div>
-                                                        <div class="sdb-cl-class-name sdb-cl-class-name-lev">
-                                                            <h5>Web Design & Development <span>Matthew</span></h5>
-                                                            <span class="sdn-hall-na">Apj Hall 112</span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="l-info-pack-plac"> <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                        <div class="sdb-cl-tim">
-                                            <div class="sdb-cl-day">
-                                                <h5>Exam 03</h5>
-                                                <span>Start date: 18Dec 2018</span>
-                                            </div>
-                                            <div class="sdb-cl-class">
-                                                <ul>
-                                                    <li>
-                                                        <div class="sdb-cl-class-tim">
-                                                            <span>9:30 am</span>
-                                                            <span>10:15 am</span>
-                                                        </div>
-                                                        <div class="sdb-cl-class-name">
-                                                            <h5>Software Testing <span>John Smith</span></h5>
-                                                            <span class="sdn-hall-na">Apj Hall 112</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="sdb-cl-class-tim">
-                                                            <span>10:15 am</span>
-                                                            <span>11:00 am</span>
-                                                        </div>
-                                                        <div class="sdb-cl-class-name">
-                                                            <h5>Mechanical Design Classes <span>Stephanie</span></h5>
-                                                            <span class="sdn-hall-na">Apj Hall 112</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="sdb-cl-class-tim">
-                                                            <span>11:00 am</span>
-                                                            <span>11:45 am</span>
-                                                        </div>
-                                                        <div class="sdb-cl-class-name sdb-cl-class-name-lev">
-                                                            <h5>Board Exam Training Classes <span>Matthew</span></h5>
-                                                            <span class="sdn-hall-na">Apj Hall 112</span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="l-info-pack-plac"> <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                        <h4><span>Holiday: </span> Thursday </h4>
-                                        <p>After breakfast, proceed for tour of Dubai city. Visit Jumeirah Mosque, World Trade Centre, Palaces and Dubai Museum. Enjoy your overnight stay at the hotel.In the evening, enjoy a tasty dinner on the Dhow cruise.
-                                            Later, head back to the hotel for a comfortable overnight stay.</p>
-                                    </li>
+                                <ul>                                    
+                                    {% for one in cart.cart.all %}
+                                    <div class="main">
+    
+                                        <!--cards -->
+                                       <div class="card">
+                                       
+                                       <div class="image">
+                                          <img src="{{one.copic.url}}">
+                                       </div>
+                                       <div class="title">
+                                        <h1>
+                                           {{one.coname}}
+                                       </h1>
+                                       </div>
+                                       <div class="des">
+                                        <h4>Technology / {{one.codepartment}} / {{one.coname}}</h4>
+                                       
+                                        <h4>Price : <i class="fa fa-rupee"></i> {{one.coprice}}/-</h4>
+                                       
+                                        <a href="{% url 'payment' one.id %}"><button class="btn btn-info" style="width:120px;margin-bottom:30px;text-align:center;"><i class="fa fa-bar-chart"></i> BOOK NOW</button></a>
+                                        
+                                       </div>
+                                       </div>
+                                       
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>

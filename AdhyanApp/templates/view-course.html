@@ -1,0 +1,51 @@
+{% load static %}
+{% include 'header.html' %}
+
+    <!--== BODY CONTNAINER ==-->
+    <div class="container-fluid sb2" style="margin-top:0px;">
+        <div class="row">
+            <div class="sb2-1">
+                
+                <!--== LEFT MENU ==-->
+                <div class="sb2-13">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        {% for i in index %}                        
+                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> {{i.topic}}</a>                            
+                        </li>
+                        {% endfor %}                        
+                    </ul>
+                </div>
+            </div>
+
+            <!--== BODY INNER CONTAINER ==-->
+            <div class="sb2-2">
+                <!--== breadcrumbs ==-->
+                <div class="sb2-2-2">
+                    <ul>
+                        <li><a href="index-2.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                        </li>
+                        <li class="active-bre"><a href="#"> Add new course</a>
+                        </li>
+                        <li class="page-back"><a href="index-2.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--== User Details ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp admin-form">
+                                <div class="sb2-2-add-blog sb2-2-1">
+                                    {% for i in index %}                                    
+                                    <embed src="{{i.material}}" type="application/pdf" style="width:100%;height:100%;"></embed>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
