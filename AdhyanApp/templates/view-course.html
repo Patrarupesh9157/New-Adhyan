@@ -10,7 +10,10 @@
                 <div class="sb2-13">
                     <ul class="collapsible" data-collapsible="accordion">
                         {% for i in index %}                        
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> {{i.topic}}</a>                            
+                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> {{i.topic}}</a> 
+                            <ul>
+                                <li><a href="#" id="material">{{i.material.url}}</a></li>
+                            </ul>                           
                         </li>
                         {% endfor %}                        
                     </ul>
@@ -36,10 +39,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box-inn-sp admin-form">
-                                <div class="sb2-2-add-blog sb2-2-1">
-                                    {% for i in index %}                                    
-                                    <embed src="{{i.material}}" type="application/pdf" style="width:100%;height:100%;"></embed>
-                                    {% endfor %}
+                                <div class="sb2-2-add-blog sb2-2-1">                                                                       
+                                    <embed src="#material"  type="application/pdf" style="width:100%;height:100%;"></embed>
                                 </div>
                             </div>
                         </div>
