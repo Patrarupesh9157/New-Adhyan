@@ -80,6 +80,9 @@ class Cart(models.Model):
         return self.student.name 
     
 class Review(models.Model):
+    course=models.ForeignKey(All_Course,on_delete=models.CASCADE)
+    student=models.ForeignKey(User,on_delete=models.CASCADE)
+    uid = models.ForeignKey(Register,on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     msg = models.CharField(max_length=500)
