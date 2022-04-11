@@ -12,7 +12,18 @@ import random as r
 def aindex(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     enq=m.Enquiry.objects.all()
-    return render(request,'aindex.html',{'uid':uid,'enq':enq})
+    admin=Register.objects.all()
+    enq_co=m.Enquiry.objects.all().count
+    course=All_Course.objects.all().count
+    student=User.objects.all().count
+    pay=Booking.objects.filter(pay_verify=True).count
+    allstudent=User.objects.all()[::-1][0:5]
+    allcourse=All_Course.objects.all()
+    adminco=All_Course.objects.filter(uid=uid).count
+    purchase=Booking.objects.filter(course__uid=uid,pay_verify=True).count
+    return render(request,'aindex.html',{'adminco':adminco,'purchase':purchase,'uid':uid,'enq':enq,'enq_co':enq_co,'course':course,'student':student,'admin':admin,'allstudent':allstudent,'allcourse':allcourse,'pay':pay})
+
+    # return render(request,'aindex.html',{'uid':uid,'enq':enq})
 def signin(request):
     try:
         uid=Register.objects.get(email=request.session['adminemail'])
@@ -304,7 +315,7 @@ def allindex(request):
 
 def coursepayment(request):
     uid=Register.objects.get(email=request.session['adminemail'])
-    book=Booking.objects.all()
+    book=Booking.objects.filter(pay_verify=True)
     return render(request,'course-payment.html',{'uid':uid,'book':book})
 
 def deleteindex(request,pk):
