@@ -362,3 +362,22 @@ def view_course(request,pk):
     course = All_Course.objects.get(id=pk)
     index = Add_Index.objects.filter(course=course)[::-1]
     return render(request,'view-course.html',{'uid':uid,'course':course,'index':index})
+
+
+
+
+def game1(request):
+    uid = User.objects.get(email=request.session['email'])
+    return render(request,'game1.html',{'uid':uid})
+def game3(request):
+    uid = User.objects.get(email=request.session['email'])
+    return render(request,'game3.html',{'uid':uid})
+def game2(request):
+    uid = User.objects.get(email=request.session['email'])
+    return render(request,'game2.html',{'uid':uid})
+def game4(request):
+    uid = User.objects.get(email=request.session['email'])
+    return render(request,'game4.html',{'uid':uid})
+def game5(request):
+    uid = User.objects.get(email=request.session['email'])
+    return render(request,'game5.html',{'uid':uid})
