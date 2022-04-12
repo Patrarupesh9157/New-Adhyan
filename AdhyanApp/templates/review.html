@@ -18,18 +18,25 @@
                 </ul> {% endcomment %}
 
                 <div class="cor-p6">
-                    <h3>Write Reviews</h3>
+                    <p style="color: aqua; font-size:medium;">{{msg}}</p>
+                    <h3>{{course.coname}} Reviews</h3>
                     <div class="cor-p7-revi">
-                        <form class="col s12" action="{% url 'review' %}" method="POST">
+                        <form class="col s12" action="" method="POST">
                             {% csrf_token %}
                             <div class="row">
                                 <div class="input-field col s6">
-                                    <input type="text" class="validate" name="name">
+                                    <input type="text"  name="name" class="validate" value="{{uid.name}}" readonly>
                                     <label>Name</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <input type="text" class="validate" name="email">
-                                    <label>Email id</label>
+                                    <input type="text"  name="email" class="validate" value="{{course.coname}}" readonly>
+                                    <label>Course Name</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input type="text"  name="coname" class="validate" value="{{uid.email}}" readonly>
+                                    <label>
+                                        Email id
+                                    </label>
                                 </div>
                             </div>
                             <div class="row">
@@ -40,7 +47,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input type="submit" value="Submit" class="waves-effect waves-light btn-book">
+                                    <input type="submit" value="Send Review" class="waves-effect waves-light btn-book">
                                 </div>
                             </div>
                         </form>

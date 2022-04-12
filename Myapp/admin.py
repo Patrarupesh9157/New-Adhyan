@@ -26,4 +26,4 @@ class UserAdmin(admin.ModelAdmin):
     
 @admin.register(models.Review)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['name','email','date','msg']
+     list_display = ['student','course','date','msg']

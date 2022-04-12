@@ -18,7 +18,7 @@
                                     {% for i in book %}
                                     <a href="#">
                                         <li>
-                                            <a href="{% url 'review'  %}">
+                                            <a href="{% url 'review' i.course.id %}">
                                                 <div class="list-mig-like-com com-mar-bot-30">
                                                     <div class="list-mig-lc-img"> <img src="{{i.course.copic.url}}" alt=""> <span class="home-list-pop-rat list-mi-pr">{{i.course.coduration}}</span> </div>
                                                     <div class="list-mig-lc-con">

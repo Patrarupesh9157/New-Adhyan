@@ -81,14 +81,10 @@ class Cart(models.Model):
     
 class Review(models.Model):
     course=models.ForeignKey(All_Course,on_delete=models.CASCADE)
-    student=models.ForeignKey(User,on_delete=models.CASCADE)
-    uid = models.ForeignKey(Register,on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=50)
+    student = models.ForeignKey(User,on_delete=models.CASCADE)
     msg = models.CharField(max_length=500)
     date = models.DateTimeField(auto_now_add=True)
-    pic = models.ImageField(upload_to='Profile Pic',default='logo.png')
     
     def __str__(self):
-        return self.name
+        return self.msg
     

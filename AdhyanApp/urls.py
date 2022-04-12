@@ -15,7 +15,7 @@ urlpatterns = [
     path('course-details/<int:pk>',views.course_details,name='course-details'),
     path('payment/<int:pk>',views.payment,name='payment'),
     path('cart/',views.cart,name='cart'),
-    path('review/',views.review,name='review'),
+    path('review/<int:pk>',views.review,name='review'),
     path('view-course/<int:pk>',views.view_course,name='view-course'),
 
     path('awards/',views.awards,name='awards'),

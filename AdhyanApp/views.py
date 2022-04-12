@@ -342,20 +342,19 @@ def cart(request):
     except:
         return JsonResponse({'msg':'Please Login and Try Again'})
     
-def review(request):
-    try:
-        uid = User.objects.get(email=request.session['email'])
-        if request.method == 'POST':
-            course = All_Course.objects.get()        
-            view=Review.objects.create(
-                name = request.POST['name'],
-                email = request.POST['email'],
-                msg = request.POST['msg'],
-            )
-            return render(request,'review.html',{'uid':uid,'course':course,'view':view,'msg':'Your Review is Added'})
-        return render(request,'review.html',{'uid':uid})
-    except:
-        return redirect('login')
+def review(request,pk):
+    course=All_Course.objects.get(id=pk)
+    uid = User.objects.get(email=request.session['email'])
+    if request.method == 'POST': 
+        Review.objects.create(
+            course=course,
+            student=uid,
+            msg = request.POST['msg']
+        )
+        ms='Your Review is Added'
+        return render(request,'review.html',{'uid':uid,'course':course,'msg':ms})
+    return render(request,'review.html',{'uid':uid,'course':course})
+
     
 def view_course(request,pk):
     uid = User.objects.get(email=request.session['email'])
