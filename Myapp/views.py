@@ -2,6 +2,8 @@ import datetime
 from tempfile import tempdir
 from venv import create
 from django.shortcuts import redirect, render
+
+from AdhyanApp.views import review
 from .models import *
 from AdhyanApp import models as m
 from django.conf import settings
@@ -11,7 +13,8 @@ import random as r
 # Create your views here.
 def aindex(request):
     uid=Register.objects.get(email=request.session['adminemail'])
-    enq=m.Enquiry.objects.all()
+    enq=m.Enquiry.objects.all()[::-1][0:5]
+    review=Review.objects.all()[::-1][0:5]
     admin=Register.objects.all()
     enq_co=m.Enquiry.objects.all().count
     course=All_Course.objects.all().count
@@ -21,7 +24,7 @@ def aindex(request):
     allcourse=All_Course.objects.all()
     adminco=All_Course.objects.filter(uid=uid).count
     purchase=Booking.objects.filter(course__uid=uid,pay_verify=True).count
-    return render(request,'aindex.html',{'adminco':adminco,'purchase':purchase,'uid':uid,'enq':enq,'enq_co':enq_co,'course':course,'student':student,'admin':admin,'allstudent':allstudent,'allcourse':allcourse,'pay':pay})
+    return render(request,'aindex.html',{'adminco':adminco,'purchase':purchase,'uid':uid,'enq':enq,'enq_co':enq_co,'course':course,'student':student,'admin':admin,'allstudent':allstudent,'allcourse':allcourse,'pay':pay,'review':review})
 
     # return render(request,'aindex.html',{'uid':uid,'enq':enq})
 def signin(request):
@@ -275,7 +278,10 @@ def Enquiry(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     enq=m.Enquiry.objects.all()
     return render(request,'Enquiry.html',{'uid':uid,'enq':enq})
-
+def showreview(request):
+    uid=Register.objects.get(email=request.session['adminemail'])
+    review=Review.objects.all()
+    return render(request,'showreview.html',{'uid':uid,'review':review})
 def studentprofile(request,pk):
     uid=Register.objects.get(email=request.session['adminemail'])
     user =m.User.objects.get(id=pk)

@@ -62,6 +62,7 @@ urlpatterns = [
     path('mailbox/',views.mailbox,name='mailbox'),
     path('myprofile/',views.myprofile,name='myprofile'),
     path('Enquiry/',views.Enquiry,name='Enquiry'),
+    path('showreview/',views.showreview,name='showreview'),
 
     path('mailboxcompose/',views.mailboxcompose,name='mailboxcompose'),
     path('mailboxview/',views.mailboxview,name='mailboxview'),

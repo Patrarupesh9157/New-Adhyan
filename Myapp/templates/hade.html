@@ -338,19 +338,20 @@
                                                             <h1>Notifications</h1>
                                                         </div>
                                                         <ul class="notification-menu">
+                                                            {% for i in review%}
                                                             <li>
                                                                 <a href="#">
                                                                     <div class="notification-icon">
-                                                                        <i class="educate-icon educate-checked edu-checked-pro admin-check-pro" aria-hidden="true"></i>
+                                                                        <i aria-hidden="true"><img src="{{i.student.pic.url}}"></i>
                                                                     </div>
                                                                     <div class="notification-content">
-                                                                        <span class="notification-date">16 Sept</span>
-                                                                        <h2>Advanda Cro</h2>
-                                                                        <p>Please done this project as soon possible.</p>
+                                                                        <h2>{{i.student.name}}</h2>
+                                                                        <p style="width: 200px; margin-left:35px;">{{i.msg}}</p>
                                                                     </div>
                                                                 </a>
                                                             </li>
-                                                            <li>
+                                                            {% endfor %}
+                                                            <!-- <li>
                                                                 <a href="#">
                                                                     <div class="notification-icon">
                                                                         <i class="fa fa-cloud edu-cloud-computing-down" aria-hidden="true"></i>
@@ -385,10 +386,10 @@
                                                                         <p>Please done this project as soon possible.</p>
                                                                     </div>
                                                                 </a>
-                                                            </li>
+                                                            </li> -->
                                                         </ul>
                                                         <div class="notification-view">
-                                                            <a href="#">View All Notification</a>
+                                                            <a href="{% url 'showreview' %}">View All Notification</a>
                                                         </div>
                                                     </div>
                                                 </li>
