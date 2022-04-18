@@ -98,7 +98,7 @@
                     </div> -->
                     <div class="col-md-3 col-sm-4 col-xs-12">
                         <div class="ed-course-in">
-                            <a class="course-overlay" href="dashboard.html">
+                            <a class="course-overlay" href="{% url 'dashboard' %}">
                                 <img src="{% static 'images/h-cam.jpg'%}" alt="">
                                 <span>Students profile</span>
                             </a>
@@ -106,17 +106,25 @@
                     </div>
                     <div class="col-md-3 col-sm-4 col-xs-12">
                         <div class="ed-course-in">
-                            <a class="course-overlay" href="research.html">
+                            <a class="course-overlay" href="{% url 'wish-list' %}">
                                 <img src="{% static 'images/h-res.jpg'%}" alt="">
-                                <span>Research & Education</span>
+                                <span>Your Wish List</span>
                             </a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4 col-xs-12">
                         <div class="ed-course-in">
-                            <a class="course-overlay" href="all-courses.html">
+                            <a class="course-overlay" href="{% url 'contact-us' %}">
                                 <img src="{% static 'images/h-about1.jpg'%}" alt="">
-                                <span>Couse</span>
+                                <span>Contact us</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-12">
+                        <div class="ed-course-in">
+                            <a class="course-overlay" href="{% url 'about' %}">
+                                <img src="{% static 'images/h-about1.jpg'%}" alt="">
+                                <span>About us</span>
                             </a>
                         </div>
                     </div>

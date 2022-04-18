@@ -17,12 +17,14 @@ urlpatterns = [
     path('cart/',views.cart,name='cart'),
     path('review/<int:pk>',views.review,name='review'),
     path('view-course/<int:pk>',views.view_course,name='view-course'),
+    path('views/<int:pk>',views.views,name='views'),
 
     path('awards/',views.awards,name='awards'),
     path('contact-us/',views.contact_us,name='contact-us'),
     path('dashboard/',views.dashboard,name='dashboard'),
     path('db-courses/',views.db_courses,name='db-courses'),
     path('wish-list/',views.wish_list,name='wish-list'),
+    path('wish-list-delete/<int:pk>',views.wish_list_delete,name='wish-list-delete'),
     path('db-profile/',views.db_profile,name='db-profile'),
     # path('db-time-line/',views.db_time_line,name='db-time-line'),
     path('departments',views.departments,name='departments'),
@@ -35,11 +37,7 @@ urlpatterns = [
     path('seminar/',views.seminar,name='seminar'),
     path('payment/paymenthandler/<int:pk>', views.paymenthandler, name='paymenthandler'),
     
-    path('game1/',views.game1,name='game1'),
-    path('game3/',views.game3,name='game3'),
-    path('game2/',views.game2,name='game2'),
-    path('game4/',views.game4,name='game4'),
-    path('game5/',views.game5,name='game5'),
+    
 
 
 

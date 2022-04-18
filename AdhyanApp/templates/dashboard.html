@@ -13,7 +13,7 @@
                         <div class="udb-sec udb-cour">
                             <h4><img src="{% static 'images/icon/db2.png'%}" alt="" /> Booking Courses</h4>
                             <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.The point of using Lorem Ipsummaking it look like readable English.</p>
-                            <div class="sdb-cours">
+                            <div class="sdb-cours" >
                                 <ul>
                                     {% for i in book %}
                                     <a href="#">
@@ -27,7 +27,11 @@
                                                         <p>{{i.course.codepartment.headdepartment}}</p>
                                                     </div>
                                                 </div>
-                                            </a>
+                                            </a><br>
+                                            <center>
+                                            <a href="{% url 'view-course' i.course.id %}">
+                                                <button class="btn btn-primary" style="width:100%">Read Course</button>
+                                            </a></center><br>
                                         </li>
                                     </a>
                                     {% endfor %}                                    
@@ -44,7 +48,7 @@
                                             <th>Course ID</th>
                                             <th>Course Name</th>
                                             <th>Booking Date</th>
-                                            <th>Payment ID</th>
+                                            <!-- <th>Payment ID</th> -->
                                             <th>Status</th>
                                             <th>View</th>
                                         </tr>
@@ -56,9 +60,9 @@
                                             <td>{{books.course.id}}</td>
                                             <td>{{books.course.coname}}</td>
                                             <td>{{books.book_time}}</td>
-                                            <td>{{books.pay_id}}</td>
+                                            <!-- <td>{{books.pay_id}}</td> -->
                                             <td><span class="pro-user-act">active</span></td>
-                                            <td><a href="{% url 'view-course' books.course.id %}" class="pro-edit">view</a></td>
+                                            <td><a href="{% url 'view-course' books.course.id %}" class="pro-edit">View Course</a></td>
                                         </tr> 
                                         {% endfor %}
                                     </tbody>

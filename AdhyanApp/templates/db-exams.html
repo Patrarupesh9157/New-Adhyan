@@ -96,6 +96,7 @@
                                         <h4>Price : <i class="fa fa-rupee"></i> {{one.coprice}}/-</h4>
                                        
                                         <a href="{% url 'payment' one.id %}"><button class="btn btn-info" style="width:120px;margin-bottom:30px;text-align:center;"><i class="fa fa-bar-chart"></i> BOOK NOW</button></a>
+                                        <a href="{% url 'wish-list-delete' one.id %}"><button class="btn btn-danger" style="width:120px;margin-bottom:30px;text-align:center;"><i class="fa fa-trash"></i> delete</button></a>
                                         
                                        </div>
                                        </div>

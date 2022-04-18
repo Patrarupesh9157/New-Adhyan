@@ -182,6 +182,12 @@ def db_courses(request):
     except:
         return render(request,'login.html')
 
+def wish_list_delete(request,pk):
+    uid = User.objects.get(email=request.session['email'])
+    course = get_object_or_404(All_Course,id=pk)
+    cart = Cart()
+    cart.cart.remove(course)
+    return render(request,'db-exam.html',{'uid':uid,'cart':cart,'course':course})
 
 def wish_list(request):
     try:
@@ -336,7 +342,6 @@ def cart(request):
             cart = Cart.objects.get(student=uid)
         except:
             cart = Cart.objects.create(student=uid)
-        print(cart)
         cart.cart.add(course)
         return JsonResponse({'msg':'Added To Cart'})
     except:
@@ -360,23 +365,13 @@ def view_course(request,pk):
     uid = User.objects.get(email=request.session['email'])
     course = All_Course.objects.get(id=pk)
     index = Add_Index.objects.filter(course=course)[::-1]
-    return render(request,'view-course.html',{'uid':uid,'course':course,'index':index})
+    for i in index:
+        data = i
+    return render(request,'view-course.html',{'uid':uid,'course':course,'index':index,'data':data})
 
 
-
-
-def game1(request):
+def views(request,pk):
     uid = User.objects.get(email=request.session['email'])
-    return render(request,'game1.html',{'uid':uid})
-def game3(request):
-    uid = User.objects.get(email=request.session['email'])
-    return render(request,'game3.html',{'uid':uid})
-def game2(request):
-    uid = User.objects.get(email=request.session['email'])
-    return render(request,'game2.html',{'uid':uid})
-def game4(request):
-    uid = User.objects.get(email=request.session['email'])
-    return render(request,'game4.html',{'uid':uid})
-def game5(request):
-    uid = User.objects.get(email=request.session['email'])
-    return render(request,'game5.html',{'uid':uid})
+    index = Add_Index.objects.get(id=pk)
+    return render(request,'views.html',{'uid':uid,'index':index})
+    
