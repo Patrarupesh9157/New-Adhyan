@@ -184,9 +184,10 @@ def db_courses(request):
 
 def wish_list_delete(request,pk):
     uid = User.objects.get(email=request.session['email'])
-    course = get_object_or_404(All_Course,id=pk)
-    cart = Cart()
-    cart.cart.remove(course)
+    course = All_Course.objects.get(id=pk)
+    cart_id = Cart.objects.get(pk=int(request.POST["cart"]))
+    print(cart_id)
+    cart.course.remove(cart_id)
     return render(request,'db-exam.html',{'uid':uid,'cart':cart,'course':course})
 
 def wish_list(request):
@@ -196,7 +197,7 @@ def wish_list(request):
         cart_count = cart.cart.all().count()
         return render(request,'db-exams.html',{'uid':uid,'cart':cart,'cc':cart_count})
     except:     
-        return render(request,'db-exams.html')
+        return render(request,'login.html')
 
 def db_profile(request):
     uid = User.objects.get(email=request.session['email'])

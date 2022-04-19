@@ -123,7 +123,7 @@
                     <div class="col-md-3 col-sm-4 col-xs-12">
                         <div class="ed-course-in">
                             <a class="course-overlay" href="{% url 'about' %}">
-                                <img src="{% static 'images/h-about1.jpg'%}" alt="">
+                                <img src="{% static 'images/about-us.jpg'%}" alt="" style="height:160px">
                                 <span>About us</span>
                             </a>
                         </div>
@@ -386,10 +386,8 @@
                         </ul>
                     </div>
                 </div>
+                
                 <div class="col-md-4">
-                    <!--<div class="ho-ex-title">
-							<h4>Upcoming Event</h4>
-						</div>-->
                     <div class="ho-ev-latest ho-ev-latest-bg-2">
                         <div class="ho-lat-ev">
                             <h4>Job Vacants</h4>
@@ -445,6 +443,61 @@
                     </div>
                 </div>
                 <div class="col-md-4">
+                    <div class="ho-ev-latest ho-ev-latest-bg-2">
+                        <div class="ho-lat-ev">
+                            <h4>Job Vacants</h4>
+                            <p>Nulla at velit convallis, venenatis lacus quis, efficitur lectus.</p>
+                        </div>
+                    </div>
+                    <div class="ho-event ho-event-mob-bot-sp">
+                        <ul>
+                            <li>
+                                <div class="ho-ev-img"><img src="{% static 'images/event/1.jpg'%}" alt="">
+                                </div>
+                                <div class="ho-ev-link">
+                                    <a href="#">
+                                        <h4>Almost before we knew it, we had left the ground</h4>
+                                    </a>
+                                    <p>Etiam ornare lacus nec lectus vestibulum aliquam.</p>
+                                    <span>Location: New York</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="ho-ev-img"><img src="{% static 'images/event/2.jpg'%}" alt="">
+                                </div>
+                                <div class="ho-ev-link">
+                                    <a href="#">
+                                        <h4>Then came the night of the first falling star.</h4>
+                                    </a>
+                                    <p>Vestibulum sollicitudin sem arcu</p>
+                                    <span>Location: Los Angeles</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="ho-ev-img"><img src="{% static 'images/event/3.jpg'%}" alt="">
+                                </div>
+                                <div class="ho-ev-link">
+                                    <a href="#">
+                                        <h4>Educate to Empower NYE Party</h4>
+                                    </a>
+                                    <p>Vestibulum sollicitudin sem arcu, eget ullamcorper purus hendrerit</p>
+                                    <span>Location: Chennai</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="ho-ev-img"><img src="{% static 'images/event/4.jpg'%}" alt=""></div>
+                                <div class="ho-ev-link">
+                                    <a href="#">
+                                        <h4>Then came the night of the first falling star.</h4>
+                                    </a>
+                                    <p>Venenatis lacus lectus.</p>
+                                    <span>Location: Chicago</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% comment %} <div class="col-md-4">
                     <!--<div class="ho-ex-title">
 							<h4>Upcoming Event</h4>
 						</div>-->
@@ -516,13 +569,13 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
     </section>
 
     <!-- NEWS AND EVENTS -->
-    <section>
+    {% comment %} <section>
         <div class="container com-sp">
             <div class="row">
                 <div class="con-title">
@@ -626,7 +679,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> {% endcomment %}
 
     
 {% include 'footer.html' %}

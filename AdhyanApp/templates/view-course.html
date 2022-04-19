@@ -10,12 +10,12 @@
                     <!-- <div class="col-md-3">
                       
                     </div> -->
-                    <center><h1 style="text-transform: uppercase;">{{course.coname}} INDEX</h1></center><br><br><br>
+                    <center><h1 style="text-transform: uppercase;">{{course.coname}} INDEX</h1></center><br><hr style="border:2px solid black;"><br><br>
                     {% for i in index %}
                     <div style="margin-left: 140px; margin-bottom: 30px; float:left;">
                       <a href="{% url 'views' i.id %}">
                         <img src="{% static 'images/pdf.png'%}" alt="" style="width: 150px; height: 170px; float:left;">
-                        <h4>{{i.topic}}</h4>
+                        <h4 style="margin-top: 70px;">{{i.topic}}</h4>
                       </a>
                     </div>
                     {% endfor %}
