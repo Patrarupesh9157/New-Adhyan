@@ -1,48 +1,155 @@
 {% extends "hade.html" %}
 {% load static %}
 {% block head %}
-            <div class="breadcome-area">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="breadcome-list single-page-breadcome">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="breadcome-heading">
-                                            <form role="search" class="sr-input-func">
-                                                <input type="text" placeholder="Search..." class="search-int form-control">
-                                                <a href="#"><i class="fa fa-search"></i></a>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <ul class="breadcome-menu">
-                                            <li><a href="#">Home</a> <span class="bread-slash">/</span>
-                                            </li>
-                                            <li><span class="bread-blod">Pdf Viewer</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="pdf-viewer-area mg-b-15">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    </div>
-                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                        <div class="pdf-single-pro">
-                            <a class="media" href="pdf/mamunur.pdf"></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endblock %}
+<link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <style>
+      .top-bar {
+        background: #333;
+        color: #fff;
+        padding: 1rem;
+      }
+      
+      .btn {
+        background: rgb(40, 46, 169);
+        color: #fff;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 0.7rem 2rem;
+      }
+      
+      .btn:hover {
+        opacity: 0.9;
+      }
+      
+      .page-info {
+        margin-left: 1rem;
+      }
+      
+      .error {
+        background: orangered;
+        color: #fff;
+        padding: 1rem;
+      }
+      
+    </style>
+    <center>
+    <div class="top-bar">
+      <button class="btn" id="prev-page">
+        <i class="fas fa-arrow-circle-left"></i> Prev Page
+      </button>
+      <button class="btn" id="next-page">
+        Next Page <i class="fas fa-arrow-circle-right"></i>
+      </button>
+      <span class="page-info">
+        Page <span id="page-num"></span> of <span id="page-count"></span>
+      </span>
+    </div>
+
+    <canvas id="pdf-render"></canvas>
+
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script src="js/main.js"></script>
+  </center>
+
+  <script>
+    {% comment %} const url = 'https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf'; {% endcomment %}
+    const url = '{{index.material.url}}';
+
+let pdfDoc = null,
+  pageNum = 1,
+  pageIsRendering = false,
+  pageNumIsPending = null;
+
+const scale = 1.5,
+  canvas = document.querySelector('#pdf-render'),
+  ctx = canvas.getContext('2d');
+
+// Render the page
+const renderPage = num => {
+  pageIsRendering = true;
+
+  // Get page
+  pdfDoc.getPage(num).then(page => {
+    // Set scale
+    const viewport = page.getViewport({ scale });
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+
+    const renderCtx = {
+      canvasContext: ctx,
+      viewport
+    };
+
+    page.render(renderCtx).promise.then(() => {
+      pageIsRendering = false;
+
+      if (pageNumIsPending !== null) {
+        renderPage(pageNumIsPending);
+        pageNumIsPending = null;
+      }
+    });
+
+    // Output current page
+    document.querySelector('#page-num').textContent = num;
+  });
+};
+
+// Check for pages rendering
+const queueRenderPage = num => {
+  if (pageIsRendering) {
+    pageNumIsPending = num;
+  } else {
+    renderPage(num);
+  }
+};
+
+// Show Prev Page
+const showPrevPage = () => {
+  if (pageNum <= 1) {
+    return;
+  }
+  pageNum--;
+  queueRenderPage(pageNum);
+};
+
+// Show Next Page
+const showNextPage = () => {
+  if (pageNum >= pdfDoc.numPages) {
+    return;
+  }
+  pageNum++;
+  queueRenderPage(pageNum);
+};
+
+// Get Document
+pdfjsLib
+  .getDocument(url)
+  .promise.then(pdfDoc_ => {
+    pdfDoc = pdfDoc_;
+
+    document.querySelector('#page-count').textContent = pdfDoc.numPages;
+
+    renderPage(pageNum);
+  })
+  .catch(err => {
+    // Display error
+    const div = document.createElement('div');
+    div.className = 'error';
+    div.appendChild(document.createTextNode(err.message));
+    document.querySelector('body').insertBefore(div, canvas);
+    // Remove top bar
+    document.querySelector('.top-bar').style.display = 'none';
+  });
+
+// Button Events
+document.querySelector('#prev-page').addEventListener('click', showPrevPage);
+document.querySelector('#next-page').addEventListener('click', showNextPage);
+
+  </script>
+{% endblock %}

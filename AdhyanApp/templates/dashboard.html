@@ -13,6 +13,7 @@
                         <div class="udb-sec udb-cour">
                             <h4><img src="{% static 'images/icon/db2.png'%}" alt="" /> Booking Courses</h4>
                             <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.The point of using Lorem Ipsummaking it look like readable English.</p>
+                            <h6>Note : If you are give a Review then Click to the Course Images </h6>
                             <div class="sdb-cours" >
                                 <ul>
                                     {% for i in book %}
@@ -47,8 +48,7 @@
                                         <tr>
                                             <th>Course ID</th>
                                             <th>Course Name</th>
-                                            <th>Booking Date</th>
-                                            <!-- <th>Payment ID</th> -->
+                                            <th>Booking Date</th>                                    
                                             <th>Status</th>
                                             <th>View</th>
                                         </tr>
@@ -59,8 +59,7 @@
                                         <tr>
                                             <td>{{books.course.id}}</td>
                                             <td>{{books.course.coname}}</td>
-                                            <td>{{books.book_time}}</td>
-                                            <!-- <td>{{books.pay_id}}</td> -->
+                                            <td>{{books.book_time}}</td>                                            
                                             <td><span class="pro-user-act">active</span></td>
                                             <td><a href="{% url 'view-course' books.course.id %}" class="pro-edit">View Course</a></td>
                                         </tr> 

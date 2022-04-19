@@ -13,10 +13,20 @@ def index(request):
     try:
         uid = User.objects.get(email=request.session['email'])
         courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
-        return render(request,'index.html',{'uid':uid,'courses':courses})
+        enquiry = Enquiry.objects.all().count()
+        en = Enquiry.objects.all()[::-1][:4]
+        review = Review.objects.all().count()
+        re = Review.objects.all()[::-1][:4]
+        cart = Cart.objects.all().count()
+        buy = Booking.objects.filter(student=uid).values_list('course',flat=True)
+        return render(request,'index.html',{'uid':uid,'courses':courses,'enquiry':enquiry,'en':en,'review':review,'re':re,'cart':cart,'buy':buy})
     except:
         courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
-        return render(request,'index.html',{'courses':courses})
+        enquiry = Enquiry.objects.all().count()
+        en = Enquiry.objects.all()
+        review = Review.objects.all().count()
+        re = Review.objects.all()
+        return render(request,'index.html',{'courses':courses,'enquiry':enquiry,'en':en,'review':review,'re':re})
 
 def register(request):
     if request.method == 'POST':
@@ -185,10 +195,11 @@ def db_courses(request):
 def wish_list_delete(request,pk):
     uid = User.objects.get(email=request.session['email'])
     course = All_Course.objects.get(id=pk)
-    cart_id = Cart.objects.get(pk=int(request.POST["cart"]))
-    print(cart_id)
-    cart.course.remove(cart_id)
-    return render(request,'db-exam.html',{'uid':uid,'cart':cart,'course':course})
+    cart_id = Cart.objects.get(student=uid)
+    # print(cart_id.cart.all())
+    cart_id.cart.remove(course)
+    return redirect('wish-list')
+    # return render(request,'db-exam.html',{'uid':uid,'cart':cart,'course':course})
 
 def wish_list(request):
     try:
@@ -341,6 +352,7 @@ def cart(request):
         course = All_Course.objects.get(id=request.GET['id'])
         try:
             cart = Cart.objects.get(student=uid)
+            return JsonResponse({'msg':'This Course is Already Added'})
         except:
             cart = Cart.objects.create(student=uid)
         cart.cart.add(course)

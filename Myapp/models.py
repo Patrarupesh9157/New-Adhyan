@@ -55,7 +55,7 @@ class Add_Index(models.Model):
     uid = models.ForeignKey(Register,on_delete=models.CASCADE)
     course = models.ForeignKey(All_Course,on_delete=models.CASCADE)
     topic=models.CharField(max_length=50,)
-    material=models.FileField(upload_to="course pic")
+    material=models.FileField(upload_to="index pdf")
     
     def __str__(self):
         return self.topic
