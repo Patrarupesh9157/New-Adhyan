@@ -128,7 +128,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <!-- <div class="row">
                                                     <div class="col-lg-12">
                                                         <div class="content-profile">
                                                             <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras
@@ -139,24 +139,36 @@
                                                                 dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="row mg-b-15">
                                                     <div class="col-lg-12">
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="skill-title">
-                                                                    <h2>Skill Set</h2>
+                                                                    <h2>Course Purchase By You</h2>
                                                                     <hr />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="progress-skill">
-                                                            <h2>Java</h2>
-                                                            <div class="progress progress-mini">
-                                                                <div style="width: 90%;" class="progress-bar progress-yellow"></div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="progress-skill">
+                                                            <table class="table hover-table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Name of Course</th>
+                                                                        <th>Information of Course</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {% for i in book%}
+                                                                    <tr>
+                                                                        <td><h2>{{i.course.coname}}</h2></td>
+                                                                        <td><a href="{% url 'courseinfo' i.course.id %}" ><button class="btn btn-info" style="text-transform: uppercase; width: 200px;">Info Of {{i.course.coname}}</button></a></td>
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                                </tbody>
+                                                            </table>    
+                                                        </div><br>
+                                                        <!-- <div class="progress-skill">
                                                             <h2>Php</h2>
                                                             <div class="progress progress-mini">
                                                                 <div style="width: 80%;" class="progress-bar progress-green"></div>
@@ -173,7 +185,7 @@
                                                             <div class="progress progress-mini">
                                                                 <div style="width: 60%;" class="progress-bar progress-red"></div>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </div>
                                                 <div class="row mg-b-15">
@@ -181,24 +193,43 @@
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="skill-title">
-                                                                    <h2>Education</h2>
+                                                                    <h2>Course Details</h2>
                                                                     <hr />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="ex-pro">
-                                                            <ul>
-                                                                <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                                                <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                                                <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                                                <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                                                <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                                            </ul>
+                                                            <div class="sparkline12-list mg-b-30">
+                                                                <div class="sparkline12-graph">
+                                                                    <div class="static-table-list">
+                                                                        <table class="table hover-table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>Student id</th>
+                                                                                    <th>Course Name</th>
+                                                                                    <th>Booking Date</th>
+                                                                                    <th>Payment ID</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                {% for i in book%}
+                                                                                <tr>
+                                                                                    <td>{{i.student.id}}</td>
+                                                                                    <td>{{i.course.coname}}</td>
+                                                                                    <td>{{i.book_time}}</td>
+                                                                                    <td>{{i.pay_id}}</td>
+                                                                                </tr>
+                                                                                {% endfor %}
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row mg-b-15">
-                                                    <div class="col-lg-12">
+                                                    <!-- <div class="col-lg-12">
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="skill-title">
@@ -216,10 +247,10 @@
                                                                 <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
                                                             </ul>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-lg-12">
+                                                    <!-- <div class="col-lg-12">
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="skill-title">
@@ -237,7 +268,7 @@
                                                                 <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
                                                             </ul>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                         </div>

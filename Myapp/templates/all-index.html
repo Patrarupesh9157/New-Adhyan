@@ -83,7 +83,7 @@
                                             <tr>
                                                 <td>{{i.id}}</td>
                                                 <td>{{i.topic}}</td>
-                                                <td>{{i.material}}</td>
+                                                <td>{{i.material}}   <a href="{% url 'pdfviewer' i.id %}"><button data-toggle="tooltip" title="View" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
                                                 <td>{{i.course.coname}}</td>
                                                 <td>{{i.course.coduration}}</td>
 

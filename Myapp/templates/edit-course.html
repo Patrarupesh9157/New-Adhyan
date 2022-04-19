@@ -64,7 +64,7 @@
                                                                 <div class="form-group">
                                                                     <!-- <input name="codepartment" type="text" class="form-control" placeholder="Department"> -->
                                                                     <select name="codepartment" class="form-control">
-                                                                        <option value="{{co.codepartment}}" selected disabled>{{co.codepartment}}</option>
+                                                                        <option value="{{co.codepartment}}" selected aria-readonly="true">{{co.codepartment}}</option>
                                                                         {% for i in dept %}
                                                                         <option value="{{i}}">{{i}}</option>
                                                                         {% endfor %}

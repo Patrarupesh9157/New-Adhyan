@@ -11,6 +11,22 @@ from django.core.mail import send_mail
 
 import random as r
 # Create your views here.
+
+
+def pdfviewer(request,pk):
+    index=Add_Index.objects.get(id=pk)
+    uid=Register.objects.get(email=request.session['adminemail'])
+    return render(request,'pdf-viewer.html',{'uid':uid,'index':index})
+
+def showadmin(request,pk):
+    uid=Register.objects.get(email=request.session['adminemail'])
+    user=Register.objects.get(id=pk)
+    course=All_Course.objects.filter(uid=user).count
+    enq_co=m.Enquiry.objects.all().count
+    review=Review.objects.filter(course__uid=user).count
+    purchase=Booking.objects.filter(course__uid=user,pay_verify=True).count
+    return render(request,'showadmin.html',{'uid':uid,'u':user,'tcourse':course,'tenq':enq_co,'treview':review,'tpurchase':purchase})
+
 def aindex(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     enq=m.Enquiry.objects.all()[::-1][0:5]
@@ -20,7 +36,7 @@ def aindex(request):
     course=All_Course.objects.all().count
     student=User.objects.all().count
     pay=Booking.objects.filter(pay_verify=True).count
-    allstudent=User.objects.all()[::-1][0:5]
+    allstudent=User.objects.all()[::-1][0:4]
     allcourse=All_Course.objects.all()
     adminco=All_Course.objects.filter(uid=uid).count
     purchase=Booking.objects.filter(course__uid=uid,pay_verify=True).count
@@ -224,8 +240,10 @@ def deletedepartment(request,pk):
     return redirect(department)
 
 def courseinfo(request,pk):
+    uid=Register.objects.get(email=request.session['adminemail'])
     co=All_Course.objects.get(id=pk)
-    return render(request,'course-info.html',{'co':co})
+    index=Add_Index.objects.filter(course=co)
+    return render(request,'course-info.html',{'co':co,'uid':uid,'index':index})
 def adddepartment(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     if request.method=='POST':
@@ -285,18 +303,16 @@ def showreview(request):
 def studentprofile(request,pk):
     uid=Register.objects.get(email=request.session['adminemail'])
     user =m.User.objects.get(id=pk)
-    return render(request,'student-profile.html',{'uid':uid,'user':user})
-
+    book=Booking.objects.filter(student=user,pay_verify=True)
+    return render(request,'student-profile.html',{'uid':uid,'user':user,'book':book})
 def addindex(request,pk):
     co=Department.objects.all()
     uid=Register.objects.get(email=request.session['adminemail'])
     course=All_Course.objects.get(id=pk)
     if request.method=='POST':
-        
         post = list(dict(request.POST).keys())
         post.pop(0)
         # print(post)
-
         file = list(dict(request.FILES).keys())
         d = dict(zip(post,file))
         try:
@@ -403,9 +419,7 @@ def multiupload(request):
 def notifications(request):
     return render(request,'notifications.html')
 def passwordmeter(request):
-    return render(request,'password-meter.html')   
-def pdfviewer(request):
-    return render(request,'pdf-viewer.html')
+    return render(request,'password-meter.html')
 def preloader(request):
     return render(request,'preloader.html')
 def professorprofile(request):

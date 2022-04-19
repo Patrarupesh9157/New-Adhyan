@@ -71,7 +71,7 @@ urlpatterns = [
     path('notifications/',views.notifications,name='notifications'),
     path('passwordmeter/',views.passwordmeter,name='passwordmeter'),
     path('passwordrecovery/',views.passwordrecovery,name='passwordrecovery'),
-    path('pdfviewer/',views.pdfviewer,name='pdfviewer'),
+    path('pdfviewer/<int:pk>',views.pdfviewer,name='pdfviewer'),
     path('preloader/',views.preloader,name='preloader'),
     path('professorprofile/',views.professorprofile,name='professorprofile'),
     path('roundedchart/',views.roundedchart,name='roundedchart'),
@@ -84,4 +84,6 @@ urlpatterns = [
     path('widgets/',views.widgets,name='widgets'),
     path('xeditable/',views.xeditable,name='xeditable'),
     path('peity/',views.peity,name='peity'),
+    path('showadmin/<int:pk>',views.showadmin,name='showadmin'),
+
 ]
