@@ -107,8 +107,44 @@ def change_password(request):
     return render(request,'change-password.html',{'uid':uid,'msg':'Please feel the currect data'})
     
 
+
 def forgot(request):
+    if request.method=='POST':
+        uid=User.objects.get(email=request.POST['email'])
+        if uid.email==request.POST['email']:
+            s1="abcdefghijklmnopqrstuvwxyz"
+            s2="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            s3="0123456789"
+            s4=".@"
+            s=s1+s2+s3+s4
+            forpass = "".join(r.sample(s,8))
+            subject = 'Forgot Password For Adhyan Id'
+            message = f'Your new Password is {forpass} .Please Enter This Password for signin'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [request.POST['email'], ]
+            send_mail( subject, message, email_from, recipient_list )
+            return render(request,'forpass.html',{'forpass':forpass,'Email':uid.email,'msg':'See in Your Email id Your Password is Sent'})
+        return render(request,'forgot.html',{'msg':'Email Is not Register'})
     return render(request,'forgot.html')
+
+def forpass(request):
+    try:
+        uid=User.objects.get(email=request.session['email'])
+        return redirect('index')
+    except:
+        if request.method=='POST':
+            try:
+                uid=User.objects.get(email=request.POST['email'])
+                if request.POST['password']==request.POST['forpass']:
+                    uid.password=request.POST['forpass']
+                    uid.save()
+                    request.session['email']=uid.email
+                    return redirect('index')
+                return render(request,'forpass.html',{'msg':'Password is incorrect'})
+            except:
+                return render(request,'register.html',{'msg':'Email is not registered'})
+        return render(request,'forpass.html')
+
 
 def about(request):
     try:

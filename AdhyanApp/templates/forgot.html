@@ -1,9 +1,5 @@
 {% include 'header.html' %}
 {% load static %}
-
-
-
-
     <!--SECTION START-->
     <section class="c-all p-semi p-event">
         <div class="semi-inn">
@@ -22,7 +18,7 @@
                     <p>{{msg}}</p>
                     {% endif %}
                     <div class="col s12">
-                        <form class="form-horizontal" action="" method='POST'>
+                        <form class="form-horizontal" action="{% url 'forgot' %}" method='POST'>
                         {% csrf_token %}
                             
                             
@@ -35,7 +31,7 @@
                             
                             <div class="form-group mar-bot-0">
                                 <div class="col-md-12">
-                                    <i class="waves-effect waves-light light-btn waves-input-wrapper" style=""><input type="submit" value="Send OTP Now" class="waves-button-input"></i>
+                                    <i class="waves-effect waves-light light-btn waves-input-wrapper"><input type="submit" value="Send OTP Now" class="waves-button-input"></i>
                                 </div>
                             </div>
                         </form>
@@ -45,6 +41,4 @@
         </div>
     </section>
     <!--SECTION END-->
-
-
 {% include 'footer.html' %}

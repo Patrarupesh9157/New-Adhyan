@@ -35,6 +35,7 @@ urlpatterns = [
     path('gallery-photo/',views.gallery_photo,name='gallery-photo'),
     path('research/',views.research,name='research'),
     path('seminar/',views.seminar,name='seminar'),
+    path('forpass/',views.forpass,name='forpass'),
     path('payment/paymenthandler/<int:pk>', views.paymenthandler, name='paymenthandler'),
     
     

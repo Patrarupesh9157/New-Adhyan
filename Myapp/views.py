@@ -104,6 +104,7 @@ def alogout(request):
     return redirect('signin')
 
 def aforgot(request):
+    admin=Register.objects.all()
     if request.method=='POST':
         uid=Register.objects.get(email=request.POST['email'])
         if uid.email==request.POST['email']:
@@ -118,9 +119,9 @@ def aforgot(request):
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [request.POST['email'], ]
             send_mail( subject, message, email_from, recipient_list )
-            return render(request,'fpass.html',{'fpass':fpass,'Email':uid.email,'msg':'See in Your Email id Your Password is Sent'})
-        return render(request,'forgot-password.html',{'msg':'Email Is not Register'})
-    return render(request,'forgot-password.html')
+            return render(request,'fpass.html',{'fpass':fpass,'Email':uid.email,'msg':'See in Your Email id Your Password is Sent','admin':admin})
+        return render(request,'forgot-password.html',{'msg':'Email Is not Register','admin':admin})
+    return render(request,'forgot-password.html',{'admin':admin})
 
 
 def passwordrecovery(request):
