@@ -39,6 +39,13 @@ urlpatterns = [
     path('payment/paymenthandler/<int:pk>', views.paymenthandler, name='paymenthandler'),
     
     
+    path('game1/',views.game1,name='game1'),
+    path('game2/',views.game2,name='game2'),
+    path('game3/',views.game3,name='game3'),
+    path('game4/',views.game4,name='game4'),
+    path('game5/',views.game5,name='game5'),
+    
+    
 
 
 

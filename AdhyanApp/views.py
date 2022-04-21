@@ -425,3 +425,19 @@ def views(request,pk):
     index = Add_Index.objects.get(id=pk)
     return render(request,'views.html',{'uid':uid,'index':index})
     
+
+
+def game1(request):
+    return render(request,'game1.html')
+
+def game2(request):
+    return render(request,'game2.html')
+
+def game3(request):
+    return render(request,'game3.html')
+
+def game4(request):
+    return render(request,'game4.html')
+
+def game5(request):
+    return render(request,'game5.html')
