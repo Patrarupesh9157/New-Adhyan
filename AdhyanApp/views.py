@@ -159,7 +159,8 @@ def all_courses(request):
             courses = All_Course.objects.filter(coname__contains =request.POST['scourse'])
     try:
         uid = User.objects.get(email=request.session['email'])
-        return render(request,'all-courses.html',{'courses':courses,'uid':uid})
+        buy = Booking.objects.filter(student=uid).values_list('course',flat=True)
+        return render(request,'all-courses.html',{'courses':courses,'uid':uid,'buy':buy})
     except:
         return render(request,'all-courses.html',{'courses':courses})
 
@@ -208,7 +209,7 @@ def course_details(request,pk):
         return render(request,'course-details.html',{'uid':uid,'course':course,'index':index})
     except:
         course = All_Course.objects.get(id=pk)
-        index = Add_Index.objects.filter(course=course)
+        index = Add_Index.objects.filter(course=course)[::-1]
         return render(request,'course-details.html',{'course':course,'index':index})
 
 def dashboard(request):
