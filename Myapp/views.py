@@ -31,6 +31,7 @@ def aindex(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     enq=m.Enquiry.objects.all()[::-1][0:5]
     review=Review.objects.all()[::-1][0:5]
+    treview=Review.objects.all().count
     admin=Register.objects.all()
     enq_co=m.Enquiry.objects.all().count
     course=All_Course.objects.all().count
@@ -40,7 +41,7 @@ def aindex(request):
     allcourse=All_Course.objects.all()
     adminco=All_Course.objects.filter(uid=uid).count
     purchase=Booking.objects.filter(course__uid=uid,pay_verify=True).count
-    return render(request,'aindex.html',{'adminco':adminco,'purchase':purchase,'uid':uid,'enq':enq,'enq_co':enq_co,'course':course,'student':student,'admin':admin,'allstudent':allstudent,'allcourse':allcourse,'pay':pay,'review':review})
+    return render(request,'aindex.html',{'adminco':adminco,'purchase':purchase,'uid':uid,'enq':enq,'enq_co':enq_co,'course':course,'student':student,'admin':admin,'allstudent':allstudent,'allcourse':allcourse,'pay':pay,'review':review,'treview':treview})
 
     # return render(request,'aindex.html',{'uid':uid,'enq':enq})
 def signin(request):
@@ -273,8 +274,9 @@ def department(request):
 def allcourses(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
+    tcourses = All_Course.objects.filter(covarify=False,coreject=False).count
     # app_course = All_Course.objects.filter(covarify = True)
-    return render(request,'allcourses.html',{'uid':uid,'courses':courses})
+    return render(request,'allcourses.html',{'uid':uid,'courses':courses,'tcourses':tcourses})
 
 def libraryassets(request):
     uid=Register.objects.get(email=request.session['adminemail'])
@@ -286,7 +288,8 @@ def addstudent(request):
 def allstudents(request):
     uid=Register.objects.get(email=request.session['adminemail'])
     user=m.User.objects.all()
-    return render(request,'all-students.html',{'uid':uid,'user':user})
+    tstudent=m.User.objects.all().count
+    return render(request,'all-students.html',{'uid':uid,'user':user,'tstudent':tstudent})
 def student_delete(request,pk):
     user=m.User.objects.get(id=pk)
     # request.session['email'] = user.email
