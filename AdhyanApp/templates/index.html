@@ -14,7 +14,7 @@
                     <div class="carousel-caption slider-con">
                         <h2>Welcome to <span>The Adhyan</span></h2>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-                        <a href="#" class="bann-btn-1">All Courses</a><a href="#" class="bann-btn-2">Read More</a>
+                        <a href="{% url 'all-courses' %}" class="bann-btn-1">All Courses</a><a href="{% url 'about' %}" class="bann-btn-2">Read More</a>
                     </div>
                 </div>
                 <div class="item">
@@ -22,7 +22,7 @@
                     <div class="carousel-caption slider-con">
                         <h2>Admission open <span>2022</span></h2>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-                        <a href="#" class="bann-btn-1">Admission</a><a href="#" class="bann-btn-2">Read More</a>
+                        <!-- <a href="#" class="bann-btn-1">Admission</a><a href="#" class="bann-btn-2">Read More</a> -->
                     </div>
                 </div>
                 <div class="item">
@@ -30,7 +30,7 @@
                     <div class="carousel-caption slider-con">
                         <h2><span>Adhyan </span>"Study For Easy Life"</h2>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-                        <a href="#" class="bann-btn-1">All Courses</a><a href="#" class="bann-btn-2">Read More</a>
+                        <a href="{% url 'all-courses' %}" class="bann-btn-1">All Courses</a><a href="{% url 'about' %}" class="bann-btn-2">Read More</a>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
     </section>
 
     <!-- QUICK LINKS -->
-    <section>
+    <!-- <section>
         <div class="container">
             <div class="row">
                 <div class="wed-hom-ser">
@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- DISCOVER MORE -->
     <section>
@@ -191,7 +191,7 @@
                         <ul>
                             <li>
                                 <a href="{% url 'game1' %}">
-                                <div class="ho-ev-img"><img src="{% static 'images/game.jpg'%}" alt="">
+                                <div class="ho-ev-img"><img src="{% static 'images/game.jpg'%}" alt="" style="width: 60px; height:60px;">
                                 </div>
                                 <div class="ho-ev-link" style="margin-top: 20px;">
                                         <h4>Moon Gravity Game</h4>
@@ -200,7 +200,7 @@
                             </li>
                             <li>
                                 <a href="{% url 'game2' %}">
-                                <div class="ho-ev-img"><img src="{% static 'images/tictac.png'%}" alt="">
+                                <div class="ho-ev-img"><img src="{% static 'images/tictac.png'%}" alt="" style="width: 60px; height:60px;">
                                 </div>
                                 <div class="ho-ev-link" style="margin-top: 20px;">
                                         <h4>Tic Tac Toe</h4>
@@ -210,7 +210,7 @@
                             </li>
                             <li>
                                 <a href="{% url 'game3' %}">
-                                <div class="ho-ev-img"><img src="{% static 'images/fw-game.png'%}" alt="">
+                                <div class="ho-ev-img"><img src="{% static 'images/fw-game.png'%}" alt="" style="width: 60px; height:60px;">
                                 </div>
                                 <div class="ho-ev-link">
                                         <h4 style="margin-top: 0px;">Chase</h4>
@@ -219,7 +219,7 @@
                                 </li>
                             <li>
                                 <a href="{% url 'game4' %}">
-                                <div class="ho-ev-img"><img src="{% static 'images/2048.png'%}" alt=""></div>
+                                <div class="ho-ev-img"><img src="{% static 'images/2048.png'%}" alt="" style="width: 60px; height:60px;"></div>
                                 <div class="ho-ev-link" style="margin-top: 20px;">
                                         <h4>2048 Game</h4>
                                     </div>
@@ -227,7 +227,7 @@
                             </li>
                             <li>
                                 <a href="{% url 'game5' %}">
-                                <div class="ho-ev-img"><img src="{% static 'images/game5.png'%}" alt=""></div>
+                                <div class="ho-ev-img"><img src="{% static 'images/game5.png'%}" alt="" style="width: 60px; height:60px;"></div>
                                 <div class="ho-ev-link" style="margin-top: 20px;">
                                         <h4>Astray Game</h4>
                                     </div>
