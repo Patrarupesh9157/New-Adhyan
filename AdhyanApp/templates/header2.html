@@ -15,8 +15,8 @@
                         <li><a href="{% url 'db-profile' %}">Profile</a></li>
                         <li><a href="{% url 'db-courses' %}">Courses</a></li>
                         <li><a href="{% url 'wish-list' %}">Wish-List</a></li>
-                        <li><a href="#">Entry</a></li>
-                        <li><a href="#">Notifications</a></li>
+                        {% comment %} <li><a href="#">Entry</a></li> {% endcomment %}
+                        <li><a href="{% url 'notification' %}">Notifications</a></li>
                     </ul>
                 </div>
             </div>

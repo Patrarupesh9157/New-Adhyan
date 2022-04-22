@@ -96,6 +96,8 @@ def logout(request):
 
 def change_password(request):
     uid = User.objects.get(email=request.session['email'])
+    courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
+    
     if request.method == 'POST':
         if uid.password == request.POST['opassword']:
             if request.POST['npassword'] == request.POST['ncpassword']:
@@ -104,11 +106,12 @@ def change_password(request):
                 return render(request,'index.html',{'uid':uid,'msg':'Password Updated'})
             return render(request,'change-password.html',{'uid':uid,'msg':'Both new are not same'})
         return render(request,'change-password.html',{'uid':uid,'msg':'Old Password is wrong'})
-    return render(request,'change-password.html',{'uid':uid,'msg':'Please feel the currect data'})
+    return render(request,'change-password.html',{'uid':uid,'course':courses,'msg':'Please feel the currect data'})
     
 
 
 def forgot(request):
+    courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
     if request.method=='POST':
         uid=User.objects.get(email=request.POST['email'])
         if uid.email==request.POST['email']:
@@ -125,7 +128,7 @@ def forgot(request):
             send_mail( subject, message, email_from, recipient_list )
             return render(request,'forpass.html',{'forpass':forpass,'Email':uid.email,'msg':'See in Your Email id Your Password is Sent'})
         return render(request,'forgot.html',{'msg':'Email Is not Register'})
-    return render(request,'forgot.html')
+    return render(request,'forgot.html',{'courses':courses})
 
 def forpass(request):
     try:
@@ -149,9 +152,11 @@ def forpass(request):
 def about(request):
     try:
         uid = User.objects.get(email=request.session['email'])
-        return render(request,'about.html',{'uid':uid})
+        courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
+        return render(request,'about.html',{'uid':uid,'courses':courses})
     except:
-        return render(request,'about.html')
+        courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
+        return render(request,'about.html',{'courses':courses})
 
 def all_courses(request):
     courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
@@ -168,6 +173,7 @@ def all_courses(request):
 def contact_us(request):
     try:
         uid = User.objects.get(email=request.session['email'])
+        courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
         if request.method == 'POST':
             Enquiry.objects.create(
                 name=request.POST['name'],
@@ -178,7 +184,7 @@ def contact_us(request):
             )
             msg='Complant is Added'
             return render(request,'contact-us.html',{'msg':msg})
-        return render(request,'contact-us.html',{'uid':uid})
+        return render(request,'contact-us.html',{'uid':uid,'courses':courses})
     except:
         if request.method == 'POST':
             Enquiry.objects.create(
@@ -204,7 +210,6 @@ def course_details(request,pk):
         uid = User.objects.get(email=request.session['email'])
         course = All_Course.objects.get(id=pk)
         index = Add_Index.objects.filter(course=course)[::-1]
-        print(index)
         course.views.add(uid)
         return render(request,'course-details.html',{'uid':uid,'course':course,'index':index})
     except:
@@ -215,8 +220,9 @@ def course_details(request,pk):
 def dashboard(request):
     try:
         uid = User.objects.get(email=request.session['email'])
+        courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
         book = Booking.objects.filter(student=uid,pay_verify=True)
-        return render(request,'dashboard.html',{'uid':uid,'book':book})
+        return render(request,'dashboard.html',{'uid':uid,'book':book,'courses':courses})
     except:
         return redirect('login')
 
@@ -225,7 +231,8 @@ def db_courses(request):
     try:
         uid = User.objects.get(email=request.session['email'])
         book = Booking.objects.filter(student=uid,pay_verify=True)
-        return render(request,'db-courses.html',{'uid':uid,'book':book})
+        courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
+        return render(request,'db-courses.html',{'uid':uid,'book':book,'courses':courses})
     except:
         return render(request,'login.html')
 
@@ -249,6 +256,7 @@ def wish_list(request):
 
 def db_profile(request):
     uid = User.objects.get(email=request.session['email'])
+    courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
     if request.method == 'POST':
         uid.name = request.POST['name']
         uid.gender = request.POST['gender']
@@ -260,7 +268,7 @@ def db_profile(request):
             uid.pic = request.FILES['pic']
         uid.save()
         return render(request,'db-profile.html',{'uid':uid,'msg':'Profile Updated'})
-    return render(request,'db-profile.html',{'uid':uid})
+    return render(request,'db-profile.html',{'uid':uid,'courses':courses})
 
 # def db_time_line(request):
 #     uid = User.objects.get(email=request.session['email'])
@@ -389,7 +397,7 @@ def cart(request):
         course = All_Course.objects.get(id=request.GET['id'])
         try:
             cart = Cart.objects.get(student=uid)
-            return JsonResponse({'msg':'This Course is Already Added'})
+            # return JsonResponse({'msg':'This Course is Already Added'})
         except:
             cart = Cart.objects.create(student=uid)
         cart.cart.add(course)
@@ -441,3 +449,13 @@ def game4(request):
 
 def game5(request):
     return render(request,'game5.html')
+
+def notification(request):
+    try:
+        uid = User.objects.get(email=request.session['email'])
+        courses = All_Course.objects.filter(covarify=False,coreject=False)[::-1]
+        re = Review.objects.all()[::-1]
+        return render(request,'notification.html',{'uid':uid,'re':re,'courses':courses})
+    except:
+        return redirect('login')
+        

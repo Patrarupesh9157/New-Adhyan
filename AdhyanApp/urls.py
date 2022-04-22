@@ -44,6 +44,7 @@ urlpatterns = [
     path('game3/',views.game3,name='game3'),
     path('game4/',views.game4,name='game4'),
     path('game5/',views.game5,name='game5'),
+    path('notification/',views.notification,name='notification'),
     
     
 
